@@ -25,7 +25,7 @@ const metaDescription = description ? description : META.description;
     <meta name="description" content={metaDescription} />
   </head>
   <body class="antialiased flex flex-col h-full text-neutral-950">
-    <header class="py-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
+    <header class="p-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
       <nav class="bg-neutral-100 max-w-max px-4 py-2 rounded-sm">
         <ul class="flex gap-x-4 font-medium">
           <li><a href="/" class="font-medium">Home</a></li>
@@ -39,12 +39,20 @@ const metaDescription = description ? description : META.description;
         >Submit a setup</a
       >
     </header>
-    <main class="flex-1 flex flex-col w-full max-w-5xl mx-auto">
+    <main
+      class="flex-1 flex flex-col w-full max-w-5xl mx-auto px-4 pb-8 sm:pb-16"
+    >
       <slot />
     </main>
     <footer class="py-8 bg-neutral-950 text-neutral-500">
-      <div class="w-full max-w-5xl mx-auto">
-        &copy; {new Date().getFullYear()} Alex Carpenter
+      <div class="w-full max-w-5xl mx-auto px-4">
+        <ul class="flex gap-x-4 font-medium">
+          <li><a href="/" class="font-medium">Home</a></li>
+          <li><a href="/about" class="font-medium">About</a></li>
+          <li><a href="/sponsorship" class="font-medium">Sponsor</a></li>
+        </ul>
+
+        <p class="mt-4">&copy; {new Date().getFullYear()} Alex Carpenter</p>
       </div>
     </footer>
   </body>

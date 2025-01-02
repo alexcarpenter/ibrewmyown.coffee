@@ -27,3 +27,15 @@
     font-variation-settings: "wght" 700;
   }
 }
+
+@utility prose {
+  @apply max-w-prose;
+
+  & > :where(* + *) {
+    @apply mt-4;
+  }
+
+  :where(h2) {
+    @apply text-xl font-semibold tracking-tight;
+  }
+}
