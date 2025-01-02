@@ -12,6 +12,7 @@
     "@ariakit/react": "^0.4.15",
     "@astrojs/mdx": "^4.0.3",
     "@astrojs/react": "^4.1.2",
+    "@astrojs/rss": "^4.0.11",
     "@tailwindcss/vite": "4.0.0-beta.8",
     "astro": "^5.1.1",
     "react": "^19.0.0",

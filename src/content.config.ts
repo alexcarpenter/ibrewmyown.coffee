@@ -30,6 +30,7 @@ const interviews = defineCollection({
       .object({
         twitter: z.string().optional(),
         instagram: z.string().optional(),
+        youtube: z.string().optional(),
         website: z.string().optional(),
       })
       .optional(),
