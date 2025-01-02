@@ -1,7 +1,43 @@
 ---
+import { getIndexById, getSlugFromId } from "@/utils";
+import { META } from "@/consts";
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+// import Newsletter from "@/components/newsletter.astro";
+const interviews = await getCollection("interviews");
+console.log(interviews);
 ---
 
 <Layout>
-  <h1>Hello world</h1>
+  <header class="mt-8 mb-12">
+    <h1 class="font-bold text-4xl tracking-tight">{META.title}</h1>
+    <p class="text-2xl font-medium text-neutral-600 max-w-prose">
+      {META.description}
+    </p>
+  </header>
+
+  <ul>
+    {
+      interviews.map((interview, i) => {
+        const slug = getSlugFromId(interview.id);
+        const issue = getIndexById(interviews, interview.id);
+        return (
+          <li class="flex gap-x-4 border-t border-dashed border-neutral-300 py-4">
+            <figure class="aspect-video bg-neutral-100 w-1/4 rounded-sm" />
+            <div class="flex flex-col py-4">
+              <p class="text-neutral-600 font-mono uppercase text-xs mb-auto">
+                // Issue {issue}
+              </p>
+              <p class="font-bold text-lg tracking-tight">
+                {interview.data.title}
+              </p>
+              <p class="text-neutral-600 font-mono text-sm">
+                {interview.data.description}
+              </p>
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
 </Layout>

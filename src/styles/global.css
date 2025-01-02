@@ -1,1 +1,29 @@
 @import "tailwindcss";
+
+@theme {
+  --font-sans: Inter, sans-serif;
+}
+
+@layer utilities {
+  @font-face {
+    font-family: "Inter";
+    src: url("/fonts/InterVariable.woff2") format("woff2");
+    font-style: normal;
+    font-display: swap;
+    font-weight: 400 700;
+  }
+
+  /* Font weights */
+  .font-normal {
+    font-variation-settings: "wght" 400;
+  }
+  .font-medium {
+    font-variation-settings: "wght" 500;
+  }
+  .font-semibold {
+    font-variation-settings: "wght" 600;
+  }
+  .font-bold {
+    font-variation-settings: "wght" 700;
+  }
+}

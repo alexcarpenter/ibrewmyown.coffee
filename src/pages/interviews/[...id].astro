@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getSlugFromId } from "@/utils";
+import { type CollectionEntry, getCollection, render } from "astro:content";
+export async function getStaticPaths() {
+  const interviews = await getCollection("interviews");
+  return interviews.map((interview) => {
+    const id = getSlugFromId(interview.id);
+    return {
+      params: { id },
+      props: interview,
+    };
+  });
+}
+type Props = CollectionEntry<"interviews">;
+const interview = Astro.props;
+const { Content } = await render(interview);
+---
+
+<Layout>
+  <h1>{interview.data.title}</h1>
+  <Content />
+</Layout>

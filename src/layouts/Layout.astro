@@ -1,17 +1,51 @@
 ---
 import "../styles/global.css";
+import { META } from "@/consts";
+const { title, description } = Astro.props;
+const metaTitle = title ? `${title} - ${META.title}` : META.title;
+const metaDescription = description ? description : META.description;
 ---
 
 <!doctype html>
 <html lang="en" class="h-full">
   <head>
+    <link
+      rel="preload"
+      href="/fonts/InterVariable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>{metaTitle}</title>
+    <meta name="title" content={metaTitle} />
+    <meta name="description" content={metaDescription} />
   </head>
-  <body class="antialiased flex flex-col h-full">
-    <slot />
+  <body class="antialiased flex flex-col h-full text-neutral-950">
+    <header class="py-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
+      <nav class="bg-neutral-100 max-w-max px-4 py-2 rounded-sm">
+        <ul class="flex gap-x-4 font-medium">
+          <li><a href="/" class="font-medium">Home</a></li>
+          <li><a href="/about" class="font-medium">About</a></li>
+          <li><a href="/sponsorship" class="font-medium">Sponsor</a></li>
+        </ul>
+      </nav>
+      <a
+        href=""
+        class:list={["relative px-4 py-2 rounded-sm bg-[#DFFF1F] font-medium"]}
+        >Submit a setup</a
+      >
+    </header>
+    <main class="flex-1 w-full max-w-5xl mx-auto">
+      <slot />
+    </main>
+    <footer class="py-8 bg-neutral-950 text-neutral-500">
+      <div class="w-full max-w-5xl mx-auto">
+        &copy; {new Date().getFullYear()} Alex Carpenter
+      </div>
+    </footer>
   </body>
 </html>
