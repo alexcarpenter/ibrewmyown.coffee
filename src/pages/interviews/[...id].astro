@@ -43,19 +43,16 @@ const { Content } = await render(interview);
     </p>
   </header>
   <figure class="aspect-video bg-neutral-100 rounded-sm my-8"></figure>
-  <div class="grid grid-cols-4 gap-x-4">
-    <div class="col-span-3">
+  <div class="grid grid-cols-1 sm:grid-cols-4 gap-x-4 gap-y-16">
+    <div class="sm:col-span-3">
       <div class="prose">
         <Content />
       </div>
       <div>
         <h2
-          class:list={[
-            "mt-8 mb-4 flex items-center gap-x-4 font-semibold text-xl",
-            "after:flex-1 after:h-px after:border-t after:border-dashed after:border-neutral-300",
-          ]}
+          class="mt-8 mb-4 flex items-center gap-x-4 font-semibold text-xl tracking-tight"
         >
-          Products referenced
+          Products referenced&nbsp;&not;
         </h2>
         <ul class="space-y-4">
           {
@@ -83,7 +80,7 @@ const { Content } = await render(interview);
         </ul>
       </div>
     </div>
-    <div class="col-span-1">
+    <div class="sm:col-span-1">
       <img
         src={interview.data.avatar}
         alt=""
