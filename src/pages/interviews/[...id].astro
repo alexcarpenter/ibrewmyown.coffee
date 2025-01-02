@@ -84,11 +84,13 @@ const { Content } = await render(interview);
       }
     </div>
     <div class="sm:col-span-1">
-      <img
-        src={interview.data.avatar}
-        alt=""
-        class="rounded-sm grayscale mb-4"
-      />
+      <figure class="bg-brand">
+        <img
+          src={interview.data.avatar}
+          alt=""
+          class="rounded-sm grayscale mb-4 mix-blend-multiply"
+        />
+      </figure>
       {
         interview.data.social ? (
           <dl
