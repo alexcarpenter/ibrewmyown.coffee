@@ -1,6 +1,6 @@
 ---
 title: Alex Carpenter
-description: UI Engineer at Clerk.
+description: UI Engineer at @clerk.
 published: 2025-01-01T18:10:29-0500
 ---
 

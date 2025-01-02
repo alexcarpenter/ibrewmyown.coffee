@@ -3,22 +3,42 @@ import { getIndexById, getSlugFromId } from "@/utils";
 import { META } from "@/consts";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
-// import Newsletter from "@/components/newsletter.astro";
-const interviews = await getCollection("interviews");
-console.log(interviews);
+const collection = await getCollection("interviews");
+const interviews = collection.sort((a, b) => {
+  const aDate = a.data.published;
+  const bDate = b.data.published;
+  return Date.parse(aDate.toString()) - Date.parse(bDate.toString());
+});
 ---
 
 <Layout>
   <header class="mt-8 mb-12">
     <h1 class="font-bold text-4xl tracking-tight">{META.title}</h1>
-    <p class="text-2xl font-medium text-neutral-600 max-w-prose">
+    <p class="mt-1 text-2xl font-medium text-neutral-600 max-w-prose">
       {META.description}
     </p>
   </header>
 
-  <ul>
+  <section class="mb-12">
+    <p class="font-mono text-neutral-600 text-sm">Join 14,000+ other readers</p>
+    <form action="" class="flex gap-x-4 mt-2">
+      <label for="emailAddress" class="sr-only">Email address</label>
+      <input
+        type="text"
+        placeholder="you@example.com"
+        class="relative px-4 py-2 rounded-sm border border-neutral-300 w-1/4"
+      />
+      <input
+        type="submit"
+        value="Subscribe for free"
+        class="relative px-4 py-2 rounded-sm border border-neutral-950 bg-neutral-950 text-neutral-50 font-medium"
+      />
+    </form>
+  </section>
+
+  <ul class="border-r border-dashed border-neutral-300 flex-1">
     {
-      interviews.map((interview, i) => {
+      [...interviews].reverse().map((interview, i) => {
         const slug = getSlugFromId(interview.id);
         const issue = getIndexById(interviews, interview.id);
         return (
@@ -29,7 +49,12 @@ console.log(interviews);
                 // Issue {issue}
               </p>
               <p class="font-bold text-lg tracking-tight">
-                {interview.data.title}
+                <a
+                  href={`/interviews/${slug}`}
+                  class="underline decoration-[#DFFF1F]"
+                >
+                  {interview.data.title}
+                </a>
               </p>
               <p class="text-neutral-600 font-mono text-sm">
                 {interview.data.description}

@@ -1,7 +1,7 @@
 ---
 title: Fatih Arslan
 description: Software Engineer at @planetscale.
-published: 2025-01-01T18:10:29-0500
+published: 2024-10-12T18:10:29-0500
 ---
 
 ## Who are you and what do you do?
