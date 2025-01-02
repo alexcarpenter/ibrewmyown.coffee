@@ -1,7 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getSlugFromId, getIndexById } from "@/utils";
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  render,
+} from "astro:content";
 export async function getStaticPaths() {
   const collection = await getCollection("interviews");
   const interviews = collection.sort((a, b) => {
@@ -25,9 +30,9 @@ const interview = Astro.props;
 const { Content } = await render(interview);
 ---
 
-<Layout>
+<Layout title={interview.data.title} description={interview.data.description}>
   <header class="mt-8">
-    <p class="mb-1 text-neutral-600 font-mono uppercase text-xs">
+    <p class="mb-2 text-neutral-600 font-mono uppercase text-xs">
       // Issue {interview.issue}
     </p>
     <h1 class="mb-1 font-bold text-4xl tracking-tight">
@@ -43,8 +48,47 @@ const { Content } = await render(interview);
       <div class="prose">
         <Content />
       </div>
+      <div>
+        <h2
+          class:list={[
+            "mt-8 mb-4 flex items-center gap-x-4 font-semibold text-xl",
+            "after:flex-1 after:h-px after:border-t after:border-dashed after:border-neutral-300",
+          ]}
+        >
+          Products referenced
+        </h2>
+        <ul class="space-y-4">
+          {
+            interview.data.products?.map(async ({ id }) => {
+              const product = await getEntry("products", id);
+              if (!product) {
+                return null;
+              }
+              return (
+                <li>
+                  <span class="text-neutral-600 font-mono uppercase text-xs block">
+                    {product.data.description}
+                  </span>
+                  <a
+                    href={product.data.link}
+                    target="_blank"
+                    class="font-medium underline decoration-brand"
+                  >
+                    {product.data.title}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
     </div>
     <div class="col-span-1">
+      <img
+        src={interview.data.avatar}
+        alt=""
+        class="rounded-sm grayscale mb-4"
+      />
       {
         interview.data.social ? (
           <dl

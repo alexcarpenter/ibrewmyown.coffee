@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const brands = defineCollection({
@@ -9,12 +9,23 @@ const brands = defineCollection({
   }),
 });
 
+const products = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/products" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    link: z.string(),
+  }),
+});
+
 const interviews = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/interviews" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     published: z.coerce.date(),
+    avatar: z.string(),
+    products: z.array(reference("products")).optional(),
     social: z
       .object({
         twitter: z.string().optional(),
@@ -22,15 +33,6 @@ const interviews = defineCollection({
         website: z.string().optional(),
       })
       .optional(),
-  }),
-});
-
-const products = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/products" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    link: z.string(),
   }),
 });
 

@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: Inter, sans-serif;
+  --color-brand: oklch(94.42% 0.21617106039826628 118.6631565012937);
 }
 
 @layer utilities {
@@ -33,6 +34,10 @@
 
   & > :where(* + *) {
     @apply mt-4;
+  }
+
+  & > :where(* + h2) {
+    @apply mt-8;
   }
 
   :where(h2) {

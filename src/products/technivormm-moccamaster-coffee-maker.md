@@ -1,5 +1,5 @@
 ---
 title: Technivormm Moccamaster Coffee Maker
-description: Lorem
+description: Coffee maker
 link: https://amzn.to/3PkiU3G
 ---

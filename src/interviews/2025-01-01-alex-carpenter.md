@@ -1,14 +1,21 @@
 ---
 title: Alex Carpenter
-description: UI Engineer at @clerk.
+description: UI Engineer at Clerk
 published: 2025-01-01T18:10:29-0500
+avatar: /img/alex-carpenter.jpg
 social:
   twitter: hybrid_alex
   instagram: alexcarp
   website: https://alexcarpenter.me
+products:
+  - breville-barista-touch-espresso-machine
+  - technivormm-moccamaster-coffee-maker
+  - kalita-stainless-steel-pour-dripper
 ---
 
 ## Who are you and what do you do?
+
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo ipsum accusamus reprehenderit.
 
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo ipsum accusamus reprehenderit.
 
@@ -26,7 +33,7 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo ipsum accusamus re
 
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo ipsum accusamus reprehenderit.
 
-## Any bean recommendations?
+## Lastly, any coffee bean recommendations?
 
 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo ipsum accusamus reprehenderit.
 
