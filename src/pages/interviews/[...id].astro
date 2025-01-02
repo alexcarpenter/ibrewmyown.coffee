@@ -3,31 +3,32 @@ import Layout from "@/layouts/Layout.astro";
 import { getSlugFromId, getIndexById } from "@/utils";
 import { type CollectionEntry, getCollection, render } from "astro:content";
 export async function getStaticPaths() {
-  const interviews = await getCollection("interviews");
+  const collection = await getCollection("interviews");
+  const interviews = collection.sort((a, b) => {
+    const aDate = a.data.published;
+    const bDate = b.data.published;
+    return Date.parse(aDate.toString()) - Date.parse(bDate.toString());
+  });
   return interviews.map((interview) => {
     const id = getSlugFromId(interview.id);
+    const issue = getIndexById(interviews, interview.id);
     return {
       params: { id },
-      props: interview,
+      props: { ...interview, issue },
     };
   });
 }
-const collection = await getCollection("interviews");
-const interviews = collection.sort((a, b) => {
-  const aDate = a.data.published;
-  const bDate = b.data.published;
-  return Date.parse(aDate.toString()) - Date.parse(bDate.toString());
-});
-type Props = CollectionEntry<"interviews">;
+type Props = CollectionEntry<"interviews"> & {
+  issue: string;
+};
 const interview = Astro.props;
 const { Content } = await render(interview);
-const issue = getIndexById(interviews, interview.id);
 ---
 
 <Layout>
   <header class="mt-8 mb-12">
     <p class="text-neutral-600 font-mono uppercase text-xs">
-      // Issue {issue}
+      // Issue {interview.issue}
     </p>
     <h1 class="my-1 font-bold text-4xl tracking-tight">
       {interview.data.title}
