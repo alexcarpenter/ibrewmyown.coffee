@@ -40,7 +40,11 @@
     @apply mt-8;
   }
 
-  :where(h2) {
+  & > :where(h2) {
     @apply text-xl font-semibold tracking-tight;
+  }
+
+  & > :where(a) {
+    @apply decoration-brand hover:bg-brand underline;
   }
 }

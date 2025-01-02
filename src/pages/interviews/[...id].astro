@@ -71,7 +71,7 @@ const { Content } = await render(interview);
                     <a
                       href={product.data.link}
                       target="_blank"
-                      class="font-medium underline decoration-brand"
+                      class="font-medium underline decoration-brand hover:bg-brand"
                     >
                       {product.data.title}
                     </a>
@@ -84,11 +84,13 @@ const { Content } = await render(interview);
       }
     </div>
     <div class="sm:col-span-1">
-      <figure class="bg-brand">
+      <figure
+        class="bg-brand aspect-square mb-4 rounded-sm relative overflow-hidden"
+      >
         <img
           src={interview.data.avatar}
           alt=""
-          class="rounded-sm grayscale mb-4 mix-blend-multiply"
+          class="grayscale mix-blend-multiply w-full absolute h-full object-cover"
         />
       </figure>
       {
@@ -106,7 +108,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://x.com/${interview.data.social?.twitter}`}
                     target="_blank"
-                    class="underline decoration-brand"
+                    class="underline decoration-brand hover:bg-brand"
                   >
                     @{interview.data.social?.twitter}
                   </a>
@@ -120,7 +122,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://instagram.com/${interview.data.social?.instagram}`}
                     target="_blank"
-                    class="underline decoration-brand"
+                    class="underline decoration-brand hover:bg-brand"
                   >
                     @{interview.data.social?.instagram}
                   </a>
@@ -134,7 +136,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://www.youtube.com/${interview.data.social?.youtube}`}
                     target="_blank"
-                    class="underline decoration-brand"
+                    class="underline decoration-brand hover:bg-brand"
                   >
                     {interview.data.social?.youtube}
                   </a>
@@ -148,7 +150,7 @@ const { Content } = await render(interview);
                   <a
                     href={interview.data.social?.website}
                     target="_blank"
-                    class="underline decoration-brand"
+                    class="underline decoration-brand hover:bg-brand"
                   >
                     {new URL(interview.data.social?.website).hostname}
                   </a>
