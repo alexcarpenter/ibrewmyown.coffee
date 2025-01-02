@@ -104,7 +104,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://x.com/${interview.data.social?.twitter}`}
                     target="_blank"
-                    class="underline decoration-[#DFFF1F]"
+                    class="underline decoration-brand"
                   >
                     @{interview.data.social?.twitter}
                   </a>
@@ -118,7 +118,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://instagram.com/${interview.data.social?.instagram}`}
                     target="_blank"
-                    class="underline decoration-[#DFFF1F]"
+                    class="underline decoration-brand"
                   >
                     @{interview.data.social?.instagram}
                   </a>
@@ -132,7 +132,7 @@ const { Content } = await render(interview);
                   <a
                     href={interview.data.social?.website}
                     target="_blank"
-                    class="underline decoration-[#DFFF1F]"
+                    class="underline decoration-brand"
                   >
                     {new URL(interview.data.social?.website).hostname}
                   </a>
