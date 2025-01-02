@@ -41,11 +41,79 @@ const { Content } = await render(interview);
     <h1 class="mb-1 font-bold text-4xl tracking-tight">
       {interview.data.title}
     </h1>
-    <p class="text-2xl font-medium text-neutral-600 max-w-prose">
+    <p class="text-2xl font-medium text-neutral-600 max-w-prose text-balance">
       {interview.data.description}
     </p>
   </header>
-  <figure class="aspect-video bg-neutral-100 rounded-sm my-8"></figure>
+  <figure class:list={["embla", "relative my-8"]}>
+    <div
+      class:list={[
+        "embla__viewport",
+        "overflow-hidden bg-neutral-100 rounded-sm",
+      ]}
+    >
+      <div class:list={["embla__container", "flex"]}>
+        {
+          [1, 2, 3, 4, 5].map((i) => {
+            return (
+              <div
+                class:list={[
+                  "embla__slide",
+                  "aspect-video flex-[0_0_100%] min-w-0 grid place-content-center",
+                ]}
+              >
+                {i}
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+    <button
+      class:list={[
+        "embla__button--prev",
+        "absolute top-1/2 -translate-y-1/2 size-8 bg-brand grid place-content-center left-0",
+      ]}
+      type="button"
+      ><span class="sr-only">Previous</span><svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-6"
+        ><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg
+      ></button
+    >
+    <button
+      class:list={[
+        "embla__button--next",
+        "absolute top-1/2 -translate-y-1/2 size-8 bg-brand grid place-content-center right-0",
+      ]}
+      type="button"
+      ><span class="sr-only">Next</span><svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="size-6"
+        ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+      ></button
+    >
+    <div
+      class:list={[
+        "embla__dots",
+        "flex justify-center gap-x-1 mt-2 h-4 items-center",
+        "*:size-2 *:rounded-full *:bg-neutral-300 [&_.active]:bg-neutral-950",
+      ]}
+    >
+    </div>
+  </figure>
   <div class="grid grid-cols-1 sm:grid-cols-4 gap-x-4 gap-y-16">
     <div class="sm:col-span-3">
       <div class="prose">
@@ -163,3 +231,39 @@ const { Content } = await render(interview);
     </div>
   </div>
 </Layout>
+
+<script>
+  import {
+    addDotBtnsAndClickHandlers,
+    addPrevNextBtnsClickHandlers,
+  } from "@/utils/embla";
+  import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
+  const OPTIONS: EmblaOptionsType = {};
+
+  const emblaNode = document.querySelector(".embla") as HTMLElement;
+  const viewportNode = emblaNode.querySelector(
+    ".embla__viewport"
+  ) as HTMLElement;
+  const prevBtnNode = emblaNode.querySelector(
+    ".embla__button--prev"
+  ) as HTMLElement;
+  const nextBtnNode = emblaNode.querySelector(
+    ".embla__button--next"
+  ) as HTMLElement;
+  const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
+
+  const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+
+  const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
+    emblaApi,
+    prevBtnNode,
+    nextBtnNode
+  );
+  const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+    emblaApi,
+    dotsNode
+  );
+
+  emblaApi.on("destroy", removePrevNextBtnsClickHandlers);
+  emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
+</script>

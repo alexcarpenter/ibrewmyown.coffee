@@ -26,6 +26,9 @@ dependencies:
   astro:
     specifier: ^5.1.1
     version: 5.1.1(typescript@5.7.2)
+  embla-carousel:
+    specifier: ^8.5.1
+    version: 8.5.1
   react:
     specifier: ^19.0.0
     version: 19.0.0
@@ -2017,6 +2020,10 @@ packages:
 
   /electron-to-chromium@1.5.76:
     resolution: {integrity: sha512-CjVQyG7n7Sr+eBXE86HIulnL5N8xZY1sgmOPGuq/F0Rr0FJq63lg0kEtOIDfZBk44FnDLf6FUJ+dsJcuiUDdDQ==}
+    dev: false
+
+  /embla-carousel@8.5.1:
+    resolution: {integrity: sha512-JUb5+FOHobSiWQ2EJNaueCNT/cQU9L6XWBbWmorWPQT9bkbk+fhsuLr8wWrzXKagO3oWszBO7MSx+GfaRk4E6A==}
     dev: false
 
   /emoji-regex-xs@1.0.0:
