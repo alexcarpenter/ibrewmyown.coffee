@@ -44,7 +44,15 @@
     @apply text-xl font-semibold tracking-tight;
   }
 
+  & > :where(h3) {
+    @apply font-semibold tracking-tight;
+  }
+
   & > :where(a) {
     @apply decoration-brand hover:bg-brand underline;
+  }
+
+  & > :where(ul) {
+    @apply list-disc space-y-1 pl-6 marker:text-neutral-300;
   }
 }
