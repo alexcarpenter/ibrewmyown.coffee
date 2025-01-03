@@ -41,7 +41,7 @@ const { Content } = await render(interview);
     <h1 class="mb-1 font-bold text-4xl tracking-tight">
       {interview.data.title}
     </h1>
-    <p class="text-2xl font-medium text-neutral-600 max-w-prose text-balance">
+    <p class="text-2xl font-medium text-neutral-600 max-3xl text-balance">
       {interview.data.description}
     </p>
   </header>
@@ -152,13 +152,11 @@ const { Content } = await render(interview);
       }
     </div>
     <div class="sm:col-span-1">
-      <figure
-        class="bg-brand aspect-square mb-4 rounded-sm relative overflow-hidden"
-      >
+      <figure class="aspect-square mb-4 rounded-sm relative overflow-hidden">
         <img
           src={interview.data.avatar}
           alt=""
-          class="grayscale mix-blend-multiply w-full absolute h-full object-cover"
+          class="w-full absolute h-full object-cover"
         />
       </figure>
       {

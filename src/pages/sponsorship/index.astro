@@ -4,9 +4,11 @@ import Layout from "@/layouts/Layout.astro";
 
 <Layout>
   <header class="mt-8">
-    <h1 class="font-bold text-4xl tracking-tight">Sponsorships&nbsp;&not;</h1>
+    <h1 class="font-bold text-3xl sm:text-4xl tracking-tight">
+      Sponsorships&nbsp;&not;
+    </h1>
     <p
-      class="mt-1 text-2xl font-medium text-neutral-600 max-w-3xl text-balance"
+      class="mt-1 text-xl sm:text-2xl font-medium text-neutral-600 max-w-3xl text-balance"
     >
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eius.
     </p>
@@ -14,37 +16,33 @@ import Layout from "@/layouts/Layout.astro";
 
   <section class="mt-12">
     <h2 class="sr-only">Newsletter stats</h2>
-    <ul class="grid grid-cols-2 md:grid-cols-4 gap-4">
-      <li class="border-l border-dashed border-neutral-300 pl-4">
-        <h2 class="font-mono text-neutral-600 text-xs uppercase mb-2">
-          Subscribers
-        </h2>
-        <p class="text-4xl font-bold">{new Intl.NumberFormat().format(1000)}</p>
+    <ul class="grid grid-cols-2 md:grid-cols-4 bg-neutral-950 rounded-sm">
+      <li class="p-8 border-white border-dashed border-r max-md:border-b">
+        <h2 class="font-mono text-brand text-xs uppercase mb-2">Subscribers</h2>
+        <p class="text-4xl font-bold text-white">
+          {new Intl.NumberFormat().format(1000)}
+        </p>
       </li>
-      <li class="border-l border-dashed border-neutral-300 pl-4">
-        <h2 class="font-mono text-neutral-600 text-xs uppercase mb-2">
+      <li class="p-8 border-white border-dashed md:border-r max-md:border-b">
+        <h2 class="font-mono text-brand text-xs uppercase mb-2">
           Click-through rate
         </h2>
-        <p class="text-4xl font-bold">6-7%</p>
+        <p class="text-4xl font-bold text-white">6-7%</p>
       </li>
-      <li class="border-l border-dashed border-neutral-300 pl-4">
-        <h2 class="font-mono text-neutral-600 text-xs uppercase mb-2">
-          Open rate
-        </h2>
-        <p class="text-4xl font-bold">55%</p>
+      <li class="p-8 border-white border-dashed border-r">
+        <h2 class="font-mono text-brand text-xs uppercase mb-2">Open rate</h2>
+        <p class="text-4xl font-bold text-white">55%</p>
       </li>
-      <li class="border-l border-dashed border-neutral-300 pl-4">
-        <h2 class="font-mono text-neutral-600 text-xs uppercase mb-2">
-          Schedule
-        </h2>
-        <p class="text-4xl font-bold">Weekly</p>
+      <li class="p-8 border-white border-dashed">
+        <h2 class="font-mono text-brand text-xs uppercase mb-2">Schedule</h2>
+        <p class="text-4xl font-bold text-white">Weekly</p>
       </li>
     </ul>
   </section>
 
   <section class="mt-12">
-    <div class="prose max-w-prose">
-      <h2>Tier 1</h2>
+    <div class="prose">
+      <h2>Tier 3</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
         adipisci, deserunt sunt nobis ab veritatis fugiat, vitae eos quasi odio,
@@ -67,7 +65,7 @@ import Layout from "@/layouts/Layout.astro";
         adipisci, deserunt sunt nobis ab veritatis fugiat, vitae eos quasi odio,
         ad necessitatibus amet quo nulla maiores sapiente magni soluta omnis!
       </p>
-      <h2>Tier 3</h2>
+      <h2>Tier 1</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora
         adipisci, deserunt sunt nobis ab veritatis fugiat, vitae eos quasi odio,
