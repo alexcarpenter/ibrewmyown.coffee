@@ -25,39 +25,14 @@ const metaDescription = description ? description : META.description;
     <meta name="title" content={metaTitle} />
     <meta name="description" content={metaDescription} />
   </head>
-  <body class="antialiased flex flex-col h-full text-neutral-950">
-    <header class="p-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
-      <nav class="bg-neutral-100 max-w-max px-4 py-2 rounded-sm">
-        <ul class="flex gap-x-4 font-medium">
-          <li><a href="/" class="font-medium">Home</a></li>
-          <li><a href="/about" class="font-medium">About</a></li>
-          <li><a href="/sponsorship" class="font-medium">Sponsor</a></li>
-        </ul>
-      </nav>
-      <a
-        href="/submit"
-        class:list={["relative px-4 py-2 rounded-sm bg-brand font-medium"]}
-        >Submit<span class="max-sm:hidden"> a setup</span></a
-      >
-    </header>
+  <body class="antialiased flex flex-col h-full text-neutral-50 bg-neutral-950">
     <main
-      class="flex-1 flex flex-col w-full max-w-5xl mx-auto px-4 pb-8 sm:pb-16"
+      class="flex-1 flex flex-col items-center justify-center w-full max-w-5xl mx-auto px-4 pb-8 sm:pb-16"
     >
       <slot />
     </main>
     <footer class="pt-8 bg-neutral-950 text-neutral-500">
       <div class="w-full max-w-5xl mx-auto px-4">
-        <ul class="flex gap-x-4 font-medium">
-          <li><a href="/" class="font-medium">Home</a></li>
-          <li><a href="/about" class="font-medium">About</a></li>
-          <li><a href="/sponsorship" class="font-medium">Sponsor</a></li>
-          <li><a href="/submit" class="font-medium">Submit a setup</a></li>
-        </ul>
-
-        <p class="mt-4">&copy; {new Date().getFullYear()} Alex Carpenter</p>
-      </div>
-
-      <div class="w-full max-w-5xl mx-auto mt-8 px-4">
         <svg aria-hidden="true" viewBox="0 0 1001 67" fill="none"
           ><g clip-path="url(#a)"
             ><path
