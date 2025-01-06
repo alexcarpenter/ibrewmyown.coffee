@@ -12,7 +12,7 @@ export async function getStaticPaths() {
   const interviews = collection.sort((a, b) => {
     const aDate = a.data.published;
     const bDate = b.data.published;
-    return Date.parse(aDate.toString()) - Date.parse(bDate.toString());
+    return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
   });
   return interviews.map((interview) => {
     const id = getSlugFromId(interview.id);

@@ -1,5 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+const stats = {
+  subscribers: 0,
+  clickThroughRate: 0,
+  openRate: 0,
+  schedule: "Weekly",
+} as const;
 ---
 
 <Layout>
@@ -20,22 +26,34 @@ import Layout from "@/layouts/Layout.astro";
       <li class="p-8 border-white border-dashed border-r max-md:border-b">
         <h2 class="font-mono text-brand text-xs uppercase mb-2">Subscribers</h2>
         <p class="text-4xl font-bold text-white">
-          {new Intl.NumberFormat().format(1000)}
+          {new Intl.NumberFormat("en-US").format(stats.subscribers)}
         </p>
       </li>
       <li class="p-8 border-white border-dashed md:border-r max-md:border-b">
         <h2 class="font-mono text-brand text-xs uppercase mb-2">
           Click-through rate
         </h2>
-        <p class="text-4xl font-bold text-white">6-7%</p>
+        <p class="text-4xl font-bold text-white">
+          {
+            new Intl.NumberFormat("en-US", { style: "percent" }).format(
+              stats.clickThroughRate
+            )
+          }
+        </p>
       </li>
       <li class="p-8 border-white border-dashed border-r">
         <h2 class="font-mono text-brand text-xs uppercase mb-2">Open rate</h2>
-        <p class="text-4xl font-bold text-white">55%</p>
+        <p class="text-4xl font-bold text-white">
+          {
+            new Intl.NumberFormat("en-US", { style: "percent" }).format(
+              stats.openRate
+            )
+          }
+        </p>
       </li>
       <li class="p-8 border-white border-dashed">
         <h2 class="font-mono text-brand text-xs uppercase mb-2">Schedule</h2>
-        <p class="text-4xl font-bold text-white">Weekly</p>
+        <p class="text-4xl font-bold text-white">{stats.schedule}</p>
       </li>
     </ul>
   </section>
