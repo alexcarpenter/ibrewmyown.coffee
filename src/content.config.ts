@@ -24,8 +24,17 @@ const interviews = defineCollection({
     title: z.string(),
     description: z.string(),
     published: z.coerce.date(),
+    draft: z.boolean().optional(),
     avatar: z.string(),
     products: z.array(reference("products")).optional(),
+    gallery: z
+      .array(
+        z.object({
+          src: z.string(),
+          alt: z.string(),
+        }),
+      )
+      .optional(),
     social: z
       .object({
         twitter: z.string().optional(),

@@ -1,4 +1,5 @@
 ---
+draft: true
 title: Fatih Arslan
 description: Software Engineer at Planetscale. Creator of vim-go. Design addict. Photographer.
 published: 2025-01-03T12:28:58-0500
