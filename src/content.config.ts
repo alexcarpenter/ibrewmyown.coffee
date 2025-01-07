@@ -19,7 +19,7 @@ const products = defineCollection({
 });
 
 const interviews = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/interviews" }),
+  loader: glob({ pattern: "**/*.md", base: "./src/interviews" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
