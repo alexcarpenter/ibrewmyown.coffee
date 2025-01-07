@@ -61,14 +61,14 @@ const { Content } = await render(interview);
                 <div
                   class:list={[
                     "embla__slide",
-                    "relative overflow-hidden object-center aspect-video flex-[0_0_100%] min-w-0 grid place-content-center",
+                    "relative overflow-hidden object-center aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
                   ]}
                 >
                   <Image
                     src={img.src}
                     alt={img.alt}
-                    width={1600}
-                    height={900}
+                    width={1500}
+                    height={1000}
                     loading={i === 0 ? "eager" : "lazy"}
                     class="absolute w-full h-full object-cover"
                   />
@@ -188,7 +188,7 @@ const { Content } = await render(interview);
           <dl
             class:list={[
               "[&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-neutral-300 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-neutral-600",
-              "[&_dd]:font-medium",
+              "[&_dd]:font-medium [&_dd]:truncate",
             ]}
           >
             {interview.data.social?.twitter ? (
@@ -201,6 +201,20 @@ const { Content } = await render(interview);
                     class="underline decoration-brand hover:bg-brand"
                   >
                     @{interview.data.social?.twitter}
+                  </a>
+                </dd>
+              </>
+            ) : null}
+            {interview.data.social?.bluesky ? (
+              <>
+                <dt>Bluesky</dt>
+                <dd>
+                  <a
+                    href={`https://bsky.app/profile/${interview.data.social?.bluesky}`}
+                    target="_blank"
+                    class="underline decoration-brand hover:bg-brand"
+                  >
+                    @{interview.data.social?.bluesky}
                   </a>
                 </dd>
               </>
@@ -242,7 +256,10 @@ const { Content } = await render(interview);
                     target="_blank"
                     class="underline decoration-brand hover:bg-brand"
                   >
-                    {new URL(interview.data.social?.website).hostname}
+                    {new URL(interview.data.social?.website).hostname.replace(
+                      "www.",
+                      ""
+                    )}
                   </a>
                 </dd>
               </>
