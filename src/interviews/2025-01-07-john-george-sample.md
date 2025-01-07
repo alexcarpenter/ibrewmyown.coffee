@@ -1,7 +1,7 @@
 ---
 draft: true
 title: John-George Sample
-description: Software engineer in Pittsburgh, PA.
+description: Software engineer from Pittsburgh, PA.
 published: 2025-01-07T08:20:16-0500
 avatar: /img/john-george-sample.jpg
 social:
