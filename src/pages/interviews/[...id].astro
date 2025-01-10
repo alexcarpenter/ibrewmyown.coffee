@@ -33,11 +33,15 @@ const { Content } = await render(interview);
 
 <Layout title={interview.data.title} description={interview.data.description}>
   <header class="mt-8">
-    <p
-      class="mb-2 text-neutral-600 font-mono uppercase text-xs"
-      style="font-weight:600;"
-    >
-      // Issue {interview.issue}
+    <p class="mb-2 text-neutral-600 font-mono uppercase text-xs">
+      Issue {interview.issue} // {
+        interview.data.published.toLocaleDateString("en-us", {
+          timeZone: "America/New_York",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }
     </p>
     <h1 class="mb-1 font-bold text-4xl tracking-tight">
       {interview.data.title}
@@ -61,7 +65,7 @@ const { Content } = await render(interview);
                 <div
                   class:list={[
                     "embla__slide",
-                    "relative overflow-hidden object-center aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
+                    "relative overflow-hidden aspect-video flex-[0_0_100%] min-w-0 grid place-content-center",
                   ]}
                 >
                   <Image
@@ -70,7 +74,10 @@ const { Content } = await render(interview);
                     width={1500}
                     height={1000}
                     loading={i === 0 ? "eager" : "lazy"}
-                    class="absolute w-full h-full object-cover"
+                    style={`--object-position:${img.position || "center"}`}
+                    class:list={[
+                      "absolute w-full h-full object-cover object-[var(--object-position)]",
+                    ]}
                   />
                 </div>
               );

@@ -32,6 +32,10 @@ const interviews = defineCollection({
         z.object({
           src: z.string(),
           alt: z.string(),
+          position: z
+            .enum(["top", "center", "bottom"])
+            .default("center")
+            .optional(),
         }),
       )
       .optional(),

@@ -24,6 +24,14 @@ const metaDescription = description ? description : META.description;
     <title>{metaTitle}</title>
     <meta name="title" content={metaTitle} />
     <meta name="description" content={metaDescription} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <meta property="og:url" content={new URL(Astro.url)} />
+    <meta property="og:site_name" content={META.title} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image" content={new URL("/og/default.jpg", Astro.url)} />
+    <meta property="og:type" content="website" />
   </head>
   <body class="antialiased flex flex-col h-full text-neutral-950">
     <header class="p-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
@@ -54,7 +62,9 @@ const metaDescription = description ? description : META.description;
           <li><a href="/submit" class="font-medium">Submit a setup</a></li>
         </ul>
 
-        <p class="mt-4">&copy; {new Date().getFullYear()} Alex Carpenter</p>
+        <p class="mt-4">
+          &copy; {new Date().getFullYear()} Alex Carpenter
+        </p>
       </div>
 
       <div class="w-full max-w-5xl mx-auto mt-8 px-4">

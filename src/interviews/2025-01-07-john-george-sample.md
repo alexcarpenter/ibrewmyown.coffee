@@ -7,6 +7,7 @@ avatar: /img/john-george-sample.jpg
 gallery:
   - src: /img/john-george-sample-001.jpg
     alt: ""
+    position: bottom
   - src: /img/john-george-sample-002.jpg
     alt: ""
   - src: /img/john-george-sample-003.jpg
@@ -21,6 +22,8 @@ products:
   - fellow-gen-2-ode-brew-grinder
   - fellow-stagg-ekg-electric-gooseneck-kettle
   - hario-v60-drip-scale
+  - wdt-espresso-distribution-tool-espresso-stirrer
+  - watchget-espresso-tamping-mat
 ---
 
 ## Who are you and what do you do?

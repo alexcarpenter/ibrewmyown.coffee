@@ -10,5 +10,5 @@ export function getIndexById<T extends { id: number | string }>(
     .slice()
     .reverse()
     .findIndex((item) => item.id === id);
-  return (index + 1).toString().padStart(3, "0");
+  return index.toString().padStart(3, "0");
 }
