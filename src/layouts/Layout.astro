@@ -1,9 +1,10 @@
 ---
 import "../styles/global.css";
 import { META } from "@/consts";
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
 const metaTitle = title ? `${title} - ${META.title}` : META.title;
 const metaDescription = description ? description : META.description;
+const metaImage = image ? image : META.image;
 ---
 
 <!doctype html>
@@ -30,15 +31,12 @@ const metaDescription = description ? description : META.description;
     <meta property="og:site_name" content={META.title} />
     <meta property="og:locale" content="en_US" />
     <meta property="og:image:type" content="image/jpeg" />
-    <meta property="og:image" content={new URL("/og/default.jpg", Astro.url)} />
+    <meta property="og:image" content={new URL(metaImage, Astro.url)} />
     <meta property="og:type" content="website" />
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={metaTitle} />
     <meta property="twitter:description" content={metaDescription} />
-    <meta
-      name="twitter:image"
-      content={new URL("/og/default.jpg", Astro.url)}
-    />
+    <meta name="twitter:image" content={new URL(metaImage, Astro.url)} />
   </head>
   <body class="antialiased flex flex-col h-full text-neutral-950">
     <header class="p-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
