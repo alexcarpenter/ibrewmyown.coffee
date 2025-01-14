@@ -9,7 +9,9 @@ import {
 } from "astro:content";
 import { Image } from "astro:assets";
 export async function getStaticPaths() {
-  const collection = await getCollection("interviews");
+  const collection = await getCollection("interviews", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
   const interviews = collection.sort((a, b) => {
     const aDate = a.data.published;
     const bDate = b.data.published;

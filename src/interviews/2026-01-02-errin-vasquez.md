@@ -1,13 +1,12 @@
 ---
 draft: true
-title: Fatih Arslan
-description: Software Engineer at Planetscale. Creator of vim-go. Design addict. Photographer.
-published: 2025-01-03T12:28:58-0500
-avatar: /img/fatih-arslan.jpg
+title: Errin Vasquez
+description: Professional Knucklehead from San Gabriel Valley, CA.
+published: 2026-01-02T12:28:58-0500
+avatar: /img/errin-vasquez.jpg
 social:
-  twitter: fatih
-  instagram: fatih.arslan_
-  website: https://arslan.io/
+  instagram: area45
+  youtube: "@errinv"
 ---
 
 ## Who are you and what do you do?
