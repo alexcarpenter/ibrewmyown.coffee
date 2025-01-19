@@ -1,5 +1,5 @@
 ---
-import { getIndexById, getSlugFromId } from "@/utils";
+import { getIndexById, getSlugFromId, isProd } from "@/utils";
 import {
   META,
   // STATS
@@ -12,7 +12,7 @@ import {
 import { Image } from "astro:assets";
 // const brands = await getCollection("brands");
 const collection = await getCollection("interviews", ({ data }) => {
-  return import.meta.env.PROD ? data.draft !== true : true;
+  return isProd ? data.draft !== true : true;
 });
 const interviews = collection.sort((a, b) => {
   const aDate = a.data.published;

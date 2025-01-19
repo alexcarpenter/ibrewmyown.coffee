@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import { META } from "@/consts";
-const isVercelProd = process.env.VERCEL_ENV === "production";
+import { isProd } from "@/utils";
 const { title, description, image } = Astro.props;
 const metaTitle = title ? `${title} - ${META.title}` : META.title;
 const metaDescription = description ? description : META.description;
@@ -90,7 +90,7 @@ const metaImage = image ? image : META.image;
       </div>
     </footer>
     {
-      isVercelProd && (
+      isProd && (
         <script
           defer
           src="https://static.cloudflareinsights.com/beacon.min.js"
