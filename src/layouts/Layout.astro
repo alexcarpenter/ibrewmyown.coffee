@@ -43,16 +43,14 @@ const metaImage = image ? image : META.image;
     <header
       class="pb-4 pt-8 flex justify-between gap-x-4 w-full max-w-5xl mx-auto"
     >
-      <nav class="bg-neutral-100 max-w-max px-4 py-2 rounded-sm">
+      <nav class="bg-neutral-100 max-w-max px-4 py-2">
         <ul class="flex gap-x-4 font-medium">
           <li><a href="/" class="font-medium">Home</a></li>
           <li><a href="/about" class="font-medium">About</a></li>
           <li><a href="/sponsorship" class="font-medium">Sponsor</a></li>
         </ul>
       </nav>
-      <a
-        href="/submit"
-        class:list={["relative px-4 py-2 rounded-sm bg-brand font-medium"]}
+      <a href="/submit" class:list={["relative px-4 py-2 bg-brand font-medium"]}
         >Submit<span class="max-sm:hidden"> a setup</span></a
       >
     </header>
