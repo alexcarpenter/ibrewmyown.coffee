@@ -17,26 +17,38 @@ export async function getStaticPaths() {
     const bDate = b.data.published;
     return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
   });
-  return interviews.map((interview) => {
+  return interviews.map((interview, index) => {
     const id = getSlugFromId(interview.id);
     const issue = getIndexById(interviews, interview.id);
+    const totalIssues = interviews.length;
+    const previous =
+      index < totalIssues - 1 ? interviews[index + 1] : undefined;
+    const next = index > 0 ? interviews[index - 1] : undefined;
     return {
       params: { id },
-      props: { ...interview, issue },
+      props: {
+        issue,
+        interview,
+        previous,
+        next,
+      },
     };
   });
 }
-type Props = CollectionEntry<"interviews"> & {
+type Props = {
   issue: string;
+  interview: CollectionEntry<"interviews">;
+  previous: CollectionEntry<"interviews"> | undefined;
+  next: CollectionEntry<"interviews"> | undefined;
 };
-const interview = Astro.props;
+const { issue, interview, previous, next } = Astro.props;
 const { Content } = await render(interview);
 ---
 
 <Layout title={interview.data.title} description={interview.data.description}>
   <header class="mt-8">
     <p class="mb-2 text-neutral-600 font-mono uppercase text-xs">
-      Issue {interview.issue} // {
+      Issue {issue} // {
         interview.data.published.toLocaleDateString("en-us", {
           timeZone: "America/New_York",
           year: "numeric",
@@ -55,12 +67,7 @@ const { Content } = await render(interview);
   {
     interview.data.gallery ? (
       <figure class:list={["embla", "relative mt-8"]}>
-        <div
-          class:list={[
-            "embla__viewport",
-            "overflow-hidden bg-neutral-100 rounded-sm",
-          ]}
-        >
+        <div class:list={["embla__viewport", "overflow-hidden bg-neutral-100"]}>
           <div class:list={["embla__container", "flex"]}>
             {interview.data.gallery.map((img, i) => {
               return (
@@ -147,7 +154,7 @@ const { Content } = await render(interview);
       </figure>
     ) : null
   }
-  <div class="mt-8 grid grid-cols-1 sm:grid-cols-4 gap-x-4 gap-y-16">
+  <div class="mt-8 grid grid-cols-1 sm:grid-cols-4 gap-x-4 gap-y-8">
     <div class="sm:col-span-3">
       <div class="prose">
         <Content />
@@ -184,8 +191,8 @@ const { Content } = await render(interview);
         ) : null
       }
     </div>
-    <div class="sm:col-span-1">
-      <figure class="aspect-square mb-4 rounded-sm relative overflow-hidden">
+    <div class="sm:col-span-1 flex flex-col">
+      <figure class="aspect-square mb-4 relative overflow-hidden">
         <img
           src={interview.data.avatar}
           alt=""
@@ -196,7 +203,7 @@ const { Content } = await render(interview);
         interview.data.social ? (
           <dl
             class:list={[
-              "[&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-neutral-300 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-neutral-600",
+              "mb-8 [&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-neutral-300 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-neutral-600",
               "[&_dd]:font-medium [&_dd]:truncate",
             ]}
           >
@@ -276,6 +283,39 @@ const { Content } = await render(interview);
           </dl>
         ) : null
       }
+
+      <nav class="bg-neutral-100 mt-auto">
+        <ul>
+          {
+            next ? (
+              <li class="p-4 border-t border-dashed border-white">
+                <p class="text-neutral-600 text-xs uppercase font-mono">Next</p>
+                <a
+                  href={getSlugFromId(next.id)}
+                  class="font-medium underline decoration-brand hover:bg-brand"
+                >
+                  {next.data.title}
+                </a>
+              </li>
+            ) : null
+          }
+          {
+            previous ? (
+              <li class="p-4">
+                <p class="text-xs text-neutral-600 uppercase font-mono">
+                  Previous
+                </p>
+                <a
+                  href={getSlugFromId(previous.id)}
+                  class="font-medium underline decoration-brand hover:bg-brand"
+                >
+                  {previous.data.title}
+                </a>
+              </li>
+            ) : null
+          }
+        </ul>
+      </nav>
     </div>
   </div>
 </Layout>
