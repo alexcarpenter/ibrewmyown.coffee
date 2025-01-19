@@ -39,7 +39,9 @@ const metaImage = image ? image : META.image;
     <meta name="twitter:image" content={new URL(metaImage, Astro.url)} />
   </head>
   <body class="antialiased flex flex-col h-full text-neutral-950">
-    <header class="p-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto">
+    <header
+      class="pb-4 pt-8 flex justify-between gap-x-4 w-full max-w-5xl mx-auto"
+    >
       <nav class="bg-neutral-100 max-w-max px-4 py-2 rounded-sm">
         <ul class="flex gap-x-4 font-medium">
           <li><a href="/" class="font-medium">Home</a></li>
