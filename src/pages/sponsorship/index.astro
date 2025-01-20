@@ -1,17 +1,22 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { STATS } from "@/consts";
+const meta = {
+  title: "Sponsorships",
+  description:
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eius.",
+} as const;
 ---
 
-<Layout>
+<Layout {...meta}>
   <header class="mt-8">
     <h1 class="font-bold text-3xl sm:text-4xl tracking-tight">
-      Sponsorships&nbsp;&not;
+      {meta.title}&nbsp;&not;
     </h1>
     <p
       class="mt-1 text-xl sm:text-2xl font-medium text-neutral-600 max-w-3xl text-balance"
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eius.
+      {meta.description}
     </p>
   </header>
 

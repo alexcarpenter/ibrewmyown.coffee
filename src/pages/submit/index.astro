@@ -1,24 +1,26 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+const meta = {
+  title: "Submit a setup",
+  description:
+    "Interested in participating, send us an email using the template below!",
+};
 ---
 
 <Layout>
   <header class="mt-8">
     <h1 class="font-bold text-3xl sm:text-4xl tracking-tight">
-      Submit a setup&nbsp;&not;
+      {meta.title}&nbsp;&not;
     </h1>
     <p
       class="mt-1 text-2xl font-medium text-neutral-600 max-w-3xl text-balance"
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eius.
-      Quibusdam commodi aspernatur, enim veniam dolore esse, est sed provident
-      possimus nobis.
+      {meta.description}
     </p>
   </header>
 
   <section class="mt-12">
     <div class="relative bg-neutral-100 p-8 max-w-prose">
-      <button class="absolute top-8 right-8">Copy template</button>
       <div class="prose">
         <h2>Who are you and what do you do?</h2>
         <p class="opacity-50">
