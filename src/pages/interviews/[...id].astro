@@ -47,7 +47,7 @@ const { Content } = await render(interview);
 
 <Layout title={interview.data.title} description={interview.data.description}>
   <header class="mt-8">
-    <p class="mb-2 text-neutral-600 font-mono uppercase text-xs">
+    <p class="mb-2 text-muted-foreground font-mono uppercase text-xs">
       Issue {issue} // {
         interview.data.published.toLocaleDateString("en-us", {
           timeZone: "America/New_York",
@@ -60,14 +60,14 @@ const { Content } = await render(interview);
     <h1 class="mb-1 font-bold text-4xl tracking-tight">
       {interview.data.title}
     </h1>
-    <p class="text-2xl font-medium text-neutral-600 max-3xl text-balance">
+    <p class="text-2xl font-medium max-3xl text-balance text-muted-foreground">
       {interview.data.description}
     </p>
   </header>
   {
     interview.data.gallery ? (
       <figure class:list={["embla", "relative mt-8"]}>
-        <div class:list={["embla__viewport", "overflow-hidden bg-neutral-100"]}>
+        <div class:list={["embla__viewport", "overflow-hidden bg-black/5"]}>
           <div class:list={["embla__container", "flex"]}>
             {interview.data.gallery.map((img, i) => {
               return (
@@ -98,7 +98,7 @@ const { Content } = await render(interview);
             <button
               class:list={[
                 "embla__button--prev",
-                "absolute top-1/2 -translate-y-1/2 size-8 bg-brand grid place-content-center left-0",
+                "absolute top-1/2 -translate-y-1/2 size-8 bg-accent grid place-content-center left-0",
                 "disabled:opacity-0",
               ]}
               disabled
@@ -122,7 +122,7 @@ const { Content } = await render(interview);
             <button
               class:list={[
                 "embla__button--next",
-                "absolute top-1/2 -translate-y-1/2 size-8 bg-brand grid place-content-center right-0",
+                "absolute top-1/2 -translate-y-1/2 size-8 bg-accent grid place-content-center right-0",
                 "disabled:opacity-0",
               ]}
               type="button"
@@ -145,8 +145,8 @@ const { Content } = await render(interview);
             <div
               class:list={[
                 "embla__dots",
-                "flex justify-center gap-x-1 mt-2 h-4 items-center",
-                "*:size-2 *:rounded-full *:bg-neutral-300 [&_.active]:bg-neutral-950",
+                "flex justify-center gap-x-2 mt-2 h-4 items-center",
+                "*:size-2 *:rounded-full *:bg-black/20 [&_.active]:bg-neutral-950",
               ]}
             />
           </Fragment>
@@ -173,13 +173,13 @@ const { Content } = await render(interview);
                 }
                 return (
                   <li id={(i + 1).toString()}>
-                    <span class="text-neutral-600 font-mono uppercase text-xs block">
+                    <span class="text-muted-foreground font-mono uppercase text-xs block">
                       {product.data.description}
                     </span>
                     <a
                       href={product.data.link}
                       target="_blank"
-                      class="font-medium underline decoration-brand hover:bg-brand"
+                      class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
                     >
                       {product.data.title}
                     </a>
@@ -203,7 +203,7 @@ const { Content } = await render(interview);
         interview.data.social ? (
           <dl
             class:list={[
-              "mb-8 [&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-black/20 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-neutral-600",
+              "mb-8 [&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-black/20 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-muted-foreground",
               "[&_dd]:font-medium [&_dd]:truncate",
             ]}
           >
@@ -214,7 +214,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://x.com/${interview.data.social?.twitter}`}
                     target="_blank"
-                    class="underline decoration-brand hover:bg-brand"
+                    class="underline decoration-2 decoration-accent hover:bg-accent"
                   >
                     @{interview.data.social?.twitter}
                   </a>
@@ -228,7 +228,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://bsky.app/profile/${interview.data.social?.bluesky}`}
                     target="_blank"
-                    class="underline decoration-brand hover:bg-brand"
+                    class="underline decoration-2 decoration-accent hover:bg-accent"
                   >
                     @{interview.data.social?.bluesky}
                   </a>
@@ -242,7 +242,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://instagram.com/${interview.data.social?.instagram}`}
                     target="_blank"
-                    class="underline decoration-brand hover:bg-brand"
+                    class="underline decoration-2 decoration-accent hover:bg-accent"
                   >
                     @{interview.data.social?.instagram}
                   </a>
@@ -256,7 +256,7 @@ const { Content } = await render(interview);
                   <a
                     href={`https://www.youtube.com/${interview.data.social?.youtube}`}
                     target="_blank"
-                    class="underline decoration-brand hover:bg-brand"
+                    class="underline decoration-2 decoration-accent hover:bg-accent"
                   >
                     {interview.data.social?.youtube}
                   </a>
@@ -270,7 +270,7 @@ const { Content } = await render(interview);
                   <a
                     href={interview.data.social?.website}
                     target="_blank"
-                    class="underline decoration-brand hover:bg-brand"
+                    class="underline decoration-2 decoration-accent hover:bg-accent"
                   >
                     {new URL(interview.data.social?.website).hostname.replace(
                       "www.",
@@ -289,12 +289,12 @@ const { Content } = await render(interview);
           {
             next ? (
               <li class="p-4">
-                <p class="text-neutral-600 text-xs uppercase font-mono">
+                <p class="text-muted-foreground text-xs uppercase font-mono">
                   Next issue
                 </p>
                 <a
                   href={getSlugFromId(next.id)}
-                  class="font-medium underline decoration-brand hover:bg-brand"
+                  class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
                 >
                   {next.data.title}
                 </a>
@@ -311,12 +311,12 @@ const { Content } = await render(interview);
                   },
                 ]}
               >
-                <p class="text-xs text-neutral-600 uppercase font-mono">
+                <p class="text-xs text-muted-foreground uppercase font-mono">
                   Previous issue
                 </p>
                 <a
                   href={getSlugFromId(previous.id)}
-                  class="font-medium underline decoration-brand hover:bg-brand"
+                  class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
                 >
                   {previous.data.title}
                 </a>

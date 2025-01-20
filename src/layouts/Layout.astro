@@ -39,11 +39,11 @@ const metaImage = image ? image : META.image;
     <meta property="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={new URL(metaImage, Astro.url)} />
   </head>
-  <body class="antialiased flex flex-col h-full text-neutral-950 bg-background">
+  <body class="antialiased flex flex-col h-full text-foreground bg-background">
     <header
       class="pb-4 pt-8 px-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto"
     >
-      <nav class="max-w-max px-4 py-2 bg-black/5">
+      <nav class="max-w-max px-4 py-2 bg-muted">
         <ul class="flex gap-x-4 font-medium">
           <li><a href="/" class="font-medium">Index</a></li>
           <li><a href="/about" class="font-medium">About</a></li>
@@ -52,7 +52,9 @@ const metaImage = image ? image : META.image;
       </nav>
       <a
         href="https://forms.gle/gRxKXzVL3SBjkNXD8"
-        class:list={["relative px-4 py-2 bg-brand font-medium"]}
+        class:list={[
+          "relative px-4 py-2 bg-primary text-primary-foreground font-medium",
+        ]}
         target="_blank"
         rel="noopener">Submit<span class="max-sm:hidden"> a setup</span></a
       >
@@ -62,7 +64,7 @@ const metaImage = image ? image : META.image;
     >
       <slot />
     </main>
-    <footer class="pt-8 bg-neutral-950 text-neutral-500">
+    <footer class="pt-8 bg-secondary text-secondary-foreground/40">
       <div class="w-full max-w-5xl mx-auto px-4">
         <ul class="flex gap-x-4 font-medium">
           <li><a href="/" class="font-medium">Home</a></li>

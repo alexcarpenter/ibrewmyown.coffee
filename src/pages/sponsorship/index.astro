@@ -14,7 +14,7 @@ const meta = {
       {meta.title}&nbsp;&not;
     </h1>
     <p
-      class="mt-1 text-xl sm:text-2xl font-medium text-neutral-600 max-w-3xl text-balance"
+      class="mt-1 text-xl sm:text-2xl font-medium text-muted-foreground max-w-3xl text-balance"
     >
       {meta.description}
     </p>
@@ -23,14 +23,18 @@ const meta = {
   <section class="mt-12">
     <h2 class="sr-only">Newsletter stats</h2>
     <ul class="grid grid-cols-2 md:grid-cols-4 bg-neutral-950">
-      <li class="p-8 border-white border-dashed border-r max-md:border-b">
-        <h2 class="font-mono text-brand text-xs uppercase mb-2">Subscribers</h2>
+      <li class="p-8 border-background border-dashed border-r max-md:border-b">
+        <h2 class="font-mono text-accent text-xs uppercase mb-2">
+          Subscribers
+        </h2>
         <p class="text-4xl font-bold text-white">
           {new Intl.NumberFormat("en-US").format(STATS.subscribers)}
         </p>
       </li>
-      <li class="p-8 border-white border-dashed md:border-r max-md:border-b">
-        <h2 class="font-mono text-brand text-xs uppercase mb-2">
+      <li
+        class="p-8 border-background border-dashed md:border-r max-md:border-b"
+      >
+        <h2 class="font-mono text-accent text-xs uppercase mb-2">
           Click-through rate
         </h2>
         <p class="text-4xl font-bold text-white">
@@ -41,8 +45,8 @@ const meta = {
           }
         </p>
       </li>
-      <li class="p-8 border-white border-dashed border-r">
-        <h2 class="font-mono text-brand text-xs uppercase mb-2">Open rate</h2>
+      <li class="p-8 border-background border-dashed border-r">
+        <h2 class="font-mono text-accent text-xs uppercase mb-2">Open rate</h2>
         <p class="text-4xl font-bold text-white">
           {
             new Intl.NumberFormat("en-US", { style: "percent" }).format(
@@ -51,8 +55,8 @@ const meta = {
           }
         </p>
       </li>
-      <li class="p-8 border-white border-dashed">
-        <h2 class="font-mono text-brand text-xs uppercase mb-2">Schedule</h2>
+      <li class="p-8 border-background border-dashed">
+        <h2 class="font-mono text-accent text-xs uppercase mb-2">Schedule</h2>
         <p class="text-4xl font-bold text-white">{STATS.schedule}</p>
       </li>
     </ul>
