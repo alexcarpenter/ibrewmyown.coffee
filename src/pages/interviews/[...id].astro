@@ -203,7 +203,7 @@ const { Content } = await render(interview);
         interview.data.social ? (
           <dl
             class:list={[
-              "mb-8 [&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-neutral-300 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-neutral-600",
+              "mb-8 [&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-black/20 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-neutral-600",
               "[&_dd]:font-medium [&_dd]:truncate",
             ]}
           >
@@ -284,7 +284,7 @@ const { Content } = await render(interview);
         ) : null
       }
 
-      <nav class="bg-neutral-100 mt-auto">
+      <nav class="bg-black/5 mt-auto">
         <ul>
           {
             next ? (
@@ -307,7 +307,7 @@ const { Content } = await render(interview);
                 class:list={[
                   "p-4",
                   {
-                    "border-t border-dashed border-neutral-300": next,
+                    "border-t border-dashed border-black/20": next,
                   },
                 ]}
               >

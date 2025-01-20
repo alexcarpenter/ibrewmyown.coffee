@@ -3,6 +3,7 @@
 @theme {
   --font-sans: Inter, sans-serif;
   --color-brand: oklch(94.42% 0.21617106039826628 118.6631565012937);
+  --color-background: oklch(90.26% 0.007 67.74);
 }
 
 @layer utilities {
@@ -62,7 +63,7 @@
   }
 
   & :where(ul) {
-    @apply list-disc space-y-1 pl-6 marker:text-neutral-300;
+    @apply list-disc space-y-1 pl-6 marker:text-black/20;
   }
 
   & :where(strong) {

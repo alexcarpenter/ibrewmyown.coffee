@@ -41,7 +41,7 @@ const restInterviews = interviews.slice(1, interviews.length);
     </p>
   </header>
 
-  <section class="full-width mt-12 bg-neutral-50 py-12 relative">
+  <section class="full-width mt-12 bg-black/5 py-12 relative">
     <!-- <svg
       id="texture"
       class="brightness-125 contrast-125 filter absolute inset-0 w-full h-full opacity-40"
@@ -64,7 +64,7 @@ const restInterviews = interviews.slice(1, interviews.length);
           const thumbnail = interview.data.gallery?.at(0);
           return (
             <div class="flex flex-col sm:flex-row gap-x-4 relative">
-              <figure class="relative overflow-hidden aspect-video sm:aspect-square lg:aspect-video bg-neutral-100 sm:w-1/2 md:w-1/3 shrink-0">
+              <figure class="relative overflow-hidden aspect-video sm:aspect-square lg:aspect-video bg-black/5 sm:w-1/2 md:w-1/3 shrink-0">
                 {thumbnail ? (
                   <Image
                     src={thumbnail?.src}
@@ -186,7 +186,7 @@ const restInterviews = interviews.slice(1, interviews.length);
         id="bd-email"
         placeholder="you@example.com"
         required
-        class="relative px-4 py-2 border border-neutral-300 sm:w-1/2 md:w-1/3 shadow-sm shadow-black/5"
+        class="relative px-4 py-2 border border-neutral-300 bg-white sm:w-1/2 md:w-1/3 shadow-sm shadow-black/5"
       />
       <input
         type="submit"
@@ -226,8 +226,8 @@ const restInterviews = interviews.slice(1, interviews.length);
           const issue = getIndexById(interviews, interview.id);
           const thumbnail = interview.data.gallery?.at(0);
           return (
-            <li class="flex flex-col sm:flex-row gap-x-4 border-t border-dashed border-neutral-300 py-4 relative">
-              <figure class="relative overflow-hidden aspect-video sm:aspect-square lg:aspect-video  bg-neutral-100 sm:w-1/2 md:w-1/3 shrink-0">
+            <li class="flex flex-col sm:flex-row gap-x-4 border-t border-dashed border-black/20 py-4 relative">
+              <figure class="relative overflow-hidden aspect-video sm:aspect-square lg:aspect-video  bg-black/5 sm:w-1/2 md:w-1/3 shrink-0">
                 {thumbnail ? (
                   <Image
                     src={thumbnail?.src}
