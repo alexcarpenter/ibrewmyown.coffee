@@ -7,6 +7,7 @@ avatar: /img/errin-vasquez.jpg
 social:
   instagram: area45
   youtube: "@errinv"
+  bluesky: area45.bsky.social
 ---
 
 ## Who are you and what do you do?

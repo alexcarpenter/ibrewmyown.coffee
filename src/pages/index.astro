@@ -1,16 +1,9 @@
 ---
 import { getIndexById, getSlugFromId, isProd } from "@/utils";
-import {
-  META,
-  // STATS
-} from "@/consts";
+import { META } from "@/consts";
 import Layout from "../layouts/Layout.astro";
-import {
-  getCollection,
-  // render
-} from "astro:content";
+import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-// const brands = await getCollection("brands");
 const collection = await getCollection("interviews", ({ data }) => {
   return isProd ? data.draft !== true : true;
 });
@@ -26,36 +19,16 @@ const restInterviews = interviews.slice(1, interviews.length);
 <Layout>
   <header class="mt-8 relative overflow-hidden">
     <h1 class:list={["font-bold text-3xl sm:text-4xl tracking-tight"]}>
-      {META.title}
+      {META.title}*
     </h1>
     <p
-      class:list={[
-        "relative mt-1 text-xl sm:text-2xl font-medium text-muted-foreground",
-        // "bg-gradient-to-br from-neutral-600 from-25% to-neutral-950 to-75% bg-clip-text text-transparent",
-      ]}
+      class="relative mt-1 text-xl sm:text-2xl font-medium text-muted-foreground"
     >
-      <!-- A collection of {
-        new Intl.NumberFormat().format(interviews.length + 1000)
-      }+ personal coffee brewing stations. -->
       {META.description}
     </p>
   </header>
 
-  <section class="full-width mt-12 bg-muted py-12 relative">
-    <!-- <svg
-      id="texture"
-      class="brightness-125 contrast-125 filter absolute inset-0 w-full h-full opacity-40"
-    >
-      <filter id="noise">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency=".8"
-          numOctaves="4"
-          stitchTiles="stitch"></feTurbulence>
-        <feColorMatrix type="saturate" values="0"></feColorMatrix>
-      </filter>
-      <rect width="100%" height="100%" filter="url(#noise)"></rect>
-    </svg> -->
+  <section class="full-width mt-12 py-12 relative bg-muted">
     <div class="w-full max-w-5xl mx-auto px-4 relative">
       {
         latestInterview.map((interview) => {
@@ -133,45 +106,9 @@ const restInterviews = interviews.slice(1, interviews.length);
   </section>
 
   <section class="mt-12">
-    <!-- <p class="font-mono text-muted-foreground text-sm">Join 14,000+ other readers</p> -->
     <h2 class="font-mono text-muted-foreground text-sm">
       Join the weekly newsletter
     </h2>
-    <!-- <ul class="flex mt-2 *:not-first:-ml-1.5">
-      <li>
-        <Image
-          src="/img/alex-carpenter.jpg"
-          alt=""
-          width={48}
-          height={48}
-          class="rounded-full size-8 outline-2 outline-white"
-        />
-      </li>
-      <li>
-        <Image
-          src="/img/john-george-sample.jpg"
-          alt=""
-          width={48}
-          height={48}
-          class="rounded-full size-8 outline-2 outline-white"
-        />
-      </li>
-      <li>
-        <Image
-          src="/img/fatih-arslan.jpg"
-          alt=""
-          width={48}
-          height={48}
-          class="rounded-full size-8 outline-2 outline-white"
-        />
-      </li>
-      <li>
-        <span
-          class="size-8 bg-accent rounded-full flex justify-center items-center text-[0.625rem] uppercase font-mono outline-2 outline-white font-semibold"
-          >{new Intl.NumberFormat("en-US").format(STATS.subscribers)}+</span
-        >
-      </li>
-    </ul> -->
     <form
       action="https://buttondown.com/api/emails/embed-subscribe/ibrewmyowncoffee"
       method="post"
@@ -202,26 +139,11 @@ const restInterviews = interviews.slice(1, interviews.length);
     </p>
   </section>
 
-  <!-- <section class="mt-12">
-    <h2 class="font-mono text-muted-foreground text-sm">Top brands</h2>
-    <ul class="mt-4 flex gap-x-8 overflow-x-hidden">
-      {
-        brands.map((brand) => {
-          return render(brand).then(({ Content }) => (
-            <li class="[&_svg]:w-32 [&_svg]:object-contain">
-              <Content />
-            </li>
-          ));
-        })
-      }
-    </ul>
-  </section> -->
-
   <section class="mt-12">
     <h2 class="sr-only">Interviews</h2>
     <ul>
       {
-        restInterviews.map((interview, index) => {
+        restInterviews.map((interview) => {
           const slug = getSlugFromId(interview.id);
           const issue = getIndexById(interviews, interview.id);
           const thumbnail = interview.data.gallery?.at(0);
