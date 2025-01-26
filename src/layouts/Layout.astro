@@ -6,6 +6,20 @@ const { title, description, image } = Astro.props;
 const metaTitle = title ? `${title} - ${META.title}` : META.title;
 const metaDescription = description ? description : META.description;
 const metaImage = image ? image : META.image;
+const NAVIGATION = [
+  {
+    label: "Index",
+    href: "/",
+  },
+  {
+    label: "About",
+    href: "/about",
+  },
+  {
+    label: "Subscribe",
+    href: "/subscribe",
+  },
+] as const;
 ---
 
 <!doctype html>
@@ -50,10 +64,17 @@ const metaImage = image ? image : META.image;
     >
       <nav class="max-w-max px-4 py-2 bg-muted">
         <ul class="flex gap-x-4 font-medium">
-          <li><a href="/" class="tracking-tight">Index</a></li>
-          <li><a href="/about" class="tracking-tight">About</a></li>
-          <li><a href="/subscribe" class="tracking-tight">Subscribe</a></li>
-          <!-- <li><a href="/sponsorship" class="font-medium">Sponsor</a></li> -->
+          {
+            NAVIGATION.map((item) => {
+              return (
+                <li>
+                  <a href={item.href} class="tracking-tight">
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
         </ul>
       </nav>
       <a
@@ -71,23 +92,34 @@ const metaImage = image ? image : META.image;
     >
       <slot />
     </main>
-    <footer class="pt-8 bg-secondary text-secondary-foreground/40">
+    <footer class="pt-8 bg-secondary">
       <div class="w-full max-w-5xl mx-auto px-4">
         <ul class="flex gap-x-4 font-medium">
-          <li><a href="/" class="font-medium">Index</a></li>
-          <li><a href="/about" class="font-medium">About</a></li>
-          <li><a href="/sponsorship" class="font-medium">Sponsor</a></li>
+          {
+            NAVIGATION.map((item) => {
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    class="tracking-tight text-secondary-foreground not-hover:opacity-50"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
           <li>
             <a
               href="https://forms.gle/gRxKXzVL3SBjkNXD8"
-              class="font-medium"
+              class="tracking-tight text-secondary-foreground not-hover:opacity-50"
               target="_blank"
               rel="noopener">Submit a setup</a
             >
           </li>
         </ul>
 
-        <p class="mt-4">
+        <p class="mt-4 text-secondary-foreground/50">
           &copy; {new Date().getFullYear()} Alex Carpenter
         </p>
       </div>
