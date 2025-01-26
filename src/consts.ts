@@ -5,7 +5,7 @@ export const META = {
 } as const;
 
 export const STATS = {
-  subscribers: 20,
+  subscribers: 22,
   clickThroughRate: 0,
   openRate: 0,
   schedule: "Weekly",

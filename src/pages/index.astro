@@ -18,7 +18,7 @@ const restInterviews = interviews.slice(1, interviews.length);
 
 <Layout>
   <header class="mt-8 relative overflow-hidden">
-    <h1 class:list={["font-bold text-3xl sm:text-4xl tracking-tight"]}>
+    <h1 class="font-bold text-3xl sm:text-4xl tracking-tight">
       {META.title}
     </h1>
     <p
@@ -50,8 +50,7 @@ const restInterviews = interviews.slice(1, interviews.length);
                 ) : null}
               </figure>
               <div class="flex flex-col pt-4 sm:pb-4 relative">
-                <svg
-                  id="uuid-abbe5e97-6bae-44af-9563-c83738ee77ea"
+                {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 506.4895 363.7745"
                   class="w-16 absolute right-0 -top-4 sm:top-0 rotate-45"
@@ -82,7 +81,7 @@ const restInterviews = interviews.slice(1, interviews.length);
                     stroke-width="0"
                     class="fill-accent"
                   />
-                </svg>
+                </svg> */}
                 <p class="text-muted-foreground font-mono uppercase text-xs mb-auto">
                   // Issue {issue}
                 </p>
@@ -128,7 +127,7 @@ const restInterviews = interviews.slice(1, interviews.length);
       <input
         type="submit"
         value="Subscribe for free"
-        class="relative px-4 py-2 border border-secondary bg-secondary text-secondary-foreground font-medium shadow-sm shadow-black/5"
+        class="relative px-4 py-2 border border-secondary bg-secondary text-secondary-foreground font-medium shadow-sm shadow-black/5 tracking-tight"
       />
     </form>
     <p

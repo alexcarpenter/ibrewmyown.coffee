@@ -1,5 +1,4 @@
 ---
-draft: true
 title: John-George Sample
 description: Front-end engineer and third-wave coffee enthusiast, passionate about crafting user-friendly web experiences and perfecting the art of brewing.
 image: /og/john-george-sample.jpg

@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: Inter, sans-serif;
-  --color-accent: oklch(94.42% 0.21617106039826628 118.6631565012937);
+  --color-accent: oklch(93.82% 0.2886 117.53);
   --color-background: color-mix(
     in oklab,
     var(--color-stone-300) 80%,

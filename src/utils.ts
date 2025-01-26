@@ -1,4 +1,4 @@
-export const isProd = process.env.VERCEL_ENV === "production";
+export const isProd = true || process.env.VERCEL_ENV === "production";
 
 export function getSlugFromId(id: string) {
   return id.replace(/^\d{4}[-/.]\d{2}[-/.]\d{2}[-]/, "");
