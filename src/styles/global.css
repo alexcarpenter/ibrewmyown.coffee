@@ -2,7 +2,19 @@
 
 @theme {
   --font-sans: Inter, sans-serif;
-  --color-brand: oklch(94.42% 0.21617106039826628 118.6631565012937);
+  --color-accent: oklch(93.82% 0.2886 117.53);
+  --color-background: color-mix(
+    in oklab,
+    var(--color-stone-300) 80%,
+    transparent
+  );
+  --color-foreground: var(--color-neutral-950);
+  --color-muted: color-mix(in oklab, var(--color-black) 5%, transparent);
+  --color-muted-foreground: var(--color-neutral-600);
+  --color-primary: var(--color-accent);
+  --color-primary-foreground: var(--color-neutral-950);
+  --color-secondary: var(--color-neutral-950);
+  --color-secondary-foreground: var(--color-neutral-50);
 }
 
 @layer utilities {
@@ -27,6 +39,15 @@
   .font-bold {
     font-variation-settings: "wght" 700;
   }
+
+  .full-width {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
 }
 
 @utility prose {
@@ -48,15 +69,19 @@
     @apply font-semibold tracking-tight;
   }
 
-  & > :where(a) {
-    @apply decoration-brand hover:bg-brand underline;
+  & :where(a) {
+    @apply decoration-accent hover:bg-accent font-medium underline decoration-2;
   }
 
-  & > :where(ul) {
-    @apply list-disc space-y-1 pl-6 marker:text-neutral-300;
+  & :where(ul) {
+    @apply list-disc space-y-1 pl-6 marker:text-black/20;
+  }
+
+  & :where(strong) {
+    @apply font-semibold underline decoration-dotted;
   }
 
   & :where(sup a) {
-    @apply bg-brand font-semibold;
+    @apply bg-accent font-semibold;
   }
 }
