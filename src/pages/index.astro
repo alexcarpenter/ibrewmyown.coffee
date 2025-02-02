@@ -22,13 +22,13 @@ const restInterviews = interviews.slice(1, interviews.length);
       {META.title}
     </h1>
     <p
-      class="relative text-xl sm:text-2xl font-medium text-muted-foreground mt-0.5"
+      class="relative text-xl sm:text-2xl font-medium text-muted-foreground mt-1"
     >
       {META.description}
     </p>
   </header>
 
-  <section class="full-width mt-12 py-12 relative bg-muted">
+  <section class="full-width mt-8 py-8 relative bg-muted">
     <div class="w-full max-w-5xl mx-auto px-4 relative">
       {
         latestInterview.map((interview) => {
@@ -104,7 +104,7 @@ const restInterviews = interviews.slice(1, interviews.length);
     </div>
   </section>
 
-  <section class="mt-12">
+  <section class="mt-8">
     <h2 class="font-mono text-muted-foreground text-sm">
       Join the weekly newsletter
     </h2>
@@ -140,7 +140,7 @@ const restInterviews = interviews.slice(1, interviews.length);
 
   {
     restInterviews.length > 0 ? (
-      <section class="mt-12">
+      <section class="mt-8">
         <h2 class="sr-only">Interviews</h2>
         <ul>
           {restInterviews.map((interview) => {
