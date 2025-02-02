@@ -38,7 +38,7 @@ When I'm not pulling shots, I'm enjoying pour overs from my V60. It sits in a V6
 
 I keep all the odds and ends I don't use on a daily basis inside the IKEA KUGGIS boxes. This includes additional brewers and miscellaneous things like filters and portafilters. Everything rests on an IKEA FJÄLLBO shelf.
 
-## What is you preffered brewing method?
+## What is you prefered brewing method?
 
 My favorite drink will always be a pour over. The process of wetting the filter, creating a divot in the bed, blooming the coffee, and watching the water drip is a zen experience. It’s less forgiving than other brewing methods, but that makes perfecting a cup feel all the more rewarding.
 

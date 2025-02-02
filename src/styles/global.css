@@ -58,7 +58,7 @@
   }
 
   & > :where(* + h2) {
-    @apply mt-8;
+    @apply mt-6;
   }
 
   & > :where(h2) {
