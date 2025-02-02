@@ -45,7 +45,11 @@ const { issue, interview, previous, next } = Astro.props;
 const { Content } = await render(interview);
 ---
 
-<Layout title={interview.data.title} description={interview.data.description}>
+<Layout
+  title={interview.data.title}
+  description={interview.data.description}
+  image={interview.data.image}
+>
   <header class="mt-8">
     <p class="mb-2 text-muted-foreground font-mono uppercase text-xs">
       Issue {issue} // {

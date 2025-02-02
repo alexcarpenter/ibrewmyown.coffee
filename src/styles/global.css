@@ -84,4 +84,8 @@
   & :where(sup a) {
     @apply bg-accent font-semibold;
   }
+
+  & :where(hr) {
+    @apply my-8 border-t border-dashed border-black/20;
+  }
 }

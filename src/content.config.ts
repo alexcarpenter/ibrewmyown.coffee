@@ -24,6 +24,7 @@ const interviews = defineCollection({
     title: z.string(),
     description: z.string(),
     published: z.coerce.date(),
+    image: z.string().optional(),
     draft: z.boolean().optional(),
     avatar: z.string(),
     products: z.array(reference("products")).optional(),
