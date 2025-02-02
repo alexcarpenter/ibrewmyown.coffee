@@ -74,7 +74,7 @@ const { Content } = await render(interview);
                 <div
                   class:list={[
                     "embla__slide",
-                    "relative overflow-hidden aspect-video flex-[0_0_100%] min-w-0 grid place-content-center",
+                    "relative overflow-hidden aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
                   ]}
                 >
                   <Image
@@ -284,47 +284,47 @@ const { Content } = await render(interview);
         ) : null
       }
 
-      <nav class="bg-black/5 mt-auto">
-        <ul>
-          {
-            next ? (
-              <li class="p-4">
-                <p class="text-muted-foreground text-xs uppercase font-mono">
-                  Next issue
-                </p>
-                <a
-                  href={getSlugFromId(next.id)}
-                  class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
+      {
+        (next || previous) && (
+          <nav class="bg-black/5 mt-auto">
+            <ul>
+              {next ? (
+                <li class="p-4">
+                  <p class="text-muted-foreground text-xs uppercase font-mono">
+                    Next issue
+                  </p>
+                  <a
+                    href={getSlugFromId(next.id)}
+                    class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
+                  >
+                    {next.data.title}
+                  </a>
+                </li>
+              ) : null}
+              {previous ? (
+                <li
+                  class:list={[
+                    "p-4",
+                    {
+                      "border-t border-dashed border-black/20": next,
+                    },
+                  ]}
                 >
-                  {next.data.title}
-                </a>
-              </li>
-            ) : null
-          }
-          {
-            previous ? (
-              <li
-                class:list={[
-                  "p-4",
-                  {
-                    "border-t border-dashed border-black/20": next,
-                  },
-                ]}
-              >
-                <p class="text-xs text-muted-foreground uppercase font-mono">
-                  Previous issue
-                </p>
-                <a
-                  href={getSlugFromId(previous.id)}
-                  class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
-                >
-                  {previous.data.title}
-                </a>
-              </li>
-            ) : null
-          }
-        </ul>
-      </nav>
+                  <p class="text-xs text-muted-foreground uppercase font-mono">
+                    Previous issue
+                  </p>
+                  <a
+                    href={getSlugFromId(previous.id)}
+                    class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
+                  >
+                    {previous.data.title}
+                  </a>
+                </li>
+              ) : null}
+            </ul>
+          </nav>
+        )
+      }
     </div>
   </div>
 </Layout>

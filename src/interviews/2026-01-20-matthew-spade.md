@@ -9,10 +9,15 @@ gallery:
     alt: ""
   - src: /img/matt-spade-002.jpg
     alt: ""
+  - src: /img/matt-spade-003.jpg
+    alt: ""
+  - src: /img/matt-spade-004.jpg
+    alt: ""
 products:
   - breville-barista-touch-espresso-machine
   - timemore-coffee-scale-basic-2-0
   - hario-v60-buono-gooseneck-drip-kettle
+gallerySlidesPerView: 2
 social:
   instagram: mat_buckets
 ---

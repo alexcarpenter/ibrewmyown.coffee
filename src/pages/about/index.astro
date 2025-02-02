@@ -3,8 +3,16 @@ import Layout from "@/layouts/Layout.astro";
 const meta = {
   title: "About",
   description:
-    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla, eius. Quibusdam commodi aspernatur, enim veniam dolore esse.",
+    "A weekly newsletter highlighting coffee enthusiasts home brewing setups.",
 } as const;
+const interviewees: { name: string; url?: string }[] = [
+  {
+    name: "John John Florence",
+  },
+  {
+    name: "James Hoffmann",
+  },
+];
 ---
 
 <Layout {...meta}>
@@ -13,26 +21,63 @@ const meta = {
       {meta.title}&nbsp;&not;
     </h1>
     <p
-      class="mt-1 text-xl sm:text-2xl font-medium text-muted-foreground max-w-3xl text-balance"
+      class="mt-0.5 text-xl sm:text-2xl font-medium text-muted-foreground max-w-3xl text-balance"
     >
       {meta.description}
     </p>
   </header>
 
-  <section class="mt-12">
+  <section class="mt-4">
     <div class="prose">
       <p>
-        Lorem ipsum dolor sit, adipisicing elit. Expedita nobis ducimus
-        provident exercitationem. Adipisci itaque dolorem doloremque illum iste,
-        et exercitationem quo voluptatum ducimus ad eligendi suscipit officia
-        fuga aperiam!
+        I Brew My Own Coffee got its start in 2014 when Alex Carpenter launched
+        it as a podcast. Instead of focusing on coffee professionals, the show
+        wanted to shine a light on everyday coffee enthusiasts and their home
+        brewing setups. The podcast really hit its stride when Brian Beyke and
+        Bryan Schiele took over, even snagging the Sprudge award for best coffee
+        podcast in 2016.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita nobis
-        ducimus provident exercitationem. Adipisci itaque dolorem doloremque
-        illum iste, et exercitationem quo voluptatum ducimus ad eligendi
-        suscipit officia fuga aperiam!
+        Though the podcast ended, there are still tons of people out there who
+        love brewing great coffee at home. That's why we're bringing back "I
+        Brew My Own Coffee" as a weekly newsletter where we'll share cool home
+        coffee setups from real people like you.
       </p>
+      <p>Thanks for following along.</p>
+      <p>&ndash; Alex Carpenter</p>
     </div>
+    <!-- <h2 class="mt-8 text-xl font-semibold tracking-tight">
+      Wishlist of future interviewees
+    </h2>
+    <ul class="mt-4 grid grid-cols-2 max-w-prose gap-1">
+      {
+        interviewees.map((item) => {
+          return (
+            <li class="flex gap-x-2 items-start">
+              {item.url ? (
+                <a
+                  href={item.url}
+                  class="decoration-accent hover:bg-accent font-medium underline decoration-2"
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <span class="font-medium">{item.name}</span>
+              )}
+            </li>
+          );
+        })
+      }
+    </ul> -->
+    <!-- <div class="mt-8">
+      <a
+        href="https://forms.gle/gRxKXzVL3SBjkNXD8"
+        class:list={[
+          "relative px-4 py-2 bg-secondary text-secondary-foreground font-medium tracking-tight",
+        ]}
+        target="_blank"
+        rel="noopener">Suggest an interviewee</a
+      >
+    </div> -->
   </section>
 </Layout>
