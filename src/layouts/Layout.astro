@@ -59,41 +59,51 @@ const NAVIGATION = [
       class="bg-secondary text-secondary-foreground fixed top-0 left-0 -translate-y-full focus:translate-y-0 px-4 py-2"
       >Skip to content</a
     >
-    <header
-      class="pt-8 px-4 flex justify-between gap-x-4 w-full max-w-5xl mx-auto"
-    >
-      <nav class="max-w-max px-4 py-2 bg-muted">
-        <ul class="flex gap-x-4 font-medium">
-          {
-            NAVIGATION.map((item) => {
-              return (
-                <li>
-                  <a href={item.href} class="tracking-tight">
-                    {item.label}
-                  </a>
-                </li>
-              );
-            })
-          }
-        </ul>
-      </nav>
-      <a
-        href="https://forms.gle/gRxKXzVL3SBjkNXD8"
+    <div class="border-b border-dashed border-black/20">
+      <header
         class:list={[
-          "relative px-4 py-2 bg-primary text-primary-foreground font-medium tracking-tight",
+          "container",
+          "relative p-4 sm:py-8 flex justify-between gap-x-4",
+          "lg:border-x border-dashed border-black/20",
         ]}
-        target="_blank"
-        rel="noopener">Submit<span class="max-sm:hidden"> a setup</span></a
       >
-    </header>
+        <nav class="max-w-max px-4 py-2 bg-muted">
+          <ul class="flex gap-x-4 font-medium">
+            {
+              NAVIGATION.map((item) => {
+                return (
+                  <li>
+                    <a href={item.href} class="tracking-tight">
+                      {item.label}
+                    </a>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+        <a
+          href="https://forms.gle/gRxKXzVL3SBjkNXD8"
+          class:list={[
+            "relative px-4 py-2 bg-primary text-primary-foreground font-medium tracking-tight",
+          ]}
+          target="_blank"
+          rel="noopener">Submit<span class="max-sm:hidden"> a setup</span></a
+        >
+      </header>
+    </div>
     <main
-      class="flex-1 flex flex-col w-full max-w-5xl mx-auto px-4 pb-16"
+      class:list={[
+        "container",
+        "flex-1 flex flex-col pb-12",
+        "lg:border-x border-dashed border-black/20",
+      ]}
       id="main"
     >
       <slot />
     </main>
     <footer class="pt-8 bg-secondary">
-      <div class="w-full max-w-5xl mx-auto px-4">
+      <div class="container">
         <ul class="flex gap-x-4 font-medium">
           {
             NAVIGATION.map((item) => {
@@ -124,7 +134,7 @@ const NAVIGATION = [
         </p>
       </div>
 
-      <div class="w-full max-w-5xl mx-auto mt-8 px-4">
+      <div class="container mt-8">
         <svg aria-hidden="true" viewBox="0 0 1001 67" fill="none"
           ><g clip-path="url(#a)"
             ><path

@@ -29,7 +29,7 @@ const restInterviews = interviews.slice(1, interviews.length);
   </header>
 
   <section class="full-width mt-8 py-8 relative bg-muted">
-    <div class="w-full max-w-5xl mx-auto px-4 relative">
+    <div class="container">
       {
         latestInterview.map((interview) => {
           const slug = getSlugFromId(interview.id);
@@ -49,7 +49,7 @@ const restInterviews = interviews.slice(1, interviews.length);
                   />
                 ) : null}
               </figure>
-              <div class="flex flex-col pt-4 sm:pb-4 relative">
+              <div class="flex flex-col flex-1 pt-4 sm:pb-4 relative">
                 {/* <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 506.4895 363.7745"

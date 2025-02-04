@@ -5,15 +5,15 @@ const meta = {
   description:
     "A weekly newsletter highlighting coffee enthusiasts home brewing setups.",
 } as const;
-const interviewees: { name: string; url?: string }[] = [
-  {
-    name: "John John Florence",
-    url: "/",
-  },
-  {
-    name: "James Hoffmann",
-  },
-];
+// const interviewees: { name: string; url?: string }[] = [
+//   {
+//     name: "John John Florence",
+//     url: "/",
+//   },
+//   {
+//     name: "James Hoffmann",
+//   },
+// ];
 ---
 
 <Layout {...meta}>
@@ -46,44 +46,6 @@ const interviewees: { name: string; url?: string }[] = [
       </p>
       <p>Thanks for following along.</p>
       <p class="font-semibold">&ndash; Alex Carpenter</p>
-      <!-- <hr /> -->
     </div>
-    <!-- <h2 class="mt-8 text-xl font-semibold tracking-tight">
-      Wishlist of interviewees
-    </h2>
-    <ul class="mt-4 grid grid-cols-2 max-w-prose gap-1">
-      {
-        interviewees.map((item) => {
-          return (
-            <li class="flex gap-x-2 items-start">
-              {item.url ? (
-                <>
-                  <span class="size-4 mt-1 rounded-full shrink-0 border border-black/20 relative">
-                    <svg
-                      viewBox="0 0 100 125"
-                      xmlns="http://www.w3.org/2000/svg"
-                      class="absolute w-5 -top-1.25"
-                    >
-                      <path d="m33.452 62.142s32.611-47.205 57.004-51.859l1.429 1.714s-19.353 17.585-33.752 36.586c-15.049 19.859-22.075 41.364-26.253 41.132-5.681-.41-12.429-37.716-23.287-33.287-2.286-.571 3.912-9.614 12.572-7.572 5.43 1.281 12.287 13.286 12.287 13.286z" />
-                    </svg>
-                  </span>
-                  <a
-                    href={item.url}
-                    class="decoration-accent hover:bg-accent font-medium underline decoration-2"
-                  >
-                    {item.name}
-                  </a>
-                </>
-              ) : (
-                <>
-                  <span class="size-4 mt-1 rounded-full shrink-0 border border-black/20 relative" />
-                  <span class="font-medium">{item.name}</span>
-                </>
-              )}
-            </li>
-          );
-        })
-      }
-    </ul> -->
   </section>
 </Layout>

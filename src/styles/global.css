@@ -50,6 +50,10 @@
   }
 }
 
+@utility container {
+  @apply mx-auto w-full max-w-5xl px-4;
+}
+
 @utility prose {
   @apply max-w-prose;
 

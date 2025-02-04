@@ -149,8 +149,8 @@ const { Content } = await render(interview);
             <div
               class:list={[
                 "embla__dots",
-                "flex justify-center gap-x-2 mt-2 h-4 items-center",
-                "*:size-2 *:rounded-full *:bg-black/20 [&_.active]:bg-neutral-950",
+                "flex justify-center gap-x-2 mt-4 h-2 items-center",
+                "*:size-2 *:bg-black/20 [&_.active]:bg-neutral-950",
               ]}
             />
           </Fragment>
@@ -158,8 +158,8 @@ const { Content } = await render(interview);
       </figure>
     ) : null
   }
-  <div class="mt-8 grid grid-cols-1 sm:grid-cols-4 gap-x-4 gap-y-8">
-    <div class="sm:col-span-3">
+  <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-8 md:gap-x-12 gap-y-8">
+    <div class="sm:col-span-2">
       <div class="prose">
         <Content />
       </div>
@@ -196,7 +196,7 @@ const { Content } = await render(interview);
       }
     </div>
     <div class="sm:col-span-1 flex flex-col">
-      <figure class="aspect-square mb-4 relative overflow-hidden">
+      <figure class="aspect-square relative overflow-hidden">
         <img
           src={interview.data.avatar}
           alt=""
@@ -207,7 +207,7 @@ const { Content } = await render(interview);
         interview.data.social ? (
           <dl
             class:list={[
-              "mb-8 [&_dt]:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-black/20 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-muted-foreground",
+              "mt-4 mb-8 [&_dt]:not-first:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-black/20 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-muted-foreground",
               "[&_dd]:font-medium [&_dd]:truncate",
             ]}
           >
