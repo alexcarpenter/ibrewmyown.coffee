@@ -50,6 +50,10 @@
   }
 }
 
+@utility link {
+  @apply decoration-accent hover:bg-accent font-medium underline decoration-2;
+}
+
 @utility container {
   @apply mx-auto w-full max-w-5xl px-4;
 }
