@@ -42,24 +42,28 @@ import roasters from "./roasters.json";
                     <td class="py-0.5 ">{roaster.name}</td>
                     <td class="py-0.5 pl-1">{roaster.state}</td>
                     <td class="py-0.5 pl-1">
-                      <a
-                        target="_blank"
-                        rel="noopener"
-                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(roaster.address)}`}
-                        class="link"
-                      >
-                        {roaster.address}
-                      </a>
+                      {roaster.address ? (
+                        <a
+                          target="_blank"
+                          rel="noopener"
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(roaster.address)}`}
+                          class="link"
+                        >
+                          {roaster.address}
+                        </a>
+                      ) : null}
                     </td>
                     <td class="py-0.5 pl-1 text-right">
-                      <a
-                        target="_blank"
-                        rel="noopener"
-                        href={roaster.website}
-                        class="link"
-                      >
-                        View
-                      </a>
+                      {roaster.website ? (
+                        <a
+                          target="_blank"
+                          rel="noopener"
+                          href={roaster.website}
+                          class="link"
+                        >
+                          View
+                        </a>
+                      ) : null}
                     </td>
                   </tr>
                 );
