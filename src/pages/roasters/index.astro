@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 import roasters from "./roasters.json";
 import slugify from "@sindresorhus/slugify";
 const groupedRoasters = roasters
@@ -34,7 +35,7 @@ const meta = {
         class:list={[
           "text-sm w-full min-w-2xl",
           "[&_th]:px-1 [&_th]:pb-0.5",
-          "[&_td]:px-1 [&_td]:py-0.5",
+          "[&_td]:px-1 [&_td]:py-0.5 [&_td]:align-top",
         ]}
       >
         <thead class="text-left font-semibold">
@@ -77,14 +78,20 @@ const meta = {
                       </td>
                       <td align="right">
                         {roaster.website ? (
-                          <a
-                            target="_blank"
-                            rel="noopener"
-                            href={roaster.website}
-                            class="link"
-                          >
-                            View
-                          </a>
+                          <span class="relative pr-4 group">
+                            <a
+                              target="_blank"
+                              rel="noopener"
+                              href={roaster.website}
+                              class="link"
+                            >
+                              View
+                            </a>
+                            <Icon
+                              class="absolute right-0 top-0.25 size-4 text-muted-foreground group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+                              name="arrow-up-right"
+                            />
+                          </span>
                         ) : null}
                       </td>
                     </tr>
