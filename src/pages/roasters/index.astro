@@ -2,13 +2,12 @@
 import Layout from "@/layouts/Layout.astro";
 import roasters from "./roasters.json";
 import slugify from "@sindresorhus/slugify";
-const groupedRoasters = roasters.reduce<Record<string, typeof roasters>>(
-  (acc, roaster) => {
+const groupedRoasters = roasters
+  .sort((a, b) => a.state.localeCompare(b.state))
+  .reduce<Record<string, typeof roasters>>((acc, roaster) => {
     (acc[roaster.state] = acc[roaster.state] || []).push(roaster);
     return acc;
-  },
-  {}
-);
+  }, {});
 const meta = {
   title: "Coffee Roasters",
   description: "Third wave coffee roasters.",
