@@ -16,6 +16,10 @@ const NAVIGATION = [
     href: "/about",
   },
   {
+    label: "Roasters",
+    href: "/roasters",
+  },
+  {
     label: "Subscribe",
     href: "/subscribe",
   },
@@ -72,7 +76,7 @@ const NAVIGATION = [
             {
               NAVIGATION.map((item) => {
                 return (
-                  <li>
+                  <li class="max-sm:last:hidden">
                     <a href={item.href} class="tracking-tight">
                       {item.label}
                     </a>
@@ -104,7 +108,7 @@ const NAVIGATION = [
     </main>
     <footer class="pt-8 bg-secondary">
       <div class="container">
-        <ul class="flex gap-x-4 font-medium">
+        <ul class="flex gap-x-4 font-medium flex-wrap">
           {
             NAVIGATION.map((item) => {
               return (
