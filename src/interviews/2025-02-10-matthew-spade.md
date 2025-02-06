@@ -2,8 +2,9 @@
 draft: true
 title: Matthew Spade
 description: Digital Content Created based in Blackpool, UK, specialising in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture.
-published: 2026-01-20T12:28:58-0500
+published: 2025-02-10T12:28:58-0500
 avatar: /img/matt-spade.jpg
+image: /og/matthew-spade.jpg
 gallery:
   - src: /img/matt-spade-001.jpg
     alt: ""
@@ -17,7 +18,6 @@ products:
   - breville-barista-touch-espresso-machine
   - timemore-coffee-scale-basic-2-0
   - hario-v60-buono-gooseneck-drip-kettle
-gallerySlidesPerView: 2
 social:
   instagram: mat_buckets
 ---

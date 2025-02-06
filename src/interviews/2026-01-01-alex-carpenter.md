@@ -2,7 +2,7 @@
 draft: true
 title: Alex Carpenter
 description: UI Engineer from Grand Rapids, MI.
-published: 2025-01-01T18:10:29-0500
+published: 2026-01-01T18:10:29-0500
 avatar: /img/alex-carpenter.jpg
 products:
   - breville-barista-touch-espresso-machine
