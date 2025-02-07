@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import roasters from "./roasters.json";
+import roasters from "./_roasters.json";
 import slugify from "@sindresorhus/slugify";
 const groupedRoasters = roasters
   .sort((a, b) => a.state.localeCompare(b.state))
@@ -40,6 +40,7 @@ const meta = {
       >
         <thead class="text-left font-semibold">
           <tr>
+            <th>State</th>
             <th>Name</th>
             <th>Address</th>
             <th align="right">Website</th>
@@ -50,19 +51,16 @@ const meta = {
             Object.entries(groupedRoasters).map(([state, roasters]) => {
               return (
                 <>
-                  <tr class="bg-muted">
-                    <td colspan="4" class="font-semibold">
-                      <a href={`/roasters/${slugify(state)}`}>{state}</a>
-                    </td>
-                  </tr>
                   {roasters.map((roaster, i) => (
-                    <tr
-                      class:list={[
-                        {
-                          "border-t border-dashed border-black/20": i > 0,
-                        },
-                      ]}
-                    >
+                    <tr class="border-t border-dashed border-black/20 first:border-solid">
+                      {i === 0 ? (
+                        <td
+                          rowspan={roasters.length}
+                          class="font-semibold bg-muted"
+                        >
+                          <a href={`/roasters/${slugify(state)}`}>{state}</a>
+                        </td>
+                      ) : null}
                       <td>{roaster.name}</td>
                       <td>
                         {roaster.address ? (

@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+---
+
+<div class="bg-purple-600/10 p-8">
+  <div class="grid grid-cols-3 items-center gap-x-8">
+    <div class="aspect-[3/2] relative">
+      <Image
+        src="/img/madcap-coffee.jpg"
+        alt=""
+        width="600"
+        height="400"
+        class="absolute w-full h-full object-cover"
+      />
+    </div>
+    <div class="prose col-span-2">
+      <p class="font-mono uppercase text-xs text-muted-foreground">
+        Sponsored by
+      </p>
+      <h2 class="mt-0">Madcap Coffee Company</h2>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Expedita
+        voluptatibus totam praesentium quam fugit incidunt quidem eum?
+        Dignissimos cupiditate veniam sapiente aliquam minima, iste velit,
+        consequatur beatae ea aut laudantium.
+      </p>
+    </div>
+  </div>
+</div>

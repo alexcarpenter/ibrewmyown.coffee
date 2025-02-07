@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import roastersJSON from "./roasters.json";
+import roastersJSON from "./_roasters.json";
 import slugify from "@sindresorhus/slugify";
 export async function getStaticPaths() {
   const states = [...new Set(roastersJSON.map((roaster) => roaster.state))];
@@ -64,18 +64,9 @@ const meta = {
           </tr>
         </thead>
         <tbody>
-          <tr class="bg-muted">
-            <td colspan="4"></td>
-          </tr>
           {
             roasters.map((roaster, i) => (
-              <tr
-                class:list={[
-                  {
-                    "border-t border-dashed border-black/20": i > 0,
-                  },
-                ]}
-              >
+              <tr class="border-t border-dashed border-black/20 first:border-solid">
                 <td>{roaster.name}</td>
                 <td>
                   {roaster.address ? (
