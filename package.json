@@ -9,16 +9,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@ariakit/react": "^0.4.15",
-    "@astrojs/react": "^4.1.2",
     "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "^3.2.1",
     "@sindresorhus/slugify": "^2.2.1",
     "@tailwindcss/vite": "4.0.0-beta.8",
-    "astro": "^5.1.1",
+    "astro": "^5.2.5",
     "astro-icon": "^1.1.5",
     "embla-carousel": "^8.5.1",
-    "tailwindcss": "4.0.0-beta.8"
+    "tailwindcss": "4.0.4"
   },
   "devDependencies": {
     "prettier-plugin-astro": "^0.14.1",
