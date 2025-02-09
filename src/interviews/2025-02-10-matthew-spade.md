@@ -27,7 +27,7 @@ I’m a 30 something Digital Content Created based in Blackpool, UK, specialisin
 
 ## What does your brewing setup look like?
 
-At home starts with a Commandante hand grinder, Timemore scales, various glass carafes (Kinto, Hay, Gramage, Service Projects,), wooden + glass dripper by Service Projects or a white porcelain one created by a friend from Ireland, then a basic Hario long spout kettle.
+At home starts with a Commandante hand grinder, Timemore scales, various glass carafes (Kinto, Hay, Gramage, Service Projects), wooden + glass dripper by Service Projects or a white porcelain one created by a friend from Ireland, then a basic Hario long spout kettle.
 
 I’ve usually got a few different filters on the go each week, just mixing them on each day and depending if anyone is popping around. Ceramics are a big deal for me, it’s something I’m pretty obsessed with, so we have something nice and tactile to go with the brews.
 
