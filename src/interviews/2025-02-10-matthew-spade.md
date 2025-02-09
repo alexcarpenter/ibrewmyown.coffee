@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Matthew Spade
 description: Digital Content Created based in Blackpool, UK, specialising in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture.
 published: 2025-02-10T12:28:58-0500
@@ -7,7 +6,7 @@ avatar: /img/matt-spade.jpg
 image: /og/matthew-spade.jpg
 gallery:
   - src: /img/matt-spade-001.jpg
-    alt: ""
+    alt: "Glass coffee mug on counter top near coffee"
   - src: /img/matt-spade-002.jpg
     alt: ""
   - src: /img/matt-spade-003.jpg
