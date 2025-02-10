@@ -1,6 +1,6 @@
 ---
 title: Matthew Spade
-description: Digital Content Created based in Blackpool, UK, specialising in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture.
+description: Digital Content Creator based in Blackpool, UK, specializing in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture.
 published: 2025-02-10T12:28:58-0500
 avatar: /img/matt-spade.jpg
 image: /og/matthew-spade.jpg
@@ -23,7 +23,7 @@ social:
 
 ## Who are you and what do you do?
 
-I’m a 30 something Digital Content Created based in Blackpool, UK, specialising in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture. I work on bits on my own channel along with contributing to others like It’s Nice That, as well as creating photo, video and written content for brands.
+I’m a 30 something Digital Content Creator based in Blackpool, UK, specializing in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture. I work on bits on my own channel along with contributing to others like It’s Nice That, as well as creating photo, video and written content for brands.
 
 ## What does your brewing setup look like?
 
