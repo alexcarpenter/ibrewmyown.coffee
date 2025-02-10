@@ -33,7 +33,7 @@ I’ve usually got a few different filters on the go each week, just mixing them
 
 We also have a Sage Barista Express machine, which we usually run Atkinson’s espresso prototype through, but currently we have something on from A Matter of Concrete.
 
-## What is you preffered brewing method?
+## What is you prefered brewing method?
 
 I’m mainly a filter guy, so I’ll stick to that mainly if I’m at home on my own, but sometimes I’ll switch to espresso drinks in the afternoon. I tend to just drink black, and get my milky drinks outside the house. Baristas know the milk situ much better than me so I don’t even try.
 
