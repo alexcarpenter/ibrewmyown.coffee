@@ -16,6 +16,7 @@ export async function GET(context) {
     return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
   });
   return rss({
+    trailingSlash: false,
     title: META.title,
     description: META.description,
     site: context.site,
