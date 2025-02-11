@@ -56,6 +56,12 @@ const NAVIGATION = [
     <meta property="twitter:title" content={metaTitle} />
     <meta property="twitter:description" content={metaDescription} />
     <meta name="twitter:image" content={new URL(metaImage, Astro.url)} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={metaTitle}
+      href={new URL("rss.xml", Astro.site)}
+    />
   </head>
   <body class="antialiased flex flex-col h-full text-foreground bg-background">
     <a
