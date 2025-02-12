@@ -93,6 +93,9 @@ const { Content } = await render(interview);
                       "absolute w-full h-full object-cover object-[var(--object-position)]",
                     ]}
                   />
+                  <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
+                    FIG_{(i + 1).toString().padStart(3, "0")}
+                  </span>
                 </div>
               );
             })}
@@ -208,6 +211,13 @@ const { Content } = await render(interview);
           alt=""
           class="w-full absolute h-full object-cover"
         />
+        {
+          interview.data.gallery ? (
+            <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
+              {`FIG_${(interview.data.gallery.length + 1).toString().padStart(3, "0")}`}
+            </span>
+          ) : null
+        }
       </figure>
       {
         interview.data.social ? (
