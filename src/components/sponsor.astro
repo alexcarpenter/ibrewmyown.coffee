@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 ---
 
 <div class="bg-purple-600/10 p-4">
-  <div class="grid grid-cols-3 items-center gap-x-4">
+  <div class="grid grid-cols-3 gap-x-4">
     <div class="aspect-[3/2] relative">
       <Image
         src="/img/madcap-coffee.jpg"
@@ -13,8 +13,8 @@ import { Image } from "astro:assets";
         class="absolute w-full h-full object-cover"
       />
     </div>
-    <div class="prose col-span-2">
-      <p class="font-mono uppercase text-xs text-muted-foreground">
+    <div class="col-span-2 flex flex-col py-4">
+      <p class="mb-auto font-mono uppercase text-xs text-muted-foreground">
         Sponsored by
       </p>
       <h2 class="mt-0">Madcap Coffee Company</h2>

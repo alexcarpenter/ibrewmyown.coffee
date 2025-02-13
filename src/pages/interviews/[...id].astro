@@ -106,7 +106,7 @@ const { Content } = await render(interview);
             <button
               class:list={[
                 "embla__button--prev",
-                "absolute top-1/2 -translate-y-1/2 size-8 bg-accent grid place-content-center left-0",
+                "absolute top-1/2 -translate-y-1/2 size-10 bg-accent grid place-content-center left-0",
                 "disabled:opacity-0",
               ]}
               disabled
@@ -130,7 +130,7 @@ const { Content } = await render(interview);
             <button
               class:list={[
                 "embla__button--next",
-                "absolute top-1/2 -translate-y-1/2 size-8 bg-accent grid place-content-center right-0",
+                "absolute top-1/2 -translate-y-1/2 size-10 bg-accent grid place-content-center right-0",
                 "disabled:opacity-0",
               ]}
               type="button"
@@ -175,10 +175,13 @@ const { Content } = await render(interview);
       {
         interview.data.products ? (
           <>
-            <h2 class="mt-8 mb-4 flex items-center gap-x-4 font-semibold text-xl tracking-tight">
+            <h2 class="mt-8 flex items-center gap-x-4 font-semibold text-xl tracking-tight">
               Products referenced&nbsp;&not;
             </h2>
-            <ul class="space-y-4">
+            {/* <p class="mt-1 font-mono text-xs text-muted-foreground">
+              [NOTE]: The following links are affiliate links.
+            </p> */}
+            <ul class="mt-4 space-y-4">
               {interview.data.products?.map(async ({ id }, i) => {
                 const product = await getEntry("products", id);
                 if (!product) {

@@ -7,6 +7,9 @@ avatar: /img/laila-ghambari.jpg
 gallery:
   - src: /img/laila-ghambari-001.jpg
     alt: ""
+  - src: /img/laila-ghambari-002.jpg
+    alt: ""
+    position: "bottom"
 products:
   - kalita-stainless-steel-pour-dripper
   - simplygoodcoffee-coffee-maker
