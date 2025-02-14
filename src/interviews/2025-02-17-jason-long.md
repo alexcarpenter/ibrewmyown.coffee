@@ -2,7 +2,7 @@
 draft: true
 title: Jason Long
 description: Midwestern, middle-aged, coffee-loving dad working as a product designer.
-published: 2025-02-17T12:28:58-0500
+published: 2026-02-17T12:28:58-0500
 avatar: /img/jason-long.jpg
 gallery:
   - src: /img/jason-long-001.jpg
