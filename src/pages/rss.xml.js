@@ -22,14 +22,18 @@ export async function GET(context) {
     site: context.site,
     items: interviews.map((interview) => {
       const slug = getSlugFromId(interview.id);
+      const image = interview.data.gallery.at(0);
       return {
         title: interview.data.title,
         pubDate: interview.data.published,
         description: interview.data.description,
         link: `/interviews/${slug}/`,
-        content: sanitizeHtml(parser.render(interview.body), {
-          allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
-        }),
+        content: `
+          <img src="${new URL(image.src, context.site)}" alt="${image.alt}" />
+          ${sanitizeHtml(parser.render(interview.body), {
+            allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
+          })}
+        `,
       };
     }),
   });
