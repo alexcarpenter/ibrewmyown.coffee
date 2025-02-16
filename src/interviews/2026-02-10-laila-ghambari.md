@@ -3,6 +3,7 @@ title: Laila Ghambari
 description: Laila Ghambari has been working in Specialty Coffee for over 20 years and won the prestigious title of US Barista Champion in 2014. She grew her career from barista to running multi-unit retail cafes across the country until she started her own businesses.
 published: 2025-02-17T12:28:58-0500
 avatar: /img/laila-ghambari.jpg
+image: /og/laila-ghambari.jpg
 gallery:
   - src: /img/laila-ghambari-001.jpg
     alt: "Counter with espresso and pour over coffee makers along side coffee grinder"
