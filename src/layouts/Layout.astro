@@ -24,6 +24,20 @@ const NAVIGATION = [
     href: "/subscribe",
   },
 ] as const;
+const SOCIAL = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/ibmoconline",
+  },
+  {
+    label: "Bluesky",
+    href: "https://bsky.app/profile/ibrewmyown.coffee",
+  },
+  {
+    label: "Twitter",
+    href: "https://twitter.com/ibmoconline",
+  },
+];
 ---
 
 <!doctype html>
@@ -147,6 +161,23 @@ const NAVIGATION = [
               rel="noopener">Submit a setup</a
             >
           </li>
+        </ul>
+
+        <ul class="mt-4 flex gap-x-4 font-medium flex-wrap">
+          {
+            SOCIAL.map((item) => {
+              return (
+                <li>
+                  <a
+                    href={item.href}
+                    class="tracking-tight text-secondary-foreground not-hover:opacity-50"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
         </ul>
 
         <p class="mt-4 text-secondary-foreground/50">
