@@ -78,7 +78,9 @@ const SOCIAL = [
       href={new URL("rss.xml", Astro.site)}
     />
   </head>
-  <body class="antialiased flex flex-col h-full text-foreground bg-background">
+  <body
+    class="antialiased flex flex-col h-full text-foreground bg-background overflow-x-hidden"
+  >
     <a
       href="#main"
       class="bg-secondary text-secondary-foreground fixed top-0 left-0 -translate-y-full focus:translate-y-0 px-4 py-2"
