@@ -2,8 +2,9 @@
 draft: true
 title: Eric Hinman
 description: Hybrid athlete, serial entrepreneur, and brand builder, who specializes in scaling early-stage consumer and wellness brands.
-published: 2025-02-24T12:28:58-0500
+published: 2025-03-03T12:28:58-0500
 avatar: /img/eric-hinman.jpg
+image: /og/eric-hinman.jpg
 gallery:
   - src: /img/eric-hinman-001.jpg
     alt: ""
