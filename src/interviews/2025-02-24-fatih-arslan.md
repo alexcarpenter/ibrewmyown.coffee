@@ -12,6 +12,11 @@ gallery:
     alt: ""
   - src: /img/fatih-arslan-004.jpg
     alt: ""
+products:
+  - fellow-stagg-ekg-electric-gooseneck-kettle
+  - kalita-stainless-steel-pour-dripper
+  - fellow-gen-2-ode-brew-grinder
+  - technivormm-moccamaster-coffee-maker
 social:
   twitter: fatih
   instagram: fatih.arslan_
