@@ -3,6 +3,7 @@ title: Fatih Arslan
 description: Engineer with a passion for Design, Dieter Rams, Watches, Coffee and Bauhaus.
 published: 2025-02-24T07:32:53-0500
 avatar: /img/fatih-arslan.jpg
+image: /og/fatih-arslan.jpg
 gallery:
   - src: /img/fatih-arslan-001.jpg
     alt: ""
