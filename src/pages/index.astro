@@ -58,8 +58,8 @@ const restInterviews = interviews.slice(1, interviews.length);
           const issue = getIndexById(interviews, interview.id);
           const thumbnail = interview.data.gallery?.at(0);
           return (
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-4 relative">
-              <figure class="relative overflow-hidden aspect-video col-span-2 bg-muted shrink-0">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-4 relative">
+              <figure class="relative overflow-hidden aspect-video md:col-span-2 bg-muted shrink-0">
                 {thumbnail ? (
                   <Image
                     src={thumbnail?.src}
