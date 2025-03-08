@@ -1,0 +1,37 @@
+---
+title: Errin Vasquez
+description: Bikes/Coffee/Records/Dogs
+published: 2025-03-10T17:25:41-0500
+avatar: /img/errin-vasquez.jpg
+gallery:
+  - src: /img/errin-vasquez-001.jpg
+    alt: ""
+  - src: /img/errin-vasquez-002.jpg
+    alt: ""
+products:
+  - kalita-stainless-steel-pour-dripper
+  - chemex-pour-over-glass-coffeemaker
+  - fellow-stagg-ekg-electric-gooseneck-kettle
+social:
+  bluesky: area45.bsky.social
+  instagram: area45
+  youtube: "@ErrinV"
+---
+
+## Who are you and what do you do?
+
+Born and raised in Los Angeles. I’ve worked in the Entertainment Industry since high school. I’ve been a Television Editor for the past 20+ years now. I came to coffee very late in life. I always had the idea that coffee was a smelly dark drink. Many years ago I was hosting some cycling friends from out of town. I had just purchased an Aerorpress and was intrigued by it. Luckily they new how to use it so we spent the next three days making Aeropress coffee. On the last day we went to a local specialty coffee shop and I had my first espresso. A week later I went to a coffee cupping class and was blown away. I had found my type of coffee and it changed my life. Now I spend most of my free time obsessing about my bike hobby and drinking coffee, preferably together. All while spending time with my beautiful wife and two amazing dogs.
+
+## What does your brewing setup look like?
+
+I keep a Chemex or V60/Kalita ready to go for pourovers. We recently added the Stagg Kettle which makes the pourover setup quicker and easier. During the pandemic we bought an espresso machine. Against the sage advice of my buddy Joshua, who repairs coffee equipment btw. So our current set up is a Stagg Electric Kettle, Various Pourover Devices, Two Baratza Grinders(Preciso and Sette 270wi) and a ECM Mechanika Slim.
+
+I want to say that part of the idea of buying a E61 Group head machine was the ability to service it in the long run. In the past 4+ years of ownership I’ve had to replace a part or two on the espresso machine. Both grinders have been down for service that I was able to perform at home and keep them going. The Preciso grinder was down for a month and I just got it going again. It’s probably 10 years old now. Having a couple hand grinder options made that time pass much easier. Invest in gear that can be repaired and purchase from a company with solid customer support if you can. It will make the madness that is home espresso/coffee much easier on you!
+
+## What is your prefered brewing method?
+
+I’ve tried many different brewing setups over the years. I moved away from the Aeropress, but I still have one, and prefer either a Chemex or V60/Kalita style brew. Espresso is almost always a Cortado but I’ll make an Americano as well.
+
+## Lastly, any coffee bean recommendations?
+
+I have two subscriptions that come in on alternating weeks. Two local roasters. [Forge Coffee](https://www.forgecoffee.com/) and [Trystero Coffee](https://www.instagram.com/trysterocoffee). My other favorite roaster is [Collage Coffee](https://www.instagram.com/collagecoffee/).
