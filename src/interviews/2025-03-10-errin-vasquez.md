@@ -3,6 +3,7 @@ title: Errin Vasquez
 description: Bikes/Coffee/Records/Dogs
 published: 2025-03-10T17:25:41-0500
 avatar: /img/errin-vasquez.jpg
+image: /og/errin-vasquez.jpg
 gallery:
   - src: /img/errin-vasquez-001.jpg
     alt: ""
