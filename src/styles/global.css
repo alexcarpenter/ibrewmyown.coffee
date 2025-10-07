@@ -6,6 +6,11 @@
   --color-foreground: oklch(0.145 0 0);
   --color-primary: oklch(0.3146 0.0734 139.03);
   --color-primary-foreground: oklch(1 0 0);
+  --color-secondary: color-mix(
+    in srgb,
+    var(--color-primary),
+    var(--color-white) 50%
+  );
   --color-muted: oklch(0.97 0 0);
   --color-muted-foreground: color-mix(
     in oklch,
