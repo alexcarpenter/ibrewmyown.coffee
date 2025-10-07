@@ -72,11 +72,11 @@
   }
 
   & > :where(* + h2) {
-    @apply mt-6;
+    @apply mt-8;
   }
 
   & > :where(h2) {
-    @apply text-xl font-semibold tracking-tight;
+    @apply text-xl font-semibold tracking-tight text-primary;
   }
 
   & > :where(h3) {
@@ -88,7 +88,7 @@
   }
 
   & :where(ul) {
-    @apply list-disc space-y-1 pl-6 marker:text-primary/20;
+    @apply list-disc space-y-1 pl-6 marker:text-foreground/20;
   }
 
   & :where(strong) {
