@@ -80,12 +80,9 @@ const { Content } = await render(interview);
       {
         interview.data.products ? (
           <>
-            <h2 class="mt-8 flex items-center gap-x-4 font-semibold text-xl tracking-tight">
+            <h2 class="mt-8 flex items-center gap-x-4 font-semibold text-xl tracking-tight text-primary">
               Products referenced&nbsp;&not;
             </h2>
-            {/* <p class="mt-1 font-mono text-xs text-muted-foreground">
-              [NOTE]: The following links are affiliate links.
-            </p> */}
             <ul class="mt-4 space-y-4">
               {interview.data.products?.map(async ({ id }, i) => {
                 const product = await getEntry("products", id);
