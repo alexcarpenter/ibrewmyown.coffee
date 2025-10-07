@@ -8,7 +8,6 @@ import {
   render,
 } from "astro:content";
 import { Image } from "astro:assets";
-import Sponsor from "@/components/sponsor.astro";
 export async function getStaticPaths() {
   const collection = await getCollection("interviews", ({ data }) => {
     return isProd ? data.draft !== true : true;
@@ -51,302 +50,146 @@ const { Content } = await render(interview);
   description={interview.data.description}
   image={interview.data.image}
 >
-  <header class="mt-8">
-    <p class="mb-2 text-muted-foreground font-mono uppercase text-xs">
-      Issue_{issue} // {
-        interview.data.published.toLocaleDateString("en-us", {
-          timeZone: "America/New_York",
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        })
-      }
-    </p>
-    <h1 class="page-title">
-      {interview.data.title}
+  <header class="bg-primary p-8 rounded-lg">
+    <nav class="mb-24 flex justify-between">
+      <a href="/" aria-label="Home" class="size-7 shrink-0">
+        <svg
+          viewBox="0 0 1024 1024"
+          fill="none"
+          class="fill-primary text-white hover:text-accent"
+          ><path
+            fill="currentColor"
+            d="M0 6.281h65.941V1017.65H0V6.281ZM245.963 507.15c31.189 6.421 44.554 33.177 44.554 71.705v343.545c0 62.073-32.97 95.251-84.654 95.251h-95.347V6.281h96.239c49.01 0 80.199 32.106 80.199 90.97v333.912c0 39.597-10.694 63.143-40.991 70.634v5.352ZM198.735 77.986h-22.278v394.915h22.278c14.257 0 22.278-10.702 22.278-32.106V107.953c0-20.335-8.021-29.967-22.278-29.967Zm-.891 461.269h-21.387v406.688h21.387c16.931 0 25.842-11.772 25.842-35.317V573.504c0-22.476-8.911-34.249-25.842-34.249ZM459.95 723.336l8.021-242.944 25.841-474.11h91.784V1017.65h-59.705l.893-356.387 4.455-404.549h-5.348l-35.642 760.936h-67.724l-34.752-760.936h-5.348l4.456 404.549v356.387h-58.813V6.281h93.567l24.949 474.111 8.02 242.944h5.346ZM716.489 2c58.812 0 90 38.528 90 109.164v800.532c0 71.705-32.08 111.304-90 111.304-58.813 0-90.001-39.599-90.001-111.304V111.164C626.488 40.528 657.676 2 716.489 2Zm22.278 917.187V104.742c0-19.264-8.021-32.106-22.278-32.106-14.257 0-22.278 11.772-22.278 32.106v814.445c0 20.335 8.911 33.177 22.278 33.177 13.367 0 22.278-13.913 22.278-33.177ZM1024 528.554v390.633c0 67.426-30.297 103.813-88.219 103.813-57.92 0-90-39.599-90-111.304V111.164c0-70.636 32.08-109.164 90-109.164C993.703 2 1024 37.318 1024 103.672v343.543h-66.832V104.742c0-19.264-7.13-32.106-21.387-32.106-13.366 0-22.277 11.772-22.277 32.106v814.445c0 20.335 8.911 33.177 22.277 33.177 14.257 0 21.387-13.913 21.387-33.177V528.554H1024Z"
+          ></path></svg
+        >
+      </a>
+      <a
+        href=""
+        class="bg-accent h-9 flex items-center justify-center w-fit px-4 rounded-full font-medium ml-auto"
+        >Submit a setup</a
+      >
+    </nav>
+    <div class="size-12 relative overflow-hidden rounded-full mb-4">
+      <Image
+        src={interview.data.avatar}
+        width={64}
+        height={64}
+        alt=""
+        class="absolute size-full"
+      />
+    </div>
+    <h1 class="text-5xl tracking-tight text-balance text-primary-foreground">
+      {interview.data.title}.
+      <span
+        class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
+        >{interview.data.description}</span
+      >
     </h1>
-    <p class="page-description">
-      {interview.data.description}
-    </p>
   </header>
-  {
-    interview.data.gallery ? (
-      <figure class:list={["embla", "relative mt-8"]}>
-        <div class:list={["embla__viewport", "overflow-hidden bg-black/5"]}>
-          <div class:list={["embla__container", "flex"]}>
-            {interview.data.gallery.map((img, i) => {
-              return (
-                <div
-                  class:list={[
-                    "embla__slide",
-                    "relative overflow-hidden aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
-                  ]}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={1500}
-                    height={1000}
-                    loading={i === 0 ? "eager" : "lazy"}
-                    style={`--object-position:${img.position || "center"}`}
-                    class:list={[
-                      "absolute w-full h-full object-cover object-[var(--object-position)]",
-                    ]}
-                  />
-                  <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
-                    FIG_{(i + 1).toString().padStart(3, "0")}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-        {interview.data.gallery.length > 1 ? (
-          <Fragment>
-            <button
-              class:list={[
-                "embla__button--prev",
-                "absolute top-1/2 -translate-y-1/2 size-10 bg-accent grid place-content-center left-0",
-                "disabled:opacity-0",
-              ]}
-              disabled
-              type="button"
-            >
-              <span class="sr-only">Previous</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="size-6"
-              >
-                <path d="m12 19-7-7 7-7" />
-                <path d="M19 12H5" />
-              </svg>
-            </button>
-            <button
-              class:list={[
-                "embla__button--next",
-                "absolute top-1/2 -translate-y-1/2 size-10 bg-accent grid place-content-center right-0",
-                "disabled:opacity-0",
-              ]}
-              type="button"
-            >
-              <span class="sr-only">Next</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="size-6"
-              >
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </button>
-            <div
-              class:list={[
-                "embla__dots",
-                "flex justify-center gap-x-2 mt-4 h-2 items-center",
-                "*:size-2 *:bg-black/20 [&_.active]:bg-neutral-950",
-              ]}
-            />
-          </Fragment>
-        ) : null}
-      </figure>
-    ) : null
-  }
-
-  <!-- <div class="mt-8">
-    <Sponsor />
-  </div> -->
-
-  <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-x-8 md:gap-x-12 gap-y-8">
-    <div class="sm:col-span-2">
+  <div class="grid grid-cols-4 gap-x-4 bg-muted rounded-lg">
+    <div class="col-span-2 p-8">
       <div class="prose">
         <Content />
       </div>
-      {
-        interview.data.products ? (
-          <>
-            <h2 class="mt-8 flex items-center gap-x-4 font-semibold text-xl tracking-tight">
-              Products referenced&nbsp;&not;
-            </h2>
-            {/* <p class="mt-1 font-mono text-xs text-muted-foreground">
-              [NOTE]: The following links are affiliate links.
-            </p> */}
-            <ul class="mt-4 space-y-4">
-              {interview.data.products?.map(async ({ id }, i) => {
-                const product = await getEntry("products", id);
-                if (!product) {
-                  return null;
-                }
-                return (
-                  <li id={(i + 1).toString()}>
-                    <span class="text-muted-foreground font-mono uppercase text-xs block">
-                      {product.data.description}
-                    </span>
-                    <a
-                      href={product.data.link}
-                      target="_blank"
-                      class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
-                    >
-                      {product.data.title}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : null
-      }
     </div>
-    <div class="sm:col-span-1 flex flex-col">
-      <figure class="aspect-square relative overflow-hidden">
-        <img
-          src={interview.data.avatar}
-          alt=""
-          class="w-full absolute h-full object-cover"
-        />
-        {
-          interview.data.gallery ? (
-            <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
-              {`FIG_${(interview.data.gallery.length + 1).toString().padStart(3, "0")}`}
-            </span>
-          ) : null
-        }
-      </figure>
+    <div class="col-start-4 col-span-1 relative flex flex-col justify-end p-8">
       {
-        interview.data.social ? (
-          <dl
-            class:list={[
-              "mt-4 mb-8 [&_dt]:not-first:mt-2 [&_dt]:pt-2 [&_dt]:border-t [&_dt]:border-dashed [&_dt]:border-black/20 [&_dt]:font-mono [&_dt]:uppercase [&_dt]:text-xs [&_dt]:text-muted-foreground",
-              "[&_dd]:font-medium [&_dd]:truncate",
-            ]}
-          >
-            {interview.data.social?.twitter ? (
-              <>
-                <dt>Twitter</dt>
-                <dd>
-                  <a
-                    href={`https://x.com/${interview.data.social?.twitter}`}
-                    target="_blank"
-                    class="underline decoration-2 decoration-accent hover:bg-accent"
-                  >
-                    @{interview.data.social?.twitter}
-                  </a>
-                </dd>
-              </>
-            ) : null}
-            {interview.data.social?.bluesky ? (
-              <>
-                <dt>Bluesky</dt>
-                <dd>
-                  <a
-                    href={`https://bsky.app/profile/${interview.data.social?.bluesky}`}
-                    target="_blank"
-                    class="underline decoration-2 decoration-accent hover:bg-accent"
-                  >
-                    @{interview.data.social?.bluesky}
-                  </a>
-                </dd>
-              </>
-            ) : null}
-            {interview.data.social?.instagram ? (
-              <>
-                <dt>Instagram</dt>
-                <dd>
-                  <a
-                    href={`https://instagram.com/${interview.data.social?.instagram}`}
-                    target="_blank"
-                    class="underline decoration-2 decoration-accent hover:bg-accent"
-                  >
-                    @{interview.data.social?.instagram}
-                  </a>
-                </dd>
-              </>
-            ) : null}
-            {interview.data.social?.youtube ? (
-              <>
-                <dt>YouTube</dt>
-                <dd>
-                  <a
-                    href={`https://www.youtube.com/${interview.data.social?.youtube}`}
-                    target="_blank"
-                    class="underline decoration-2 decoration-accent hover:bg-accent"
-                  >
-                    {interview.data.social?.youtube}
-                  </a>
-                </dd>
-              </>
-            ) : null}
-            {interview.data.social?.website ? (
-              <>
-                <dt>Website</dt>
-                <dd>
-                  <a
-                    href={interview.data.social?.website}
-                    target="_blank"
-                    class="underline decoration-2 decoration-accent hover:bg-accent"
-                  >
-                    {new URL(interview.data.social?.website).hostname.replace(
-                      "www.",
-                      ""
-                    )}
-                  </a>
-                </dd>
-              </>
-            ) : null}
-          </dl>
-        ) : null
-      }
-
-      {
-        (next || previous) && (
-          <nav class="bg-black/5 mt-auto">
-            <ul>
-              {next ? (
-                <li class="p-4">
-                  <p class="text-muted-foreground text-xs uppercase font-mono">
-                    Next issue
-                  </p>
-                  <a
-                    href={getSlugFromId(next.id)}
-                    class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
-                  >
-                    {next.data.title}
-                  </a>
-                </li>
-              ) : null}
-              {previous ? (
-                <li
+        interview.data.gallery ? (
+          <figure class:list={["embla", "sticky bottom-8"]}>
+            <div
+              class:list={[
+                "embla__viewport",
+                " rounded-lg overflow-hidden bg-black/5",
+              ]}
+            >
+              <div class:list={["embla__container", "flex"]}>
+                {interview.data.gallery.map((img, i) => {
+                  return (
+                    <div
+                      class:list={[
+                        "embla__slide",
+                        "relative overflow-hidden aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
+                      ]}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={1500}
+                        height={1000}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        style={`--object-position:${img.position || "center"}`}
+                        class:list={[
+                          "absolute w-full h-full object-cover object-[var(--object-position)]",
+                        ]}
+                      />
+                      {/* <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
+                        FIG_{(i + 1).toString().padStart(3, "0")}
+                      </span> */}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            {interview.data.gallery.length > 1 ? (
+              <Fragment>
+                <button
                   class:list={[
-                    "p-4",
-                    {
-                      "border-t border-dashed border-black/20": next,
-                    },
+                    "embla__button--prev",
+                    "absolute top-1/2 -translate-y-1/2 size-9 bg-accent grid place-content-center left-0",
+                    "disabled:opacity-0",
                   ]}
+                  disabled
+                  type="button"
                 >
-                  <p class="text-xs text-muted-foreground uppercase font-mono">
-                    Previous issue
-                  </p>
-                  <a
-                    href={getSlugFromId(previous.id)}
-                    class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
+                  <span class="sr-only">Previous</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="size-4"
                   >
-                    {previous.data.title}
-                  </a>
-                </li>
-              ) : null}
-            </ul>
-          </nav>
-        )
+                    <path d="m12 19-7-7 7-7" />
+                    <path d="M19 12H5" />
+                  </svg>
+                </button>
+                <button
+                  class:list={[
+                    "embla__button--next",
+                    "absolute top-1/2 -translate-y-1/2 size-9 bg-accent grid place-content-center right-0",
+                    "disabled:opacity-0",
+                  ]}
+                  type="button"
+                >
+                  <span class="sr-only">Next</span>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="size-4"
+                  >
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </svg>
+                </button>
+                {/* <div
+                  class:list={[
+                    "embla__dots",
+                    "flex justify-center gap-x-2 mt-4 h-2 items-center",
+                    "*:size-2 *:bg-primary/20 [&_.active]:bg-accent",
+                  ]}
+                /> */}
+              </Fragment>
+            ) : null}
+          </figure>
+        ) : null
       }
     </div>
   </div>
@@ -354,9 +197,9 @@ const { Content } = await render(interview);
 
 <script>
   import {
-    addDotBtnsAndClickHandlers,
+    // addDotBtnsAndClickHandlers,
     addPrevNextBtnsClickHandlers,
-  } from "@/utils/embla";
+  } from "@/lib/embla";
   import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
   const OPTIONS: EmblaOptionsType = {};
 
@@ -376,11 +219,11 @@ const { Content } = await render(interview);
     const nextBtnNode = emblaNode.querySelector(
       ".embla__button--next"
     ) as HTMLElement;
-    const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
+    // const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
 
-    if (!dotsNode) {
-      return;
-    }
+    // if (!dotsNode) {
+    //   return;
+    // }
 
     const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
 
@@ -389,12 +232,12 @@ const { Content } = await render(interview);
       prevBtnNode,
       nextBtnNode
     );
-    const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
-      emblaApi,
-      dotsNode
-    );
+    // const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
+    //   emblaApi,
+    //   dotsNode
+    // );
 
     emblaApi.on("destroy", removePrevNextBtnsClickHandlers);
-    emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
+    // emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
   })();
 </script>

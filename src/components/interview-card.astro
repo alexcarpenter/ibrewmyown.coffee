@@ -1,0 +1,74 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { cva, type VariantProps } from "class-variance-authority";
+import { getSlugFromId } from "@/utils";
+
+const cardVariants = cva(
+  "isolate relative rounded-lg flex-1 flex flex-col overflow-hidden",
+  {
+    variants: {
+      variant: {
+        default: "bg-muted",
+        highlight: "bg-accent grid grid-cols-2",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
+type Props = VariantProps<typeof cardVariants> & CollectionEntry<"interviews">;
+
+const { variant = "default", id, data } = Astro.props;
+const { avatar, title, description, published, gallery } = data;
+const slug = getSlugFromId(id);
+const thumbnail = gallery?.at(0);
+---
+
+<article class={cardVariants({ variant })}>
+  <div class="p-8 flex-1 flex flex-col">
+    <header class="mb-56">
+      <div class="mb-4 size-8 relative overflow-hidden rounded-full">
+        <Image
+          src={avatar}
+          width={32}
+          height={32}
+          alt=""
+          class="absolute size-full"
+        />
+      </div>
+      <h3 class="font-semibold tracking-tight">
+        <a
+          href={`/interviews/${slug}`}
+          class="before:absolute before:inset-0 before:z-10">{title}</a
+        >
+      </h3>
+      <p class="line-clamp-2 text-sm opacity-70">{description}</p>
+    </header>
+    <time class="opacity-70 text-sm mt-auto">
+      {
+        published.toLocaleDateString("en-us", {
+          timeZone: "America/New_York",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        })
+      }
+    </time>
+  </div>
+  {
+    variant === "highlight" && thumbnail ? (
+      <div class="relative">
+        <Image
+          src={thumbnail.src}
+          alt={thumbnail.alt}
+          width={1500}
+          height={1000}
+          class="absolute size-full object-cover"
+        />
+      </div>
+    ) : null
+  }
+</article>

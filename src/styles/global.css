@@ -2,19 +2,17 @@
 
 @theme {
   --font-sans: Inter, sans-serif;
-  --color-accent: oklch(93.82% 0.2886 117.53);
-  --color-background: color-mix(
-    in oklab,
-    var(--color-stone-300) 80%,
-    transparent
+  --color-background: oklch(1 0 0);
+  --color-foreground: oklch(0.145 0 0);
+  --color-primary: oklch(0.3146 0.0734 139.03);
+  --color-primary-foreground: oklch(1 0 0);
+  --color-muted: oklch(0.97 0 0);
+  --color-muted-foreground: color-mix(
+    in oklch,
+    var(--color-foreground),
+    transparent 30%
   );
-  --color-foreground: var(--color-neutral-950);
-  --color-muted: color-mix(in oklab, var(--color-black) 5%, transparent);
-  --color-muted-foreground: var(--color-neutral-600);
-  --color-primary: var(--color-accent);
-  --color-primary-foreground: var(--color-neutral-950);
-  --color-secondary: var(--color-neutral-950);
-  --color-secondary-foreground: var(--color-neutral-50);
+  --color-accent: oklch(93.82% 0.2886 117.53);
 }
 
 @layer utilities {
@@ -90,7 +88,7 @@
   }
 
   & :where(ul) {
-    @apply list-disc space-y-1 pl-6 marker:text-black/20;
+    @apply list-disc space-y-1 pl-6 marker:text-primary/20;
   }
 
   & :where(strong) {
@@ -102,6 +100,6 @@
   }
 
   & :where(hr) {
-    @apply my-8 border-t border-dashed border-black/20;
+    @apply my-8 border-t border-dashed border-primary/20;
   }
 }
