@@ -44,6 +44,7 @@ type Props = {
 };
 const { issue, interview, previous, next } = Astro.props;
 const { Content } = await render(interview);
+const thumbnail = interview.data.gallery?.at(0);
 ---
 
 <Layout
@@ -113,6 +114,22 @@ const { Content } = await render(interview);
       class="md:col-start-3 md:col-span-2 lg:col-start-4 lg:col-span-1 relative flex flex-col justify-end p-4 sm:p-8"
     >
       {
+        thumbnail ? (
+          <figure class="aspect-[3/2] rounded-lg overflow-hidden sticky bottom-8">
+            <Image
+              src={thumbnail.src}
+              alt={thumbnail.alt}
+              width={1500}
+              height={1000}
+              style={`--object-position:${thumbnail.position || "center"}`}
+              class:list={[
+                "absolute w-full h-full object-cover object-[var(--object-position)]",
+              ]}
+            />
+          </figure>
+        ) : null
+      }
+      <!-- {
         interview.data.gallery ? (
           <figure class:list={["embla", "sticky bottom-8"]}>
             <div
@@ -209,7 +226,7 @@ const { Content } = await render(interview);
             ) : null}
           </figure>
         ) : null
-      }
+      } -->
     </div>
   </div>
 
