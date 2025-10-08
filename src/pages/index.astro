@@ -30,12 +30,17 @@ const restInterviews = interviews.slice(1, interviews.length);
     </h1>
   </header>
   <section>
-    <div class="bg-secondary rounded-lg">
-      <ul class="grid grid-cols-4">
+    <div class="bg-secondary rounded-lg grid grid-cols-4">
+      <div class="p-8 grid items-center">
+        <h2 class="font-semibold tracking-tight text-primary">
+          Frequently mentioned brands.
+        </h2>
+      </div>
+      <ul class="grid grid-cols-3 col-span-3">
         <li class="flex">
           <a
             href="/"
-            class="text-primary hover:text-accent transition-colors flex items-center justify-center px-8 py-16 w-full rounded-l-lg"
+            class="text-primary hover:text-accent transition-colors flex items-center justify-center px-8 py-16 w-full"
           >
             <Icon name="fellow" class="h-7 w-auto translate-y-1" />
           </a>
@@ -46,6 +51,14 @@ const restInterviews = interviews.slice(1, interviews.length);
             class="text-primary hover:text-accent transition-colors flex items-center justify-center px-8 py-16 w-full"
           >
             <Icon name="lamarzocco" class="h-9 w-auto" />
+          </a>
+        </li>
+        <li class="flex">
+          <a
+            href="/"
+            class="text-primary hover:text-accent transition-colors flex items-center justify-center px-8 py-16 w-full rounded-r-lg"
+          >
+            <Icon name="fellow" class="h-7 w-auto translate-y-1" />
           </a>
         </li>
       </ul>

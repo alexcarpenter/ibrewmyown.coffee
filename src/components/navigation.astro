@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 type Props = HTMLAttributes<"nav">;
 const { class: className, ...attrs } = Astro.props;
@@ -25,7 +26,17 @@ const { class: className, ...attrs } = Astro.props;
   </a>
   <a
     href=""
-    class="bg-accent h-9 flex items-center justify-center w-fit px-4 rounded-full font-medium ml-auto"
-    >Submit a setup</a
+    class="group/button bg-accent h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium ml-auto"
+    >Submit a setup
+    <span
+      class="size-7 bg-primary rounded-full text-accent grid place-content-center overflow-hidden"
+      ><Icon
+        name="arrow-right"
+        class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-[cubic-bezier(0.4,0.36,0,1)]"
+      /><Icon
+        name="arrow-right"
+        class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-[cubic-bezier(0.4,0.36,0,1)]"
+      /></span
+    ></a
   >
 </nav>
