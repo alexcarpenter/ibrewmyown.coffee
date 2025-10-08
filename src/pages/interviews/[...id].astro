@@ -51,7 +51,7 @@ const { Content } = await render(interview);
   description={interview.data.description}
   image={interview.data.image}
 >
-  <header class="bg-primary p-8 rounded-lg">
+  <header class="bg-primary p-4 sm:p-8 rounded-lg">
     <Navigation class="mb-24" />
     <div class="size-12 relative overflow-hidden rounded-full mb-4">
       <Image
@@ -63,7 +63,7 @@ const { Content } = await render(interview);
       />
     </div>
     <h1
-      class="text-5xl tracking-tight text-balance text-primary-foreground max-w-prose"
+      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose"
     >
       {interview.data.title}.
       <span
@@ -72,8 +72,8 @@ const { Content } = await render(interview);
       >
     </h1>
   </header>
-  <div class="grid grid-cols-4 gap-x-4 bg-muted rounded-lg">
-    <div class="col-span-2 p-8">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4 bg-muted rounded-lg">
+    <div class="md:col-span-2 p-4 sm:p-8">
       <div class="prose">
         <Content />
       </div>
@@ -109,7 +109,9 @@ const { Content } = await render(interview);
         ) : null
       }
     </div>
-    <div class="col-start-4 col-span-1 relative flex flex-col justify-end p-8">
+    <div
+      class="md:col-start-3 md:col-span-2 lg:col-start-4 lg:col-span-1 relative flex flex-col justify-end p-4 sm:p-8"
+    >
       {
         interview.data.gallery ? (
           <figure class:list={["embla", "sticky bottom-8"]}>
