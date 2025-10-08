@@ -3,9 +3,10 @@ import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { cva, type VariantProps } from "class-variance-authority";
 import { getSlugFromId } from "@/utils";
+import { Icon } from "astro-icon/components";
 
 const cardVariants = cva(
-  "isolate relative rounded-lg flex-1 flex flex-col overflow-hidden",
+  "group/card isolate relative rounded-lg flex-1 flex flex-col overflow-hidden",
   {
     variants: {
       variant: {
@@ -42,7 +43,14 @@ const thumbnail = gallery?.at(0);
       <h3 class="font-semibold tracking-tight">
         <a
           href={`/interviews/${slug}`}
-          class="before:absolute before:inset-0 before:z-10">{title}</a
+          class="before:absolute before:inset-0 before:z-10"
+          >{title}<span
+            class="absolute h-[1lh] inline-flex items-center pl-1 overflow-clip"
+            ><Icon
+              name="arrow-right"
+              class="size-4 opacity-0 group-hover/card:opacity-70 duration-250 -translate-x-6 group-hover/card:translate-x-0 transition-transform ease-spring"
+            /></span
+          ></a
         >
       </h3>
       <p class="line-clamp-2 text-sm opacity-70 text-balance">{description}</p>
@@ -60,7 +68,7 @@ const thumbnail = gallery?.at(0);
   </div>
   {
     variant === "highlight" && thumbnail ? (
-      <div class="relative">
+      <div class="relative overflow-hidden">
         <Image
           src={thumbnail.src}
           alt={thumbnail.alt}
