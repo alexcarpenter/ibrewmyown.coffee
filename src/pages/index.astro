@@ -1,10 +1,8 @@
 ---
-import { getIndexById, getSlugFromId, isProd } from "@/utils";
-import { META } from "@/consts";
+import { getSlugFromId, isProd } from "@/utils";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import InterviewCard from "@/components/interview-card.astro";
 import Navigation from "@/components/navigation.astro";
 import { Icon } from "astro-icon/components";
 const collection = await getCollection("interviews", ({ data }) => {
@@ -15,8 +13,6 @@ const interviews = collection.sort((a, b) => {
   const bDate = b.data.published;
   return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
 });
-const latestInterview = interviews.slice(0, 1);
-const restInterviews = interviews.slice(1, interviews.length);
 ---
 
 <Layout>
@@ -72,27 +68,100 @@ const restInterviews = interviews.slice(1, interviews.length);
     </div>
   </section>
   <section class="flex-1">
-    <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+    <ul
+      class:list={[
+        "grid gap-4",
+        "grid-cols-1",
+        "md:grid-cols-2",
+        "lg:grid-cols-4",
+      ]}
+    >
       {
-        interviews.map((interview, index) => {
-          const row = Math.floor(index / 3);
-          const posInRow = index % 3;
-          const highlight =
-            (row % 2 === 0 && posInRow === 0) ||
-            (row % 2 === 1 && posInRow === 2);
+        interviews.map(({ id, data }) => {
+          const { avatar, title, description, published, gallery } = data;
+          const slug = getSlugFromId(id);
+          const thumbnail = gallery?.at(0);
           return (
             <li
               class:list={[
-                "flex flex-col",
-                {
-                  "sm:col-span-2": highlight,
-                },
+                "flex flex-col group/list-item",
+                "md:[&:nth-child(3n+1)]:col-span-2",
+                "lg:[&:nth-child(3n+1)]:col-span-1",
+                "lg:[&:nth-child(6n+1)]:col-span-2",
+                "lg:[&:nth-child(6n)]:col-span-2",
               ]}
             >
-              <InterviewCard
-                {...interview}
-                variant={highlight ? "highlight" : "default"}
-              />
+              <article
+                class:list={[
+                  "group/card isolate relative rounded-lg flex-1 flex overflow-hidden bg-muted",
+                  "group-[&:nth-child(2n+1)]/list-item:bg-accent",
+                  "md:group-[&:nth-child(2n+1)]/list-item:bg-muted",
+                  "md:group-[&:nth-child(3n+1)]/list-item:bg-accent",
+                  "lg:group-[&:nth-child(3n+1)]/list-item:bg-muted",
+                  "lg:group-[&:nth-child(6n+1)]/list-item:bg-accent",
+                  "lg:group-[&:nth-child(6n)]/list-item:bg-accent",
+                ]}
+              >
+                <div class="p-4 sm:p-8 flex-1 flex flex-col">
+                  <header class="mb-24 sm:mb-56">
+                    <div class="mb-4 size-8 relative overflow-hidden rounded-full">
+                      <Image
+                        src={avatar}
+                        width={32}
+                        height={32}
+                        alt=""
+                        class="absolute size-full"
+                      />
+                    </div>
+                    <h3 class="font-semibold tracking-tight">
+                      <a
+                        href={`/interviews/${slug}`}
+                        class="before:absolute before:inset-0 before:z-10"
+                      >
+                        {title}
+                        <span class="absolute h-[1lh] inline-flex items-center pl-1 overflow-clip">
+                          <Icon
+                            name="arrow-right"
+                            class="size-4 opacity-0 group-hover/card:opacity-70 motion-reduce:transition-none duration-250 -translate-x-6 group-hover/card:translate-x-0 transition ease-spring"
+                          />
+                        </span>
+                      </a>
+                    </h3>
+                    <p class="line-clamp-2 text-sm opacity-70 text-balance">
+                      {description}
+                    </p>
+                  </header>
+                  <time class="opacity-70 text-sm mt-auto">
+                    {published.toLocaleDateString("en-us", {
+                      timeZone: "America/New_York",
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </time>
+                </div>
+                {thumbnail ? (
+                  <div
+                    class:list={[
+                      "relative overflow-hidden w-1/2 hidden",
+                      "group-[&:nth-child(2n+1)]/list-item:block",
+                      "md:group-[&:nth-child(2n+1)]/list-item:hidden",
+                      "md:group-[&:nth-child(3n+1)]/list-item:block",
+                      "lg:group-[&:nth-child(3n+1)]/list-item:hidden",
+                      "lg:group-[&:nth-child(6n+1)]/list-item:block",
+                      "lg:group-[&:nth-child(6n)]/list-item:block",
+                    ]}
+                  >
+                    <Image
+                      src={thumbnail.src}
+                      alt={thumbnail.alt}
+                      width={1500}
+                      height={1000}
+                      class="absolute size-full object-cover"
+                    />
+                  </div>
+                ) : null}
+              </article>
             </li>
           );
         })
