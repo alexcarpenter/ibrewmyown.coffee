@@ -114,16 +114,13 @@ const thumbnail = interview.data.gallery?.at(0);
     >
       {
         thumbnail ? (
-          <figure class="aspect-[3/2] rounded-lg overflow-hidden sticky bottom-8">
+          <figure class="aspect-[3/2] rounded-lg overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in">
             <Image
               src={thumbnail.src}
               alt={thumbnail.alt}
               width={1500}
               height={1000}
-              style={`--object-position:${thumbnail.position || "center"}`}
-              class:list={[
-                "absolute w-full h-full object-cover object-[var(--object-position)]",
-              ]}
+              class="absolute size-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-250 ease-spring"
             />
           </figure>
         ) : null

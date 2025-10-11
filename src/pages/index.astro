@@ -102,7 +102,7 @@ const interviews = collection.sort((a, b) => {
               >
                 <div class="p-4 sm:p-8 flex-1 flex flex-col">
                   <header class="mb-24 sm:mb-56">
-                    <div class="mb-4 size-8 relative overflow-hidden rounded-full">
+                    <div class="mb-4 size-9 relative overflow-hidden rounded-full">
                       <Image
                         src={avatar}
                         width={32}
@@ -155,7 +155,7 @@ const interviews = collection.sort((a, b) => {
                       alt={thumbnail.alt}
                       width={1500}
                       height={1000}
-                      class="absolute size-full object-cover"
+                      class="absolute size-full object-cover group-hover/list-item:scale-105 transition-transform duration-250 ease-spring"
                     />
                   </div>
                 ) : null}
