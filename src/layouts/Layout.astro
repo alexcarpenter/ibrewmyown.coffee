@@ -2,6 +2,7 @@
 import Footer from "@/components/footer.astro";
 import "../styles/global.css";
 import { META } from "@/consts";
+import Navigation from "@/components/navigation.astro";
 const { title, description, image } = Astro.props;
 const metaTitle = title ? `${title} - ${META.title}` : META.title;
 const metaDescription = description ? description : META.description;
@@ -47,9 +48,12 @@ const metaImage = image ? image : META.image;
     />
   </head>
   <body
-    class="antialiased flex flex-col min-h-full text-foreground bg-background overflow-x-hidden px-4 pt-4 gap-y-4"
+    class="antialiased flex flex-col min-h-full text-foreground bg-background overflow-x-hidden px-4 pt-4"
   >
-    <slot />
+    <Navigation />
+    <main>
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

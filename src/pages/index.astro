@@ -3,7 +3,6 @@ import { getSlugFromId, isProd } from "@/utils";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
-import Navigation from "@/components/navigation.astro";
 import { Icon } from "astro-icon/components";
 const collection = await getCollection("interviews", ({ data }) => {
   return isProd ? data.draft !== true : true;
@@ -16,8 +15,7 @@ const interviews = collection.sort((a, b) => {
 ---
 
 <Layout>
-  <header class="bg-primary p-4 sm:p-8 rounded-lg">
-    <Navigation class="mb-64" />
+  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-48">
     <h1
       class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground"
     >
@@ -27,7 +25,7 @@ const interviews = collection.sort((a, b) => {
       >
     </h1>
   </header>
-  <section>
+  <section class="mt-4">
     <div class="bg-secondary rounded-lg">
       <ul
         class="flex overflow-x-auto [mask-image:linear-gradient(to_right,transparent_0%,black_calc(var(--spacing)_*_8),black_calc(100%_-_calc(var(--spacing)_*_8)),_transparent_100%)] [scrollbar-width:none]"
@@ -67,7 +65,7 @@ const interviews = collection.sort((a, b) => {
       </ul>
     </div>
   </section>
-  <section class="flex-1">
+  <section class="mt-4">
     <ul
       class:list={[
         "grid gap-4",

@@ -52,8 +52,7 @@ const thumbnail = interview.data.gallery?.at(0);
   description={interview.data.description}
   image={interview.data.image}
 >
-  <header class="bg-primary p-4 sm:p-8 rounded-lg">
-    <Navigation class="mb-24" />
+  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24">
     <div class="size-9 sm:size-18 relative overflow-hidden rounded-full mb-4">
       <Image
         src={interview.data.avatar}
@@ -73,7 +72,7 @@ const thumbnail = interview.data.gallery?.at(0);
       >
     </h1>
   </header>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-x-4 bg-muted rounded-lg">
+  <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-x-4 bg-muted rounded-lg">
     <div class="md:col-span-2 p-4 sm:p-8">
       <div class="prose">
         <Content />
