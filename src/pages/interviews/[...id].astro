@@ -8,7 +8,6 @@ import {
   render,
 } from "astro:content";
 import { Image } from "astro:assets";
-import Navigation from "@/components/navigation.astro";
 export async function getStaticPaths() {
   const collection = await getCollection("interviews", ({ data }) => {
     return isProd ? data.draft !== true : true;
@@ -63,7 +62,7 @@ const thumbnail = interview.data.gallery?.at(0);
       />
     </div>
     <h1
-      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose"
+      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
     >
       {interview.data.title}.
       <span
@@ -125,153 +124,8 @@ const thumbnail = interview.data.gallery?.at(0);
           </figure>
         ) : null
       }
-      <!-- {
-        interview.data.gallery ? (
-          <figure class:list={["embla", "sticky bottom-8"]}>
-            <div
-              class:list={[
-                "embla__viewport",
-                " rounded-lg overflow-hidden bg-black/5",
-              ]}
-            >
-              <div class:list={["embla__container", "flex"]}>
-                {interview.data.gallery.map((img, i) => {
-                  return (
-                    <div
-                      class:list={[
-                        "embla__slide",
-                        "relative overflow-hidden aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
-                      ]}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        width={1500}
-                        height={1000}
-                        loading={i === 0 ? "eager" : "lazy"}
-                        style={`--object-position:${img.position || "center"}`}
-                        class:list={[
-                          "absolute w-full h-full object-cover object-[var(--object-position)]",
-                        ]}
-                      />
-                      {/* <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
-                        FIG_{(i + 1).toString().padStart(3, "0")}
-                      </span> */}
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            {interview.data.gallery.length > 1 ? (
-              <Fragment>
-                <button
-                  class:list={[
-                    "embla__button--prev",
-                    "absolute top-1/2 -translate-y-1/2 size-9 bg-accent grid place-content-center left-0",
-                    "disabled:opacity-0",
-                  ]}
-                  disabled
-                  type="button"
-                >
-                  <span class="sr-only">Previous</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="size-4"
-                  >
-                    <path d="m12 19-7-7 7-7" />
-                    <path d="M19 12H5" />
-                  </svg>
-                </button>
-                <button
-                  class:list={[
-                    "embla__button--next",
-                    "absolute top-1/2 -translate-y-1/2 size-9 bg-accent grid place-content-center right-0",
-                    "disabled:opacity-0",
-                  ]}
-                  type="button"
-                >
-                  <span class="sr-only">Next</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="size-4"
-                  >
-                    <path d="M5 12h14" />
-                    <path d="m12 5 7 7-7 7" />
-                  </svg>
-                </button>
-                {/* <div
-                  class:list={[
-                    "embla__dots",
-                    "flex justify-center gap-x-2 mt-4 h-2 items-center",
-                    "*:size-2 *:bg-primary/20 [&_.active]:bg-accent",
-                  ]}
-                /> */}
-              </Fragment>
-            ) : null}
-          </figure>
-        ) : null
-      } -->
     </div>
   </div>
 
-  <!-- <section class="p-8 bg-secondary rounded-lg"></section> -->
+  <!-- <section class="p-8 bg-secondary rounded-lg mt-4"></section> -->
 </Layout>
-
-<script>
-  import {
-    // addDotBtnsAndClickHandlers,
-    addPrevNextBtnsClickHandlers,
-  } from "@/lib/embla";
-  import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
-  const OPTIONS: EmblaOptionsType = {};
-
-  (function () {
-    const emblaNode = document.querySelector(".embla") as HTMLElement;
-
-    if (!emblaNode) {
-      return;
-    }
-
-    const viewportNode = emblaNode.querySelector(
-      ".embla__viewport"
-    ) as HTMLElement;
-    const prevBtnNode = emblaNode.querySelector(
-      ".embla__button--prev"
-    ) as HTMLElement;
-    const nextBtnNode = emblaNode.querySelector(
-      ".embla__button--next"
-    ) as HTMLElement;
-    // const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
-
-    // if (!dotsNode) {
-    //   return;
-    // }
-
-    const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
-
-    const removePrevNextBtnsClickHandlers = addPrevNextBtnsClickHandlers(
-      emblaApi,
-      prevBtnNode,
-      nextBtnNode
-    );
-    // const removeDotBtnsAndClickHandlers = addDotBtnsAndClickHandlers(
-    //   emblaApi,
-    //   dotsNode
-    // );
-
-    emblaApi.on("destroy", removePrevNextBtnsClickHandlers);
-    // emblaApi.on("destroy", removeDotBtnsAndClickHandlers);
-  })();
-</script>
