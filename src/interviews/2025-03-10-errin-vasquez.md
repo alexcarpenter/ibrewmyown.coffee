@@ -1,6 +1,6 @@
 ---
 title: Errin Vasquez
-description: Bikes/Coffee/Records/Dogs.
+description: Bikes, coffee, records, and dogs.
 published: 2025-03-10T17:25:41-0500
 avatar: /img/errin-vasquez.jpg
 image: /og/errin-vasquez.jpg
