@@ -115,7 +115,7 @@ const thumbnail = interview.data.gallery?.at(0);
       {
         thumbnail ? (
           <button
-            class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in bg-secondary"
+            class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in bg-primary"
             type="button"
             data-a11y-dialog-show="gallery-dialog"
           >
@@ -124,15 +124,18 @@ const thumbnail = interview.data.gallery?.at(0);
               alt={thumbnail.alt}
               width={1500}
               height={1000}
-              class="absolute inset-0 size-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-250 ease-custom"
+              class="absolute inset-0 size-full object-cover group-hover/thumbnail:opacity-5 group-hover/thumbnail:scale-105 transition duration-250 ease-custom"
             />
+            <span class="relative text-xs font-mono uppercase text-accent opacity-0 group-hover/thumbnail:opacity-100 transition duration-250 ease-custom">
+              View gallery
+            </span>
           </button>
         ) : null
       }
     </div>
   </div>
 
-  <section class="p-8 bg-secondary rounded-lg mt-4"></section>
+  <!-- <section class="p-8 bg-secondary rounded-lg mt-4"></section> -->
 
   <div
     slot="dialog"
@@ -143,9 +146,18 @@ const thumbnail = interview.data.gallery?.at(0);
   >
     <div data-a11y-dialog-hide class="dialog-overlay"></div>
     <div role="document" class="dialog-content">
-      <!-- <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
-        &times;
-      </button> -->
+      <button
+        type="button"
+        data-a11y-dialog-hide
+        aria-label="Close dialog"
+        class="group/button p-4 absolute top-0 right-0 z-10 text-accent"
+      >
+        <span
+          class="size-7 grid place-content-center rounded-full group-hover/button:bg-primary transition-colors ease-custom duration-250"
+        >
+          <Icon name="close" class="size-4" />
+        </span>
+      </button>
       <h1 id="gallery-dialog-title" class="sr-only">Gallery images</h1>
       {
         interview.data.gallery ? (
@@ -166,10 +178,7 @@ const thumbnail = interview.data.gallery?.at(0);
                         width={1500}
                         height={1000}
                         loading={i === 0 ? "eager" : "lazy"}
-                        style={`--object-position:${img.position || "center"}`}
-                        class:list={[
-                          "absolute w-full h-full object-cover object-[var(--object-position)]",
-                        ]}
+                        class="absolute w-full h-full object-cover"
                       />
                       <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
                         FIG_{(i + 1).toString().padStart(3, "0")}
@@ -185,7 +194,7 @@ const thumbnail = interview.data.gallery?.at(0);
                   class:list={[
                     "embla__button--prev",
                     "group/button",
-                    "absolute top-1/2 -translate-y-1/2 size-12 grid place-content-center left-0",
+                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center left-0",
                     "disabled:opacity-0",
                   ]}
                   disabled
@@ -210,7 +219,7 @@ const thumbnail = interview.data.gallery?.at(0);
                   class:list={[
                     "embla__button--next",
                     "group/button",
-                    "absolute top-1/2 -translate-y-1/2 size-12 grid place-content-center right-0",
+                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center right-0",
                     "disabled:opacity-0",
                   ]}
                   type="button"
