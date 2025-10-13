@@ -332,15 +332,12 @@ const thumbnail = interview.data.gallery?.at(0);
 
       emblaApi = EmblaCarousel(viewportNode, OPTIONS);
 
-      // Configure number-flow format and wait for it to be ready
       if (figcaptionElement && typeof figcaptionElement.update === "function") {
-        // figcaptionElement.prefix = "FIG_";
         figcaptionElement.format = {
           minimumIntegerDigits: 3,
           useGrouping: false,
         };
 
-        // Set initial value using update method
         const initialIndex = emblaApi.selectedScrollSnap();
         figcaptionElement.update(initialIndex + 1);
       } else {
@@ -349,9 +346,8 @@ const thumbnail = interview.data.gallery?.at(0);
         );
       }
 
-      // Listen to Embla's select event to update figcaption
       const onSelect = () => {
-        if (figcaptionElement) {
+        if (figcaptionElement && emblaApi) {
           const selectedIndex = emblaApi.selectedScrollSnap();
           figcaptionElement.update(selectedIndex + 1);
         }
