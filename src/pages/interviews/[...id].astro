@@ -8,6 +8,7 @@ import {
   render,
 } from "astro:content";
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 export async function getStaticPaths() {
   const collection = await getCollection("interviews", ({ data }) => {
     return isProd ? data.draft !== true : true;
@@ -114,7 +115,7 @@ const thumbnail = interview.data.gallery?.at(0);
       {
         thumbnail ? (
           <button
-            class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in"
+            class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in bg-secondary"
             type="button"
             data-a11y-dialog-show="gallery-dialog"
           >
@@ -131,7 +132,7 @@ const thumbnail = interview.data.gallery?.at(0);
     </div>
   </div>
 
-  <!-- <section class="p-8 bg-secondary rounded-lg mt-4"></section> -->
+  <section class="p-8 bg-secondary rounded-lg mt-4"></section>
 
   <div
     slot="dialog"
@@ -142,10 +143,98 @@ const thumbnail = interview.data.gallery?.at(0);
   >
     <div data-a11y-dialog-hide class="dialog-overlay"></div>
     <div role="document" class="dialog-content">
-      <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+      <!-- <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
         &times;
-      </button>
+      </button> -->
       <h1 id="gallery-dialog-title" class="sr-only">Gallery images</h1>
+      {
+        interview.data.gallery ? (
+          <figure class:list={["embla", "relative"]}>
+            <div class:list={["embla__viewport", "overflow-hidden"]}>
+              <div class:list={["embla__container", "flex"]}>
+                {interview.data.gallery.map((img, i) => {
+                  return (
+                    <div
+                      class:list={[
+                        "embla__slide",
+                        "relative overflow-hidden aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
+                      ]}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        width={1500}
+                        height={1000}
+                        loading={i === 0 ? "eager" : "lazy"}
+                        style={`--object-position:${img.position || "center"}`}
+                        class:list={[
+                          "absolute w-full h-full object-cover object-[var(--object-position)]",
+                        ]}
+                      />
+                      <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
+                        FIG_{(i + 1).toString().padStart(3, "0")}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            {interview.data.gallery.length > 1 ? (
+              <Fragment>
+                <button
+                  class:list={[
+                    "embla__button--prev",
+                    "group/button",
+                    "absolute top-1/2 -translate-y-1/2 size-12 grid place-content-center left-0",
+                    "disabled:opacity-0",
+                  ]}
+                  disabled
+                  type="button"
+                >
+                  <span class="sr-only">Previous</span>
+                  <span
+                    class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
+                    aria-hidden="true"
+                  >
+                    <Icon
+                      name="arrow-left"
+                      class="size-4 [grid-area:1/1] translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
+                    />
+                    <Icon
+                      name="arrow-left"
+                      class="size-4 [grid-area:1/1] opacity-70 group-hover/button:-translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
+                    />
+                  </span>
+                </button>
+                <button
+                  class:list={[
+                    "embla__button--next",
+                    "group/button",
+                    "absolute top-1/2 -translate-y-1/2 size-12 grid place-content-center right-0",
+                    "disabled:opacity-0",
+                  ]}
+                  type="button"
+                >
+                  <span class="sr-only">Next</span>
+                  <span
+                    class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
+                    aria-hidden="true"
+                  >
+                    <Icon
+                      name="arrow-right"
+                      class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
+                    />
+                    <Icon
+                      name="arrow-right"
+                      class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
+                    />
+                  </span>
+                </button>
+              </Fragment>
+            ) : null}
+          </figure>
+        ) : null
+      }
     </div>
   </div>
 </Layout>
@@ -169,6 +258,11 @@ const thumbnail = interview.data.gallery?.at(0);
   .dialog-overlay {
     background-color: var(--color-primary);
     opacity: 0.95;
+    transition: opacity 250ms;
+
+    @starting-style {
+      opacity: 0;
+    }
   }
 
   .dialog-content {
@@ -180,17 +274,72 @@ const thumbnail = interview.data.gallery?.at(0);
     height: min(calc(100vh - 4rem), calc((100vw - 2rem) * 2 / 3));
     border-radius: var(--radius-lg);
     overflow: hidden;
+    opacity: 1;
+    transform: scale(1);
+    transition-property: opacity, transform;
+    transition-duration: 0.3s;
+
+    @starting-style {
+      opacity: 0;
+      transform: scale(0.95);
+    }
   }
 </style>
 
 <script>
   import A11yDialog from "a11y-dialog";
   import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+  import { addPrevNextBtnsClickHandlers } from "@/lib/embla";
+  import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
+  const OPTIONS: EmblaOptionsType = {};
 
-  const element = document.querySelector("#gallery-dialog");
-  const dialog = new A11yDialog(element);
+  (function () {
+    const element = document.querySelector("#gallery-dialog") as HTMLElement;
+    const dialog = new A11yDialog(element);
+    let emblaApi: ReturnType<typeof EmblaCarousel> | undefined;
+    let cleanupHandlers: (() => void) | undefined;
 
-  dialog
-    .on("show", () => disableBodyScroll(element))
-    .on("hide", () => enableBodyScroll(element));
+    const initEmbla = () => {
+      const emblaNode = document.querySelector(".embla") as HTMLElement;
+      if (!emblaNode) return;
+
+      const viewportNode = emblaNode.querySelector(
+        ".embla__viewport"
+      ) as HTMLElement;
+      const prevBtnNode = emblaNode.querySelector(
+        ".embla__button--prev"
+      ) as HTMLElement;
+      const nextBtnNode = emblaNode.querySelector(
+        ".embla__button--next"
+      ) as HTMLElement;
+
+      emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+      cleanupHandlers = addPrevNextBtnsClickHandlers(
+        emblaApi,
+        prevBtnNode,
+        nextBtnNode
+      );
+    };
+
+    const cleanupEmbla = () => {
+      if (cleanupHandlers) {
+        cleanupHandlers();
+      }
+      if (emblaApi) {
+        emblaApi.destroy();
+      }
+      emblaApi = undefined;
+      cleanupHandlers = undefined;
+    };
+
+    dialog
+      .on("show", () => {
+        disableBodyScroll(element);
+        initEmbla();
+      })
+      .on("hide", () => {
+        enableBodyScroll(element);
+        cleanupEmbla();
+      });
+  })();
 </script>
