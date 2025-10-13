@@ -146,6 +146,12 @@ const thumbnail = interview.data.gallery?.at(0);
   >
     <div data-a11y-dialog-hide class="dialog-overlay"></div>
     <div role="document" class="dialog-content">
+      <span
+        class="absolute top-4 left-4 text-xs font-mono text-accent z-10"
+        aria-hidden="true"
+      >
+        FIG_<number-flow id="gallery-figcaption" data-will-change></number-flow>
+      </span>
       <button
         type="button"
         data-a11y-dialog-hide
@@ -180,9 +186,6 @@ const thumbnail = interview.data.gallery?.at(0);
                         loading={i === 0 ? "eager" : "lazy"}
                         class="absolute w-full h-full object-cover"
                       />
-                      <span class="absolute top-4 left-4 text-xs uppercase font-mono text-accent">
-                        FIG_{(i + 1).toString().padStart(3, "0")}
-                      </span>
                     </div>
                   );
                 })}
@@ -296,10 +299,12 @@ const thumbnail = interview.data.gallery?.at(0);
 </style>
 
 <script>
+  import "number-flow";
   import A11yDialog from "a11y-dialog";
   import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
   import { addPrevNextBtnsClickHandlers } from "@/lib/embla";
   import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
+
   const OPTIONS: EmblaOptionsType = {};
 
   (function () {
@@ -321,8 +326,39 @@ const thumbnail = interview.data.gallery?.at(0);
       const nextBtnNode = emblaNode.querySelector(
         ".embla__button--next"
       ) as HTMLElement;
+      const figcaptionElement = document.querySelector(
+        "#gallery-figcaption"
+      ) as any;
 
       emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+
+      // Configure number-flow format and wait for it to be ready
+      if (figcaptionElement && typeof figcaptionElement.update === "function") {
+        // figcaptionElement.prefix = "FIG_";
+        figcaptionElement.format = {
+          minimumIntegerDigits: 3,
+          useGrouping: false,
+        };
+
+        // Set initial value using update method
+        const initialIndex = emblaApi.selectedScrollSnap();
+        figcaptionElement.update(initialIndex + 1);
+      } else {
+        console.error(
+          "number-flow element not ready or update method not available"
+        );
+      }
+
+      // Listen to Embla's select event to update figcaption
+      const onSelect = () => {
+        if (figcaptionElement) {
+          const selectedIndex = emblaApi.selectedScrollSnap();
+          figcaptionElement.update(selectedIndex + 1);
+        }
+      };
+
+      emblaApi.on("select", onSelect);
+
       cleanupHandlers = addPrevNextBtnsClickHandlers(
         emblaApi,
         prevBtnNode,

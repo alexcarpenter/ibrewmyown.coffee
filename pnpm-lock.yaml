@@ -41,6 +41,9 @@ dependencies:
   markdown-it:
     specifier: ^14.1.0
     version: 14.1.0
+  number-flow:
+    specifier: ^0.5.8
+    version: 0.5.8
   sanitize-html:
     specifier: ^2.17.0
     version: 2.17.0
@@ -1830,6 +1833,10 @@ packages:
     engines: {node: '>=12'}
     dev: false
 
+  /esm-env@1.2.2:
+    resolution: {integrity: sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA==}
+    dev: false
+
   /estree-walker@2.0.2:
     resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
     dev: false
@@ -2954,6 +2961,12 @@ packages:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
     dependencies:
       boolbase: 1.0.0
+    dev: false
+
+  /number-flow@0.5.8:
+    resolution: {integrity: sha512-FPr1DumWyGi5Nucoug14bC6xEz70A1TnhgSHhKyfqjgji2SOTz+iLJxKtv37N5JyJbteGYCm6NQ9p1O4KZ7iiA==}
+    dependencies:
+      esm-env: 1.2.2
     dev: false
 
   /ofetch@1.4.1:
