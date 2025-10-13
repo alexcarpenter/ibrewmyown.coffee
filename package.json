@@ -16,7 +16,6 @@
     "a11y-dialog": "^8.1.4",
     "astro": "^5.14.1",
     "astro-icon": "^1.1.5",
-    "body-scroll-lock": "4.0.0-beta.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "embla-carousel": "^8.6.0",
@@ -27,7 +26,6 @@
     "tailwindcss": "4.0.4"
   },
   "devDependencies": {
-    "@types/body-scroll-lock": "^3.1.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14"
   }
