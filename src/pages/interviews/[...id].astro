@@ -113,19 +113,84 @@ const thumbnail = interview.data.gallery?.at(0);
     >
       {
         thumbnail ? (
-          <figure class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in">
+          <button
+            class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in"
+            type="button"
+            data-a11y-dialog-show="gallery-dialog"
+          >
             <Image
               src={thumbnail.src}
               alt={thumbnail.alt}
               width={1500}
               height={1000}
-              class="absolute size-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-250 ease-custom"
+              class="absolute inset-0 size-full object-cover group-hover/thumbnail:scale-105 transition-transform duration-250 ease-custom"
             />
-          </figure>
+          </button>
         ) : null
       }
     </div>
   </div>
 
   <!-- <section class="p-8 bg-secondary rounded-lg mt-4"></section> -->
+
+  <div
+    slot="dialog"
+    id="gallery-dialog"
+    class="dialog-container"
+    aria-labelledby="gallery-dialog-title"
+    aria-hidden="true"
+  >
+    <div data-a11y-dialog-hide class="dialog-overlay"></div>
+    <div role="document" class="dialog-content">
+      <button type="button" data-a11y-dialog-hide aria-label="Close dialog">
+        &times;
+      </button>
+      <h1 id="gallery-dialog-title" class="sr-only">Gallery images</h1>
+    </div>
+  </div>
 </Layout>
+
+<style>
+  .dialog-container,
+  .dialog-overlay {
+    position: fixed;
+    inset: 0;
+  }
+
+  .dialog-container {
+    z-index: 2;
+    display: flex;
+  }
+
+  .dialog-container[aria-hidden="true"] {
+    display: none;
+  }
+
+  .dialog-overlay {
+    background-color: var(--color-primary);
+    opacity: 0.95;
+  }
+
+  .dialog-content {
+    margin: auto;
+    z-index: 2;
+    position: relative;
+    background-color: var(--color-secondary);
+    aspect-ratio: 3 / 2;
+    height: min(calc(100vh - 4rem), calc((100vw - 2rem) * 2 / 3));
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+</style>
+
+<script>
+  import A11yDialog from "a11y-dialog";
+  import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+
+  const element = document.querySelector("#gallery-dialog");
+  const dialog = new A11yDialog(element);
+
+  dialog
+    .on("show", () => disableBodyScroll(element))
+    .on("hide", () => enableBodyScroll(element));
+</script>
