@@ -26,9 +26,6 @@ dependencies:
   astro-icon:
     specifier: ^1.1.5
     version: 1.1.5
-  body-scroll-lock:
-    specifier: 4.0.0-beta.0
-    version: 4.0.0-beta.0
   class-variance-authority:
     specifier: ^0.7.1
     version: 0.7.1
@@ -55,9 +52,6 @@ dependencies:
     version: 4.0.4
 
 devDependencies:
-  '@types/body-scroll-lock':
-    specifier: ^3.1.2
-    version: 3.1.2
   prettier-plugin-astro:
     specifier: ^0.14.1
     version: 0.14.1
@@ -1085,10 +1079,6 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
-  /@types/body-scroll-lock@3.1.2:
-    resolution: {integrity: sha512-ELhtuphE/YbhEcpBf/rIV9Tl3/O0A0gpCVD+oYFSS8bWstHFJUgA4nNw1ZakVlRC38XaQEIsBogUZKWIPBvpfQ==}
-    dev: true
-
   /@types/debug@4.1.12:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
     dependencies:
@@ -1369,10 +1359,6 @@ packages:
 
   /base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
-    dev: false
-
-  /body-scroll-lock@4.0.0-beta.0:
-    resolution: {integrity: sha512-a7tP5+0Mw3YlUJcGAKUqIBkYYGlYxk2fnCasq/FUph1hadxlTRjF+gAcZksxANnaMnALjxEddmSi/H3OR8ugcQ==}
     dev: false
 
   /boolbase@1.0.0:
