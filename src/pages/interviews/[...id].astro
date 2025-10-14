@@ -72,20 +72,22 @@ const thumbnail = interview.data.gallery?.at(0);
       >
     </h1>
   </header>
+  {
+    thumbnail ? (
+      <div class="mt-4">
+        <button
+          class="md:hidden group/button bg-primary text-primary-foreground rounded-lg w-full h-9 px-4 flex items-center justify-center gap-x-2 font-medium"
+          type="button"
+          data-a11y-dialog-show="gallery-dialog"
+        >
+          <Icon name="gallery" class="size-4 text-secondary" />
+          View gallery
+        </button>
+      </div>
+    ) : null
+  }
   <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-x-4 bg-muted rounded-lg">
     <div class="md:col-span-3 lg:col-span-2 p-4 sm:p-8">
-      {
-        thumbnail ? (
-          <button
-            class="md:hidden group/button bg-accent text-primary rounded-full w-full h-9 px-4 flex items-center justify-center gap-x-2 mt-4 mb-8 font-medium"
-            type="button"
-            data-a11y-dialog-show="gallery-dialog"
-          >
-            <Icon name="gallery" class="size-4" />
-            View gallery
-          </button>
-        ) : null
-      }
       <div class="prose">
         <Content />
       </div>
@@ -387,7 +389,7 @@ const thumbnail = interview.data.gallery?.at(0);
 
     dialog
       .on("show", () => {
-        disableBodyScroll(element);
+        disableBodyScroll(element, { reserveScrollBarGap: true });
         initEmbla();
       })
       .on("hide", () => {
