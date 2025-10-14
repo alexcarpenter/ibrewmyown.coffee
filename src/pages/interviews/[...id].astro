@@ -73,7 +73,19 @@ const thumbnail = interview.data.gallery?.at(0);
     </h1>
   </header>
   <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-x-4 bg-muted rounded-lg">
-    <div class="md:col-span-2 p-4 sm:p-8">
+    <div class="md:col-span-3 lg:col-span-2 p-4 sm:p-8">
+      {
+        thumbnail ? (
+          <button
+            class="md:hidden group/button bg-accent text-primary rounded-full w-full h-9 px-4 flex items-center justify-center gap-x-2 mt-4 mb-8 font-medium"
+            type="button"
+            data-a11y-dialog-show="gallery-dialog"
+          >
+            <Icon name="gallery" class="size-4" />
+            View gallery
+          </button>
+        ) : null
+      }
       <div class="prose">
         <Content />
       </div>
@@ -110,7 +122,7 @@ const thumbnail = interview.data.gallery?.at(0);
       }
     </div>
     <div
-      class="md:col-start-3 md:col-span-2 lg:col-start-4 lg:col-span-1 relative flex flex-col justify-end p-4 sm:p-8"
+      class="hidden relative md:flex flex-col justify-end p-4 sm:p-8 col-start-4"
     >
       {
         thumbnail ? (
@@ -147,7 +159,7 @@ const thumbnail = interview.data.gallery?.at(0);
     <div data-a11y-dialog-hide class="dialog-overlay"></div>
     <div role="document" class="dialog-content">
       <span
-        class="absolute top-4 left-4 text-xs font-mono text-accent z-10"
+        class="absolute top-4 left-4 text-xs font-mono text-accent z-10 inline-flex items-baseline"
         aria-hidden="true"
       >
         FIG_<number-flow id="gallery-figcaption" data-will-change></number-flow>
@@ -197,7 +209,7 @@ const thumbnail = interview.data.gallery?.at(0);
                   class:list={[
                     "embla__button--prev",
                     "group/button",
-                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center left-0",
+                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center left-0 transition-opacity ease-custom duration-250",
                     "disabled:opacity-0",
                   ]}
                   disabled
@@ -222,7 +234,7 @@ const thumbnail = interview.data.gallery?.at(0);
                   class:list={[
                     "embla__button--next",
                     "group/button",
-                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center right-0",
+                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center right-0 transition-opacity ease-custom duration-250",
                     "disabled:opacity-0",
                   ]}
                   type="button"
