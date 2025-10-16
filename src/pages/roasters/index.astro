@@ -1,0 +1,104 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import roasters from "./data.json";
+import slugify from "@sindresorhus/slugify";
+const groupedRoasters = roasters
+  .sort((a, b) => a.state.localeCompare(b.state))
+  .reduce<Record<string, typeof roasters>>((acc, roaster) => {
+    (acc[roaster.state] = acc[roaster.state] || []).push(roaster);
+    return acc;
+  }, {});
+const meta = {
+  title: "Coffee Roasters",
+  description: "Third wave coffee roasters.",
+} as const;
+---
+
+<Layout {...meta}>
+  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24">
+    <h1
+      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
+    >
+      US.
+      <span
+        class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
+        >Coffee Roasters.</span
+      >
+    </h1>
+  </header>
+
+  <section class="mt-4 relative bg-muted p-4 sm:p-8 rounded-lg">
+    <div class="overflow-x-auto">
+      <table
+        class:list={[
+          "text-sm w-full min-w-2xl",
+          "[&_th]:px-1 [&_th]:pb-0.5",
+          "[&_td]:px-1 [&_td]:py-0.5 [&_td]:align-top",
+        ]}
+      >
+        <thead class="text-left font-semibold">
+          <tr>
+            <th>State</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th align="right">Website</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            Object.entries(groupedRoasters).map(([state, roasters]) => {
+              return (
+                <>
+                  {roasters.map((roaster, i) => (
+                    <tr class="border-t border-black/10 first:border-solid first:border-t-2">
+                      {i === 0 ? (
+                        <td
+                          rowspan={roasters.length}
+                          class="font-semibold bg-muted"
+                        >
+                          <a href={`/roasters/${slugify(state)}`}>{state}</a>
+                        </td>
+                      ) : null}
+                      <td>{roaster.name}</td>
+                      <td>
+                        {roaster.address ? (
+                          <a
+                            target="_blank"
+                            rel="noopener"
+                            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(roaster.address)}`}
+                            class="link"
+                          >
+                            {roaster.address}
+                          </a>
+                        ) : null}
+                      </td>
+                      <td align="right">
+                        {roaster.website ? (
+                          <span class="relative pr-4">
+                            <a
+                              target="_blank"
+                              rel="noopener"
+                              href={roaster.website}
+                              class="link"
+                            >
+                              View
+                            </a>
+                            <Icon
+                              class="absolute right-0 top-0.25 size-4 text-muted-foreground"
+                              name="arrow-up-right"
+                            />
+                          </span>
+                        ) : null}
+                      </td>
+                    </tr>
+                  ))}
+                </>
+              );
+            })
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Layout>
