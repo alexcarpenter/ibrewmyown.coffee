@@ -37,7 +37,7 @@ const interviews = defineCollection({
             .enum(["top", "center", "bottom"])
             .default("center")
             .optional(),
-        }),
+        })
       )
       .optional(),
     social: z

@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import roastersJSON from "./_roasters.json";
+import roastersJSON from "./data.json";
 import slugify from "@sindresorhus/slugify";
 export async function getStaticPaths() {
   const states = [...new Set(roastersJSON.map((roaster) => roaster.state))];
@@ -29,23 +29,19 @@ const meta = {
 ---
 
 <Layout {...meta}>
-  <header class="mt-8">
-    <p
-      class="mb-2 inline-flex items-center text-xs uppercase gap-x-0.5 font-mono text-muted-foreground"
+  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24">
+    <h1
+      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
     >
-      <Icon name="arrow-left" /><a href="/roasters">All roasters</a>
-    </p>
-    <h1 class="page-title">
-      {meta.title}&nbsp;&not;
+      {state}.
+      <span
+        class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
+        >Coffee Roasters.</span
+      >
     </h1>
-    {
-      meta.description ? (
-        <p class="page-description">{meta.description}</p>
-      ) : null
-    }
   </header>
 
-  <section class="mt-8 relative">
+  <section class="mt-4 relative bg-muted p-4 sm:p-8 rounded-lg">
     <div class="overflow-x-auto">
       <table
         class:list={[
@@ -64,7 +60,7 @@ const meta = {
         <tbody>
           {
             roasters.map((roaster, i) => (
-              <tr class="border-t border-dashed border-black/20 first:border-solid first:border-t-2">
+              <tr class="border-t border-black/10 first:border-solid first:border-t-2">
                 <td>{roaster.name}</td>
                 <td>
                   {roaster.address ? (
