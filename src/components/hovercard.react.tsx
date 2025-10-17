@@ -1,6 +1,5 @@
 import * as Ariakit from "@ariakit/react";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
 
 export default function Hovercard({
   href,
@@ -11,10 +10,6 @@ export default function Hovercard({
 }) {
   const hovercard = Ariakit.useHovercardStore();
   const mounted = Ariakit.useStoreState(hovercard, "mounted");
-  const placement = Ariakit.useStoreState(hovercard, "currentPlacement");
-
-  const isTop = placement?.split("-")[0] === "top";
-  const y = isTop ? 8 : -8;
 
   return (
     <Ariakit.HovercardProvider store={hovercard}>
@@ -58,12 +53,12 @@ export default function Hovercard({
                 design and user-friendly features, it's perfect for any coffee
                 lover.
               </p>
-              <div className="mt-4">
+              <div className="mt-2">
                 <a
-                  href=""
-                  className="bg-muted text-primary flex h-9 items-center justify-center gap-x-2 rounded-sm font-medium"
+                  href={href}
+                  className="group/link bg-accent text-primary flex h-8 items-center justify-center gap-x-2 rounded-sm font-medium"
                 >
-                  Purchase <ArrowUpRight className="size-4 opacity-50" />
+                  Purchase
                 </a>
               </div>
             </div>
