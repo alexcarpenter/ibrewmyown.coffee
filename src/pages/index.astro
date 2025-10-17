@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
+import Hovercard from "@/components/hovercard.react";
 const collection = await getCollection("interviews", ({ data }) => {
   return isProd ? data.draft !== true : true;
 });
