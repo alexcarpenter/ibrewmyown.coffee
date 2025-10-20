@@ -6,9 +6,12 @@ import icon from "astro-icon";
 import react from "@astrojs/react";
 import mdx from "@astrojs/mdx";
 
+import vercel from "@astrojs/vercel";
+
 export default defineConfig({
   site: "https://ibrewmyown.coffee",
   vite: { plugins: [tailwindcss()] },
+
   integrations: [
     sitemap(),
     icon(),
@@ -17,4 +20,10 @@ export default defineConfig({
       extendMarkdownConfig: true,
     }),
   ],
+
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
 });

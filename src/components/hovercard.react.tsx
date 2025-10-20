@@ -23,7 +23,7 @@ export default function Hovercard({
             overlap
             portal
             gutter={8}
-            className="ring-border z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg bg-white ring ring-black/10 ring-inset"
+            className="z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg border border-black/10 bg-white"
             render={
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -36,23 +36,20 @@ export default function Hovercard({
               />
             }
           >
-            <div className="relative aspect-video overflow-hidden">
+            <div className="relative aspect-video overflow-hidden border-b border-black/10">
               <img
-                src="/img/matt-spade-001.jpg"
+                src="/img/products/fellow-opus.jpg"
                 alt=""
-                className="absolute size-full object-cover"
+                className="absolute size-full object-contain"
               />
             </div>
             <div className="p-4 text-sm">
-              <Ariakit.HovercardHeading className="font-medium">
-                {children}
-              </Ariakit.HovercardHeading>
-              <p className="text-muted-foreground line-clamp-2">
-                The new Moccamaster KBGV Select makes it easy to brew either a
-                half or full carafe of your favorite coffee. With its sleek
-                design and user-friendly features, it's perfect for any coffee
-                lover.
+              <p className="text-muted-foreground font-mono text-xs uppercase">
+                Coffee Grinder
               </p>
+              <Ariakit.HovercardHeading className="mt-1 font-medium">
+                Fellow Opus Conical Burr Coffee Grinder
+              </Ariakit.HovercardHeading>
               <div className="mt-2">
                 <a
                   href={href}
