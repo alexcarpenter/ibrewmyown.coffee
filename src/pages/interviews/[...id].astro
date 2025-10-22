@@ -282,9 +282,10 @@ const thumbnail = interview.data.gallery?.at(0);
   }
 
   .dialog-overlay {
-    background-color: var(--color-primary);
-    opacity: 0.95;
+    background-color: color-mix(in srgb, var(--color-primary) 95%, transparent);
+    backdrop-filter: blur(12px);
     transition: opacity 250ms;
+    opacity: 1;
 
     @starting-style {
       opacity: 0;
