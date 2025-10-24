@@ -1,8 +1,9 @@
 import * as Ariakit from "@ariakit/react";
 import { AnimatePresence, motion } from "motion/react";
 import { useStore } from "@nanostores/react";
-import { getProductStore } from "../stores/products";
-import { Skeleton } from "./skeleton";
+import { getProductStore, fetchProduct } from "../stores/products";
+import { Skeleton } from "./skeleton.react";
+import { useEffect } from "react";
 
 export default function Productcard({
   id,
@@ -13,7 +14,15 @@ export default function Productcard({
 }) {
   const hovercard = Ariakit.useHovercardStore();
   const mounted = Ariakit.useStoreState(hovercard, "mounted");
-  const { data: product, loading } = useStore(getProductStore(id));
+
+  const { store } = getProductStore(id);
+  const { data: product, loading } = useStore(store);
+
+  useEffect(() => {
+    if (mounted) {
+      fetchProduct(id);
+    }
+  }, [mounted, id]);
 
   return (
     <Ariakit.HovercardProvider store={hovercard}>

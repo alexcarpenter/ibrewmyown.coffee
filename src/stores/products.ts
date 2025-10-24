@@ -19,12 +19,16 @@ const [createFetcherStore] = nanoquery({
     }
     return response.json();
   },
-  dedupeTime: 5 * 60 * 1000,
+  // Cache product data for 1 day since it rarely changes
+  dedupeTime: 24 * 60 * 60 * 1000,
 });
 
 const productStores = new Map<
   string,
-  ReturnType<typeof createFetcherStore<Product>>
+  {
+    store: ReturnType<typeof createFetcherStore<Product>>;
+    idAtom: ReturnType<typeof atom<string | null>>;
+  }
 >();
 
 export function getProductStore(id: string) {
@@ -35,8 +39,20 @@ export function getProductStore(id: string) {
       $productId,
       ".json",
     ]);
-    productStores.set(id, store);
-    $productId.set(id);
+    productStores.set(id, { store, idAtom: $productId });
   }
+
   return productStores.get(id)!;
+}
+
+export function fetchProduct(id: string) {
+  const { idAtom } = getProductStore(id);
+  idAtom.set(id);
+}
+
+export function unfetchProduct(id: string) {
+  const cached = productStores.get(id);
+  if (cached) {
+    cached.idAtom.set(null);
+  }
 }
