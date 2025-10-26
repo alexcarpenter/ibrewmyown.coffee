@@ -15,6 +15,7 @@ const products = defineCollection({
     title: z.string(),
     description: z.string(),
     link: z.string(),
+    img: z.string().optional(),
   }),
 });
 

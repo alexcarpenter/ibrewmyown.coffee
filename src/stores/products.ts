@@ -1,15 +1,8 @@
+import type { CollectionEntry } from "astro:content";
 import { nanoquery } from "@nanostores/query";
 import { atom } from "nanostores";
 
-export interface Product {
-  id: string;
-  collection: string;
-  data: {
-    title: string;
-    description: string;
-    link: string;
-  };
-}
+export type Product = CollectionEntry<"products">;
 
 const [createFetcherStore] = nanoquery({
   fetcher: async (...keys: Array<string | number | true>) => {
@@ -40,6 +33,7 @@ export function getProductStore(id: string) {
       ".json",
     ]);
     productStores.set(id, { store, idAtom: $productId });
+    $productId.set(id);
   }
 
   return productStores.get(id)!;
