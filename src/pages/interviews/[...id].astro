@@ -74,9 +74,9 @@ const thumbnail = interview.data.gallery?.at(0);
   </header>
   {
     thumbnail ? (
-      <div class="mt-4">
+      <div class="mt-4 md:hidden">
         <button
-          class="md:hidden group/button bg-primary text-primary-foreground rounded-lg w-full h-9 px-4 flex items-center justify-center gap-x-2 font-medium"
+          class="group/button bg-primary text-primary-foreground rounded-lg w-full h-9 px-4 flex items-center justify-center gap-x-2 font-medium"
           type="button"
           data-a11y-dialog-show="gallery-dialog"
         >
