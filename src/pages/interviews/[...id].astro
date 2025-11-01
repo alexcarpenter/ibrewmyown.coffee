@@ -149,7 +149,20 @@ const thumbnail = interview.data.gallery?.at(0);
     </div>
   </div>
 
-  <!-- <section class="p-8 bg-secondary rounded-lg mt-4"></section> -->
+  <!-- <section class="p-8 bg-secondary rounded-lg mt-4">
+    {
+      previous?.data ? (
+        <a href={`/interviews/${getSlugFromId(previous.id)}`}>
+          {previous.data.title}
+        </a>
+      ) : null
+    }
+    {
+      next?.data ? (
+        <a href={`/interviews/${getSlugFromId(next.id)}`}>{next?.data.title}</a>
+      ) : null
+    }
+  </section> -->
 
   <div
     slot="dialog"

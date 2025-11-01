@@ -37,7 +37,7 @@ export default function Productcard({
             overlap
             portal
             gutter={8}
-            className="z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg border border-black/10 bg-white"
+            className="z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg bg-white ring-1 shadow-md ring-black/5"
             render={
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -63,7 +63,7 @@ export default function Productcard({
             {product && !loading && (
               <>
                 {product.data.img ? (
-                  <div className="relative aspect-[3/2] overflow-hidden border-b border-black/10">
+                  <div className="relative aspect-[3/2] overflow-hidden border-b border-black/5">
                     <img
                       src={product.data.img}
                       alt={product.data.title}
