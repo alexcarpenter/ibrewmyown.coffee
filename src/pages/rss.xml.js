@@ -29,7 +29,7 @@ export async function GET(context) {
         description: interview.data.description,
         link: `/interviews/${slug}/`,
         content: `
-          ${image ? `<img src="${new URL(image.src, context.site)}" alt="${image.alt}" />\n` : ""}
+          ${image ? `<img src="${new URL(image.src, context.site)}" alt="${image.alt}" />` : ""}
           ${sanitizeHtml(parser.render(interview.body), {
             allowedTags: sanitizeHtml.defaults.allowedTags.concat(["img"]),
           })}
