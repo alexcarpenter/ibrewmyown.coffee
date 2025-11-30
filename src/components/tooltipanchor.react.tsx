@@ -37,7 +37,7 @@ export const TooltipAnchor = forwardRef<HTMLDivElement, TooltipAnchorProps>(
             <Ariakit.Tooltip
               gutter={4}
               alwaysVisible
-              className="text-sm bg-primary text-primary-foreground px-2 py-1 inline-flex items-center rounded-md max-w-64"
+              className="text-sm bg-primary text-primary-foreground px-2 py-1 inline-flex items-center rounded-md max-w-64 text-pretty"
               render={
                 <motion.div
                   initial={{ opacity: 0, y }}

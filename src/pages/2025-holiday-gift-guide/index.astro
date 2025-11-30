@@ -38,7 +38,10 @@ const tierThreeStockingStuffers = [
 ].map((id) => getProductData(id));
 ---
 
-<Layout title="2025 Holiday Coffee Gift Guide">
+<Layout
+  title="2025 Holiday Coffee Gift Guide"
+  description="Discover the best coffee gifts for the holidays—espresso machines, drippers, brewers, and bean subscriptions that coffee lovers will actually use every day."
+>
   <header class="bg-primary px-4 sm:px-8 rounded-b-lg py-24 relative">
     <h1 class="sr-only">2025 Holiday Coffee Gift Guide</h1>
     <svg
@@ -54,14 +57,13 @@ const tierThreeStockingStuffers = [
         d="M95.083 1.632c-.352 0-.48.224-.48.512V4.16h1.472v1.984h-1.472V30.4h-2.336V6.144h-1.152V4.16h1.152V1.984C92.267.608 93.1 0 94.38 0h1.696v1.632h-.992ZM88.006 0h2.336v3.296h-2.336V0Zm0 4.16h2.336V30.4h-2.336V4.16ZM84.29 29.056c-.32.992-.865 1.504-1.92 1.504-1.345-.032-2.209-1.056-2.209-2.944V3.296c0-2.112 1.152-3.264 3.264-3.264s3.168 1.088 3.168 3.008v9.856h-2.4V3.104c0-.64-.288-.96-.8-.96-.48 0-.8.352-.8.96v24.384c0 .608.288.96.8.96.48 0 .8-.416.8-.96V16.512h-.864V14.4h3.232v16h-1.696l-.416-1.344h-.16ZM73.013 24.704l.224-5.536.512-15.008h2.432l-1.856 26.72c-.288 2.272-1.696 2.912-3.328 2.912h-1.568v-2.048h1.12c.544 0 .896-.256.96-.672L69.557 4.16h2.4l.608 15.008.224 5.536h.224ZM66.694 30.4l-.256-1.632c-.448 1.152-1.056 1.792-2.112 1.792-1.088 0-1.856-.864-1.856-2.144v-9.152c0-1.888.608-3.008 2.112-3.68l1.728-.736V6.784c0-.48-.16-.768-.64-.768s-.704.32-.704.768v7.392h-2.272V6.752c0-1.696.96-2.752 2.976-2.752 1.952 0 2.976.992 2.976 2.912V30.4h-1.952Zm-.352-13.248-.736.288c-.576.288-.8.768-.8 1.824v8.352c0 .512.192.864.608.864.448 0 .896-.448.896-1.216l.032-10.112ZM56.857 4.032c1.024 0 1.536.704 1.984 1.664V0h2.336v30.4h-2.304v-1.6c-.416 1.024-.992 1.728-2.016 1.728-1.056 0-1.792-.736-1.792-2.272V6.304c0-1.536.736-2.272 1.792-2.272Zm1.216 2.048c-.416 0-.672.32-.672.928v20.544c0 .608.256.928.672.928.416 0 .768-.352.768-1.12V7.2c0-.768-.32-1.12-.768-1.12ZM51.38 0h2.337v3.296H51.38V0Zm0 4.16h2.337V30.4H51.38V4.16ZM47.6 0h2.336v30.4H47.6V0ZM43.139 4c1.888 0 3.072 1.12 3.072 3.232v20.064c0 2.144-1.152 3.264-3.104 3.264-1.92 0-3.104-1.12-3.104-3.264V7.232C40.003 5.12 41.187 4 43.139 4Zm.736 23.424V7.104c0-.64-.256-1.024-.736-1.024-.512 0-.8.352-.8 1.024v20.32c0 .704.288 1.056.768 1.056.512 0 .768-.384.768-1.056ZM36.16.16h2.433V30.4H36.16V15.776h-1.504V30.4h-2.4V.16h2.4v13.472h1.504V.16ZM24.374 14.528c.288-.736.864-1.216 1.728-1.216 1.12 0 1.792.768 1.792 2.464v11.776c0 1.952-1.152 2.944-3.072 2.944-1.856 0-3.04-.992-3.04-3.008V16.864h2.272v10.688c0 .576.32.864.768.864.416 0 .736-.256.736-.8V16.16c0-.512-.288-.8-.704-.8-.384 0-.608.256-.736.608l-2.24-.512.48-15.296h5.568l-.128 1.984h-3.2l-.384 12.384h.16ZM20.993 28.416V30.4h-6.368v-1.408c0-7.872 3.84-13.44 3.84-17.856V3.008c0-.64-.288-.896-.736-.896s-.736.32-.736.896v8.64h-2.272V2.912c0-1.792 1.152-2.88 3.104-2.88 1.792 0 2.976.992 2.976 2.72v7.52c0 5.92-3.744 12.096-3.744 18.144h3.936ZM10.39.032c1.887 0 3.04 1.024 3.04 3.008v24.448c0 2.016-1.153 3.04-3.04 3.04-1.92 0-3.073-1.024-3.073-3.04V3.04c0-1.984 1.184-3.008 3.072-3.008Zm.671 27.488V3.04c0-.608-.256-.928-.672-.928-.416 0-.704.288-.704.928v24.48c0 .64.256.928.704.928.416 0 .672-.288.672-.928ZM6.368 28.416V30.4H0v-1.408c0-7.872 3.84-13.44 3.84-17.856V3.008c0-.64-.288-.896-.736-.896s-.736.32-.736.896v8.64H.096V2.912C.096 1.12 1.248.032 3.2.032c1.792 0 2.976.992 2.976 2.72v7.52c0 5.92-3.744 12.096-3.744 18.144h3.936Z"
       ></path></svg
     >
-    <!-- <p
+    <p
       class="text-white text-xl max-w-2xl text-balance mx-auto mt-8 text-center"
     >
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam assumenda
-      esse voluptatem quaerat dolore rem quas laborum excepturi doloribus
-      numquam commodi cum delectus consectetur sit iste, accusantium neque
-      blanditiis dignissimos!
-    </p> -->
+      Discover the best coffee gifts for the holidays—espresso machines,
+      drippers, brewers, and bean subscriptions that coffee lovers will actually
+      use every day.
+    </p>
     <canvas
       id="snowCanvas"
       class="absolute inset-x-0 top-[-6.25rem] w-full h-[calc(100%+6.25rem)] pointer-events-none"
@@ -90,10 +92,12 @@ const tierThreeStockingStuffers = [
               Breville Barista Express Espresso Machine
             </h2>
             <p class="md:text-xl opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-              maxime et ab odio rerum consectetur nulla, hic, harum distinctio
-              voluptates velit ipsum laudantium alias. Veritatis ipsum sunt cum
-              voluptatum repellat.
+              The Breville Barista Express has everything you need to make
+              café-quality espresso at home—built-in grinder, steam wand, and
+              precise temperature control. It's a solid machine for anyone who
+              takes their coffee seriously but doesn't want to deal with
+              multiple gadgets cluttering the counter. Great for daily use and
+              way more satisfying than pod machines.
             </p>
             <div class="mt-8">
               <Button href="https://amzn.to/4p8DCUn">Purchase</Button>
@@ -102,7 +106,7 @@ const tierThreeStockingStuffers = [
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
                 Stocking stuffers:
               </p>
-              <ul class="mt-4 grid grid-cols-5 gap-x-4">
+              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
                 {
                   tierOneStockingStuffers.map((item) => {
                     if (!item) return null;
@@ -148,10 +152,12 @@ const tierThreeStockingStuffers = [
               Moccamaster KBGV Select Coffee Brewer
             </h2>
             <p class="md:text-xl opacity-70">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Obcaecati quas totam dolores ab molestias atque assumenda minus,
-              ducimus libero dignissimos, necessitatibus alias temporibus
-              sapiente pariatur ipsum vitae consequatur optio sequi?
+              The Moccamaster KBGV Select brews coffee at the perfect
+              temperature and speed, which is why it's certified by coffee nerds
+              everywhere. It's built like a tank in the Netherlands, looks great
+              on the counter, and makes consistently excellent drip coffee. If
+              someone's still using a cheap Mr. Coffee, this is a serious
+              upgrade that'll last them years.
             </p>
             <div class="mt-8">
               <Button href="https://amzn.to/4oupwMa">Purchase</Button>
@@ -160,7 +166,7 @@ const tierThreeStockingStuffers = [
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
                 Stocking stuffers:
               </p>
-              <ul class="mt-4 grid grid-cols-5 gap-x-4">
+              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
                 {
                   tierTwoStockingStuffers.map((item) => {
                     if (!item) return null;
@@ -206,10 +212,11 @@ const tierThreeStockingStuffers = [
               Kalita Wave 185 Stainless Steel Coffee Dripper
             </h2>
             <p class="md:text-xl opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-              maxime et ab odio rerum consectetur nulla, hic, harum distinctio
-              voluptates velit ipsum laudantium alias. Veritatis ipsum sunt cum
-              voluptatum repellat.
+              The Kalita Wave 185 is a pour-over dripper that makes brewing feel
+              like a little morning ritual. The flat-bottom design and
+              three-hole drainage give you an even extraction, so your coffee
+              tastes clean and balanced. It's perfect for anyone who wants to
+              slow down and actually enjoy the process.
             </p>
             <div class="mt-8">
               <Button href="https://amzn.to/4p7Cxfw">Purchase</Button>
@@ -218,7 +225,7 @@ const tierThreeStockingStuffers = [
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
                 Stocking stuffers:
               </p>
-              <ul class="mt-4 grid grid-cols-5 gap-x-4">
+              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-x-4">
                 {
                   tierThreeStockingStuffers.map((item) => {
                     if (!item) return null;
@@ -257,10 +264,11 @@ const tierThreeStockingStuffers = [
               Trade Coffee Subscription
             </h2>
             <p class="md:text-xl opacity-70">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur
-              maxime et ab odio rerum consectetur nulla, hic, harum distinctio
-              voluptates velit ipsum laudantium alias. Veritatis ipsum sunt cum
-              voluptatum repellat.
+              Now that you've got the gear, keep it stocked with Trade Coffee.
+              They match you with beans from top roasters based on your taste
+              preferences, then ship fresh bags right to your door. It's like
+              having a coffee expert curating your stash—no more guessing at the
+              grocery store or ending up with stale beans from who knows where.
             </p>
             <div class="mt-8">
               <Button href="https://rwrd.io/ref_2JQN4EP?c">Subscribe</Button>
