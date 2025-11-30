@@ -1,11 +1,24 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "@/layouts/Layout.astro";
-import testImage from "./moccamaster.jpg";
-import moccamasterImage from "./moccamaster.png";
-import brevilleBarristaImage from "./breville-barista.png";
-import kalitaWaveImage from "./kalita-wave.png";
 import { Icon } from "astro-icon/components";
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  render,
+} from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Button from "@/components/button.astro";
+import brevilleBarristaImage from "./breville-barista@2x.png";
+import normcoreDosingFunnelImage from "./normcore-dosing-funnel.webp";
+import normcoreEspressoMeasuringCupImage from "./normcore-espresso-measuring-cup.webp";
+import normcoreSpringLoadedTamperImage from "./normcore-spring-loaded-tamper.webp";
+import normcoreWDTDistributionToolImage from "./normcore-wdt-distribution-tool.webp";
+import moccamasterImage from "./moccamaster@2x.png";
+import kalitaWaveImage from "./kalita-wave@2x.png";
+import bratzaEncoreGrinderImage from "./baratza-encore-grinder.webp";
+
+const products = await getCollection("products");
 ---
 
 <Layout title="2025 Holiday Coffee Gift Guide">
@@ -37,19 +50,19 @@ import { Icon } from "astro-icon/components";
       class="absolute inset-x-0 top-[-6.25rem] w-full h-[calc(100%+6.25rem)] pointer-events-none"
     ></canvas>
   </header>
-  <section class="mt-4 bg-secondary rounded-lg">
+  <section class="mt-4 bg-muted rounded-lg">
     <ul>
-      <li>
-        <div class="grid grid-cols-2 gap-x-8 items-center">
-          <!-- <div class="p-8 order-1">
+      <li id="tier-one" class="scroll-mt-24">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center p-4">
+          <div class="md:p-8 flex justify-center">
             <Image
               src={brevilleBarristaImage}
               alt="Breville Barista Express"
-              class="rounded-lg overflow-hidden max-w-sm"
+              class="rounded-lg overflow-hidden max-w-md"
             />
-          </div> -->
-          <div class="px-8 py-16">
-            <p class="text-xs font-mono uppercase text-accent tracking-widest">
+          </div>
+          <div class="md:px-8 md:py-16">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Tier one&nbsp;&not;
             </p>
             <h2
@@ -64,79 +77,66 @@ import { Icon } from "astro-icon/components";
               voluptatum repellat.
             </p>
             <div class="mt-8">
-              <a
-                href="https://amzn.to/4p8DCUn"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group/button bg-primary text-primary-foreground h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium"
-                >Purchase
-                <span
-                  class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
-                  aria-hidden="true"
-                  ><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
-                  /><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
-                  /></span
-                ></a
-              >
+              <Button href="https://amzn.to/4p8DCUn">Purchase</Button>
             </div>
             <div class="mt-8">
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
                 Stocking stuffers:
               </p>
               <ul class="mt-4 grid grid-cols-6 gap-x-4">
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
+                {
+                  [
+                    // {
+                    //   href: normcoreDosingFunnel?.data.link,
+                    //   src: normcoreDosingFunnelImage,
+                    //   alt: normcoreDosingFunnel?.data.title,
+                    // },
+                    {
+                      src: normcoreEspressoMeasuringCupImage,
+                      alt: "Normcore Espresso Measuring Cup",
+                    },
+                    {
+                      src: normcoreSpringLoadedTamperImage,
+                      alt: "Normcore Spring Loaded Tamper",
+                    },
+                    {
+                      src: normcoreWDTDistributionToolImage,
+                      alt: "Normcore WDT Distribution Tool",
+                    },
+                  ].map(({ href, src, alt }) => (
+                    <li>
+                      <a
+                        href={href}
+                        class="rounded-lg overflow-hidden border-2 border-primary/30 block bg-white"
+                      >
+                        <Image
+                          src={src}
+                          alt={alt}
+                          class="aspect-square object-contain"
+                        />
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
         </div>
       </li>
-      <li class="border-t border-primary border-dashed">
-        <div class="grid grid-cols-2 gap-x-8 items-center">
-          <!-- <div class="p-8">
+      <li
+        id="tier-two"
+        class="scroll-mt-24 border-t border-secondary/30 border-dashed"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center p-4">
+          <div class="md:p-8 flex justify-center md:order-1">
             <Image
               src={moccamasterImage}
               alt="Moccamaster KBGV Select Coffee Brewer"
-              class="rounded-lg overflow-hidden max-w-sm ml-auto"
+              class="rounded-lg overflow-hidden max-w-md"
             />
-          </div> -->
-          <div class="px-8 py-16">
-            <p class="text-xs font-mono uppercase text-accent tracking-widest">
+          </div>
+          <div class="md:px-8 md:py-16">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Tier two&nbsp;&not;
             </p>
             <h2
@@ -151,79 +151,53 @@ import { Icon } from "astro-icon/components";
               sapiente pariatur ipsum vitae consequatur optio sequi?
             </p>
             <div class="mt-8">
-              <a
-                href="https://amzn.to/4oupwMa"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group/button bg-primary text-primary-foreground h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium"
-                >Purchase
-                <span
-                  class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
-                  aria-hidden="true"
-                  ><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
-                  /><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
-                  /></span
-                ></a
-              >
+              <Button href="https://amzn.to/4oupwMa">Purchase </Button>
             </div>
             <div class="mt-8">
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
                 Stocking stuffers:
               </p>
               <ul class="mt-4 grid grid-cols-6 gap-x-4">
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
+                {
+                  [
+                    {
+                      src: bratzaEncoreGrinderImage,
+                      alt: "Bratza Encore Coffee Grinder",
+                    },
+                  ].map(({ src, alt }) => (
+                    <li>
+                      <a
+                        href=""
+                        class="rounded-lg overflow-hidden border-2 border-primary/30 block bg-white"
+                      >
+                        <Image
+                          src={src}
+                          alt={alt}
+                          class="aspect-square object-contain"
+                        />
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
         </div>
       </li>
-      <li class="border-t border-primary border-dashed">
-        <div class="grid grid-cols-2 gap-x-8 items-center">
-          <!-- <div class="p-8">
+      <li
+        id="tier-three"
+        class="scroll-mt-24 border-t border-secondary/30 border-dashed"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center p-4">
+          <div class="md:p-8 flex justify-center">
             <Image
               src={kalitaWaveImage}
               alt="Kalita Wave 185 Stainless Steel Coffee Dripper"
-              class="rounded-lg overflow-hidden max-w-sm ml-auto"
+              class="rounded-lg overflow-hidden max-w-md"
             />
-          </div> -->
-          <div class="px-8 py-16">
-            <p class="text-xs font-mono uppercase text-accent tracking-widest">
+          </div>
+          <div class="md:px-8 md:py-16">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Tier three&nbsp;&not;
             </p>
             <h2
@@ -238,73 +212,46 @@ import { Icon } from "astro-icon/components";
               voluptatum repellat.
             </p>
             <div class="mt-8">
-              <a
-                href="https://amzn.to/4p7Cxfw"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group/button bg-primary text-primary-foreground h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium"
-                >Purchase
-                <span
-                  class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
-                  aria-hidden="true"
-                  ><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
-                  /><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
-                  /></span
-                ></a
-              >
+              <Button href="https://amzn.to/4p7Cxfw">Purchase</Button>
             </div>
             <div class="mt-8">
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
                 Stocking stuffers:
               </p>
               <ul class="mt-4 grid grid-cols-6 gap-x-4">
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href=""
-                    class="rounded-lg overflow-hidden border-2 border-accent block"
-                  >
-                    <Image
-                      src={testImage}
-                      alt="Moccamaster KBGV Select Coffee Brewer"
-                    />
-                  </a>
-                </li>
+                {
+                  [
+                    {
+                      src: bratzaEncoreGrinderImage,
+                      alt: "Bratza Encore Coffee Grinder",
+                    },
+                  ].map(({ src, alt }) => (
+                    <li>
+                      <a
+                        href=""
+                        class="rounded-lg overflow-hidden border-2 border-primary/30 block bg-white"
+                      >
+                        <Image
+                          src={src}
+                          alt={alt}
+                          class="aspect-square object-contain"
+                        />
+                      </a>
+                    </li>
+                  ))
+                }
               </ul>
             </div>
           </div>
-          <!-- <Image src={brevilleBarristaImage} alt="Breville Barista Express" /> -->
         </div>
       </li>
-      <li class="border-t border-primary border-dashed">
-        <div class="grid grid-cols-2 gap-x-8 items-center">
-          <div class="px-8 py-16">
-            <p class="text-xs font-mono uppercase text-accent tracking-widest">
+      <li
+        id="coffee-subscription"
+        class="scroll-mt-24 border-t border-secondary/30 border-dashed rounded-b-lg"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-8 items-center p-4">
+          <div class="md:px-8 md:py-16 md:col-start-2 md:col-end-4">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Coffee Subscription&nbsp;&not;
             </p>
             <h2
@@ -319,27 +266,9 @@ import { Icon } from "astro-icon/components";
               voluptatum repellat.
             </p>
             <div class="mt-8">
-              <a
-                href="https://rwrd.io/ref_2JQN4EP?c"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group/button bg-primary text-primary-foreground h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium"
-                >Purchase
-                <span
-                  class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
-                  aria-hidden="true"
-                  ><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
-                  /><Icon
-                    name="arrow-right"
-                    class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
-                  /></span
-                ></a
-              >
+              <Button href="https://rwrd.io/ref_2JQN4EP?c">Subscribe</Button>
             </div>
           </div>
-          <!-- <Image src={brevilleBarristaImage} alt="Breville Barista Express" /> -->
         </div>
       </li>
     </ul>
