@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
+import { TooltipAnchor } from "@/components/tooltip";
 import brevilleBarristaImage from "./breville-barista@2x.png";
 import moccamasterImage from "./moccamaster@2x.png";
 import kalitaWaveImage from "./kalita-wave@2x.png";
@@ -25,6 +26,7 @@ const tierTwoStockingStuffers = [
   "technivorm-moccamaster-4-white-paper-filters",
   "urnex-coffee-maker-cleaner-and-descaler-kit",
   "notneutral-lino-porcelain-coffee-cup",
+  "fellow-atmos-electric-vacuum-canister",
 ].map((id) => getProductData(id));
 
 const tierThreeStockingStuffers = [
@@ -32,6 +34,7 @@ const tierThreeStockingStuffers = [
   "kalita-wave-paper-coffee-filters",
   "fellow-stagg-ekg-electric-gooseneck-kettle",
   "kalita-wave-series-500-server",
+  "third-wave-water-classic-light-roast",
 ].map((id) => getProductData(id));
 ---
 
@@ -68,16 +71,16 @@ const tierThreeStockingStuffers = [
     <ul>
       <li id="tier-one" class="scroll-mt-24">
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center px-4 py-16 md:p-0"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
         >
-          <div class="md:p-8 flex justify-center">
+          <div class="lg:p-8 flex justify-center">
             <Image
               src={brevilleBarristaImage}
               alt="Breville Barista Express"
               class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
-          <div class="md:px-8 md:py-16">
+          <div class="lg:px-8 lg:py-16">
             <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Tier one&nbsp;&not;
             </p>
@@ -131,16 +134,16 @@ const tierThreeStockingStuffers = [
         class="scroll-mt-24 border-t border-secondary/30 border-dashed"
       >
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center px-4 py-16 md:p-0"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
         >
-          <div class="md:p-8 flex justify-center md:order-1">
+          <div class="lg:p-8 flex justify-center lg:order-1">
             <Image
               src={moccamasterImage}
               alt="Moccamaster KBGV Select Coffee Brewer"
               class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
-          <div class="md:px-8 md:py-16">
+          <div class="lg:px-8 lg:py-16">
             <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Tier two&nbsp;&not;
             </p>
@@ -194,16 +197,16 @@ const tierThreeStockingStuffers = [
         class="scroll-mt-24 border-t border-secondary/30 border-dashed"
       >
         <div
-          class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center px-4 py-16 md:p-0"
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
         >
-          <div class="md:p-8 flex justify-center">
+          <div class="lg:p-8 flex justify-center">
             <Image
               src={kalitaWaveImage}
               alt="Kalita Wave 185 Stainless Steel Coffee Dripper"
               class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
-          <div class="md:px-8 md:py-16">
+          <div class="lg:px-8 lg:py-16">
             <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Tier three&nbsp;&not;
             </p>
@@ -257,9 +260,9 @@ const tierThreeStockingStuffers = [
         class="scroll-mt-24 border-t border-secondary/30 border-dashed rounded-b-lg"
       >
         <div
-          class="grid grid-cols-1 md:grid-cols-4 gap-x-8 items-center px-4 py-16 md:p-0"
+          class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 items-center px-4 py-16 lg:p-0"
         >
-          <div class="md:px-8 md:py-16 md:col-start-2 md:col-end-4">
+          <div class="lg:px-8 lg:py-16 lg:col-start-2 lg:col-end-4">
             <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Coffee Subscription&nbsp;&not;
             </p>
