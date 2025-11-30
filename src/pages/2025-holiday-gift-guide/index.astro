@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
+import { TooltipAnchor } from "@/components/tooltipanchor.react";
 import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
 import moccamasterImage from "@/assets/moccamaster@2x.png";
 import kalitaWaveImage from "@/assets/kalita-wave@2x.png";
@@ -107,18 +108,13 @@ const tierThreeStockingStuffers = [
                     if (!item) return null;
                     return (
                       <li>
-                        <a
+                        <TooltipAnchor
+                          description={item.title}
                           href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
-                        >
-                          <img
-                            src={item.img}
-                            alt={item.title}
-                            class="absolute inset-0 size-full object-contain"
-                          />
-                        </a>
+                          src={item.img!}
+                          alt={item.title}
+                          client:load
+                        />
                       </li>
                     );
                   })
@@ -170,18 +166,13 @@ const tierThreeStockingStuffers = [
                     if (!item) return null;
                     return (
                       <li>
-                        <a
+                        <TooltipAnchor
+                          description={item.title}
                           href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
-                        >
-                          <img
-                            src={item.img}
-                            alt={item.title}
-                            class="absolute inset-0 size-full object-contain"
-                          />
-                        </a>
+                          src={item.img!}
+                          alt={item.title}
+                          client:load
+                        />
                       </li>
                     );
                   })
@@ -233,18 +224,13 @@ const tierThreeStockingStuffers = [
                     if (!item) return null;
                     return (
                       <li>
-                        <a
+                        <TooltipAnchor
+                          description={item.title}
                           href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          class="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
-                        >
-                          <img
-                            src={item.img}
-                            alt={item.title}
-                            class="absolute inset-0 size-full object-contain"
-                          />
-                        </a>
+                          src={item.img!}
+                          alt={item.title}
+                          client:load
+                        />
                       </li>
                     );
                   })
