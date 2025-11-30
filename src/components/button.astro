@@ -2,20 +2,34 @@
 import { Icon } from "astro-icon/components";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"a">;
+type Props = HTMLAttributes<"a"> & {
+  variant?: "primary" | "accent";
+};
 
-const { href, ...attrs } = Astro.props;
+const { variant = "primary", href, ...attrs } = Astro.props;
 ---
 
 <a
   href={href}
   target="_blank"
   rel="noopener noreferrer"
-  class="group/button bg-primary text-primary-foreground h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium"
+  class:list={[
+    "group/button h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium",
+    {
+      "bg-primary text-primary-foreground": variant === "primary",
+      "bg-accent text-primary": variant === "accent",
+    },
+  ]}
   {...attrs}
   ><slot />
   <span
-    class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
+    class:list={[
+      "size-7 rounded-full grid place-content-center overflow-hidden",
+      {
+        "bg-accent text-primary": variant === "primary",
+        "bg-primary text-accent": variant === "accent",
+      },
+    ]}
     aria-hidden="true"
     ><Icon
       name="arrow-right"
