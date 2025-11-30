@@ -25,7 +25,7 @@ export const TooltipAnchor = forwardRef<HTMLDivElement, TooltipAnchorProps>(
         <Ariakit.TooltipAnchor
           className="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
           render={
-            <a href={href}>
+            <a href={href} target="_blank" rel="noopener noreferrer">
               <img src={src} alt={alt} />
             </a>
           }
