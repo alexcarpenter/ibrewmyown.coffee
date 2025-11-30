@@ -1,0 +1,42 @@
+---
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a"> & {
+  variant?: "primary" | "accent";
+};
+
+const { variant = "primary", href, ...attrs } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class:list={[
+    "group/button h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium shadow-sm shadow-primary/20",
+    {
+      "bg-primary text-primary-foreground": variant === "primary",
+      "bg-accent text-primary": variant === "accent",
+    },
+  ]}
+  {...attrs}
+  ><slot />
+  <span
+    class:list={[
+      "size-7 rounded-full grid place-content-center overflow-hidden",
+      {
+        "bg-accent text-primary": variant === "primary",
+        "bg-primary text-accent": variant === "accent",
+      },
+    ]}
+    aria-hidden="true"
+    ><Icon
+      name="arrow-right"
+      class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
+    /><Icon
+      name="arrow-right"
+      class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
+    /></span
+  ></a
+>

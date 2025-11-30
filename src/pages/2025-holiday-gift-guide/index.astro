@@ -1,0 +1,443 @@
+---
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import Button from "@/components/button.astro";
+import { TooltipAnchor } from "@/components/tooltipanchor.react";
+import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
+import moccamasterImage from "@/assets/moccamaster@2x.png";
+import kalitaWaveImage from "@/assets/kalita-wave@2x.png";
+
+const products = await getCollection("products");
+
+const getProductData = (id: string) =>
+  products.find((product) => product.id === id)?.data;
+
+const tierOneStockingStuffers = [
+  "normcore-dosing-funnel",
+  "normcore-espresso-measuring-cup",
+  "normcore-spring-loaded-tamper",
+  "normcore-wdt-distribution-tool",
+  "timemore-coffee-scale-basic-2-0",
+].map((id) => getProductData(id));
+
+const tierTwoStockingStuffers = [
+  "fellow-opus-conical-burr-coffee-grinder",
+  "technivorm-moccamaster-4-white-paper-filters",
+  "urnex-coffee-maker-cleaner-and-descaler-kit",
+  "notneutral-lino-porcelain-coffee-cup",
+  "fellow-atmos-electric-vacuum-canister",
+].map((id) => getProductData(id));
+
+const tierThreeStockingStuffers = [
+  "baratza-encore-grinder",
+  "kalita-wave-paper-coffee-filters",
+  "fellow-stagg-ekg-electric-gooseneck-kettle",
+  "kalita-wave-series-500-server",
+  "third-wave-water-classic-light-roast",
+].map((id) => getProductData(id));
+---
+
+<Layout
+  title="2025 Holiday Coffee Gift Guide"
+  description="Discover the best coffee gifts for the holidays—espresso machines, drippers, brewers, and bean subscriptions that coffee lovers will actually use every day."
+>
+  <header class="bg-primary px-4 sm:px-8 rounded-b-lg py-24 relative">
+    <h1 class="sr-only">2025 Holiday Coffee Gift Guide</h1>
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 138 34"
+      fill="none"
+      class="text-accent relative"
+      ><path
+        fill="currentColor"
+        d="M134.42 4c1.984 0 3.04 1.12 3.04 3.136v9.504h-3.84v10.784c0 .704.288 1.056.8 1.056s.736-.32.736-.896v-9.952h2.304v10.016c0 1.792-1.184 2.912-3.04 2.912-1.984 0-3.136-1.12-3.136-3.232V7.264c0-2.144 1.184-3.264 3.136-3.264Zm0 2.048c-.544 0-.8.416-.8.992v7.616h1.536V7.04c0-.608-.224-.992-.736-.992ZM125.576 4.032c1.024 0 1.536.704 1.984 1.664V0h2.336v30.4h-2.304v-1.6c-.416 1.024-.992 1.728-2.016 1.728-1.056 0-1.792-.736-1.792-2.272V6.304c0-1.536.736-2.272 1.792-2.272Zm1.216 2.048c-.416 0-.672.32-.672.928v20.544c0 .608.256.928.672.928.416 0 .768-.352.768-1.12V7.2c0-.768-.32-1.12-.768-1.12ZM120.1 0h2.336v3.296H120.1V0Zm0 4.16h2.336V30.4H120.1V4.16ZM116.28 4.16h2.336V30.4H116.6l-.256-1.696c-.416.992-1.216 1.856-2.24 1.824-.96 0-1.6-.64-1.6-2.112V4.16h2.336v23.584c0 .448.224.704.608.704.416 0 .832-.384.832-.992V4.16ZM108.852 29.056c-.32.992-.864 1.504-1.92 1.504-1.344-.032-2.208-1.056-2.208-2.944V3.296c0-2.112 1.152-3.264 3.264-3.264s3.168 1.088 3.168 3.008v9.856h-2.4V3.104c0-.64-.288-.96-.8-.96-.48 0-.8.352-.8.96v24.384c0 .608.288.96.8.96.48 0 .8-.416.8-.96V16.512h-.864V14.4h3.232v16h-1.696l-.416-1.344h-.16ZM100.857 6.144h-1.44v21.184c0 .64.128.992.736.992h.736v2.08h-1.344c-1.472 0-2.464-.8-2.464-2.464V6.144h-1.152V4.16c1.376 0 1.664-1.024 1.792-3.616h1.696V4.16h1.44v1.984Z"
+      ></path><path
+        fill="currentColor"
+        d="M95.083 1.632c-.352 0-.48.224-.48.512V4.16h1.472v1.984h-1.472V30.4h-2.336V6.144h-1.152V4.16h1.152V1.984C92.267.608 93.1 0 94.38 0h1.696v1.632h-.992ZM88.006 0h2.336v3.296h-2.336V0Zm0 4.16h2.336V30.4h-2.336V4.16ZM84.29 29.056c-.32.992-.865 1.504-1.92 1.504-1.345-.032-2.209-1.056-2.209-2.944V3.296c0-2.112 1.152-3.264 3.264-3.264s3.168 1.088 3.168 3.008v9.856h-2.4V3.104c0-.64-.288-.96-.8-.96-.48 0-.8.352-.8.96v24.384c0 .608.288.96.8.96.48 0 .8-.416.8-.96V16.512h-.864V14.4h3.232v16h-1.696l-.416-1.344h-.16ZM73.013 24.704l.224-5.536.512-15.008h2.432l-1.856 26.72c-.288 2.272-1.696 2.912-3.328 2.912h-1.568v-2.048h1.12c.544 0 .896-.256.96-.672L69.557 4.16h2.4l.608 15.008.224 5.536h.224ZM66.694 30.4l-.256-1.632c-.448 1.152-1.056 1.792-2.112 1.792-1.088 0-1.856-.864-1.856-2.144v-9.152c0-1.888.608-3.008 2.112-3.68l1.728-.736V6.784c0-.48-.16-.768-.64-.768s-.704.32-.704.768v7.392h-2.272V6.752c0-1.696.96-2.752 2.976-2.752 1.952 0 2.976.992 2.976 2.912V30.4h-1.952Zm-.352-13.248-.736.288c-.576.288-.8.768-.8 1.824v8.352c0 .512.192.864.608.864.448 0 .896-.448.896-1.216l.032-10.112ZM56.857 4.032c1.024 0 1.536.704 1.984 1.664V0h2.336v30.4h-2.304v-1.6c-.416 1.024-.992 1.728-2.016 1.728-1.056 0-1.792-.736-1.792-2.272V6.304c0-1.536.736-2.272 1.792-2.272Zm1.216 2.048c-.416 0-.672.32-.672.928v20.544c0 .608.256.928.672.928.416 0 .768-.352.768-1.12V7.2c0-.768-.32-1.12-.768-1.12ZM51.38 0h2.337v3.296H51.38V0Zm0 4.16h2.337V30.4H51.38V4.16ZM47.6 0h2.336v30.4H47.6V0ZM43.139 4c1.888 0 3.072 1.12 3.072 3.232v20.064c0 2.144-1.152 3.264-3.104 3.264-1.92 0-3.104-1.12-3.104-3.264V7.232C40.003 5.12 41.187 4 43.139 4Zm.736 23.424V7.104c0-.64-.256-1.024-.736-1.024-.512 0-.8.352-.8 1.024v20.32c0 .704.288 1.056.768 1.056.512 0 .768-.384.768-1.056ZM36.16.16h2.433V30.4H36.16V15.776h-1.504V30.4h-2.4V.16h2.4v13.472h1.504V.16ZM24.374 14.528c.288-.736.864-1.216 1.728-1.216 1.12 0 1.792.768 1.792 2.464v11.776c0 1.952-1.152 2.944-3.072 2.944-1.856 0-3.04-.992-3.04-3.008V16.864h2.272v10.688c0 .576.32.864.768.864.416 0 .736-.256.736-.8V16.16c0-.512-.288-.8-.704-.8-.384 0-.608.256-.736.608l-2.24-.512.48-15.296h5.568l-.128 1.984h-3.2l-.384 12.384h.16ZM20.993 28.416V30.4h-6.368v-1.408c0-7.872 3.84-13.44 3.84-17.856V3.008c0-.64-.288-.896-.736-.896s-.736.32-.736.896v8.64h-2.272V2.912c0-1.792 1.152-2.88 3.104-2.88 1.792 0 2.976.992 2.976 2.72v7.52c0 5.92-3.744 12.096-3.744 18.144h3.936ZM10.39.032c1.887 0 3.04 1.024 3.04 3.008v24.448c0 2.016-1.153 3.04-3.04 3.04-1.92 0-3.073-1.024-3.073-3.04V3.04c0-1.984 1.184-3.008 3.072-3.008Zm.671 27.488V3.04c0-.608-.256-.928-.672-.928-.416 0-.704.288-.704.928v24.48c0 .64.256.928.704.928.416 0 .672-.288.672-.928ZM6.368 28.416V30.4H0v-1.408c0-7.872 3.84-13.44 3.84-17.856V3.008c0-.64-.288-.896-.736-.896s-.736.32-.736.896v8.64H.096V2.912C.096 1.12 1.248.032 3.2.032c1.792 0 2.976.992 2.976 2.72v7.52c0 5.92-3.744 12.096-3.744 18.144h3.936Z"
+      ></path></svg
+    >
+    <p
+      class="text-white text-xl max-w-2xl text-balance mx-auto mt-8 text-center"
+    >
+      Discover the best coffee gifts for the holidays—espresso machines,
+      drippers, brewers, and bean subscriptions that coffee lovers will actually
+      use every day.
+    </p>
+    <canvas
+      id="snowCanvas"
+      class="absolute inset-x-0 top-[-6.25rem] w-full h-[calc(100%+6.25rem)] pointer-events-none"
+    ></canvas>
+  </header>
+  <section class="mt-4 bg-muted rounded-lg">
+    <ul>
+      <li id="tier-one" class="scroll-mt-24">
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
+        >
+          <div class="lg:p-8 flex justify-center">
+            <Image
+              src={brevilleBarristaImage}
+              alt="Breville Barista Express"
+              class="rounded-lg overflow-hidden max-w-lg"
+            />
+          </div>
+          <div class="lg:px-8 lg:py-24">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+              Tier one&nbsp;&not;
+            </p>
+            <h2
+              class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
+            >
+              Breville Barista Express Espresso Machine
+            </h2>
+            <p class="md:text-xl opacity-70">
+              The Breville Barista Express has everything you need to make
+              café-quality espresso at home—built-in grinder, steam wand, and
+              precise temperature control. It's a solid machine for anyone who
+              takes their coffee seriously but doesn't want to deal with
+              multiple gadgets cluttering the counter. Great for daily use and
+              way more satisfying than pod machines.
+            </p>
+            <div class="mt-8">
+              <Button href="https://amzn.to/4p8DCUn">Purchase</Button>
+            </div>
+            <div class="mt-8">
+              <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+                Stocking stuffers:
+              </p>
+              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
+                {
+                  tierOneStockingStuffers.map((item) => {
+                    if (!item) return null;
+                    return (
+                      <li>
+                        <TooltipAnchor
+                          description={item.title}
+                          href={item.link}
+                          src={item.img!}
+                          alt={item.title}
+                          client:load
+                        />
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        id="tier-two"
+        class="scroll-mt-24 border-t border-secondary/30 border-dashed"
+      >
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
+        >
+          <div class="lg:p-8 flex justify-center lg:order-1">
+            <Image
+              src={moccamasterImage}
+              alt="Moccamaster KBGV Select Coffee Brewer"
+              class="rounded-lg overflow-hidden max-w-lg"
+            />
+          </div>
+          <div class="lg:px-8 lg:py-24">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+              Tier two&nbsp;&not;
+            </p>
+            <h2
+              class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
+            >
+              Moccamaster KBGV Select Coffee Brewer
+            </h2>
+            <p class="md:text-xl opacity-70">
+              The Moccamaster KBGV Select brews coffee at the perfect
+              temperature and speed, which is why it's certified by coffee nerds
+              everywhere. It's built like a tank in the Netherlands, looks great
+              on the counter, and makes consistently excellent drip coffee. If
+              someone's still using a cheap Mr. Coffee, this is a serious
+              upgrade that'll last them years.
+            </p>
+            <div class="mt-8">
+              <Button href="https://amzn.to/4oupwMa">Purchase</Button>
+            </div>
+            <div class="mt-8">
+              <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+                Stocking stuffers:
+              </p>
+              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
+                {
+                  tierTwoStockingStuffers.map((item) => {
+                    if (!item) return null;
+                    return (
+                      <li>
+                        <TooltipAnchor
+                          description={item.title}
+                          href={item.link}
+                          src={item.img!}
+                          alt={item.title}
+                          client:load
+                        />
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        id="tier-three"
+        class="scroll-mt-24 border-t border-secondary/30 border-dashed"
+      >
+        <div
+          class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
+        >
+          <div class="lg:p-8 flex justify-center">
+            <Image
+              src={kalitaWaveImage}
+              alt="Kalita Wave 185 Stainless Steel Coffee Dripper"
+              class="rounded-lg overflow-hidden max-w-lg"
+            />
+          </div>
+          <div class="lg:px-8 lg:py-24">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+              Tier three&nbsp;&not;
+            </p>
+            <h2
+              class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
+            >
+              Kalita Wave 185 Stainless Steel Coffee Dripper
+            </h2>
+            <p class="md:text-xl opacity-70">
+              The Kalita Wave 185 is a pour-over dripper that makes brewing feel
+              like a little morning ritual. The flat-bottom design and
+              three-hole drainage give you an even extraction, so your coffee
+              tastes clean and balanced. It's perfect for anyone who wants to
+              slow down and actually enjoy the process.
+            </p>
+            <div class="mt-8">
+              <Button href="https://amzn.to/4p7Cxfw">Purchase</Button>
+            </div>
+            <div class="mt-8">
+              <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+                Stocking stuffers:
+              </p>
+              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-x-4">
+                {
+                  tierThreeStockingStuffers.map((item) => {
+                    if (!item) return null;
+                    return (
+                      <li>
+                        <TooltipAnchor
+                          description={item.title}
+                          href={item.link}
+                          src={item.img!}
+                          alt={item.title}
+                          client:load
+                        />
+                      </li>
+                    );
+                  })
+                }
+              </ul>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li
+        id="coffee-subscription"
+        class="scroll-mt-24 border-t border-secondary/30 border-dashed rounded-b-lg"
+      >
+        <div
+          class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 items-center px-4 py-16 lg:p-0"
+        >
+          <div class="lg:px-8 lg:py-24 lg:col-start-2 lg:col-end-4">
+            <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+              Coffee Subscription&nbsp;&not;
+            </p>
+            <h2
+              class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
+            >
+              Trade Coffee Subscription
+            </h2>
+            <p class="md:text-xl opacity-70">
+              Now that you've got the gear, keep it stocked with Trade Coffee.
+              They match you with beans from top roasters based on your taste
+              preferences, then ship fresh bags right to your door. It's like
+              having a coffee expert curating your stash—no more guessing at the
+              grocery store or ending up with stale beans from who knows where.
+            </p>
+            <div class="mt-8">
+              <Button href="https://rwrd.io/ref_2JQN4EP?c">Subscribe</Button>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+</Layout>
+
+<script>
+  const canvas = document.getElementById("snowCanvas") as HTMLCanvasElement;
+  const gl =
+    canvas.getContext("webgl") ||
+    (canvas.getContext("experimental-webgl") as WebGLRenderingContext);
+
+  if (!gl) {
+    console.error("WebGL not supported");
+  }
+
+  function resize() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    if (gl) gl.viewport(0, 0, canvas.width, canvas.height);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  const vertexShaderSource = `
+            attribute vec2 a_position;
+            void main() {
+                gl_Position = vec4(a_position, 0.0, 1.0);
+            }
+        `;
+
+  const fragmentShaderSource = `
+            precision mediump float;
+            uniform vec2 u_resolution;
+            uniform float u_time;
+
+            float hash(vec2 p) {
+                return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
+            }
+
+            float snow(vec2 uv, float scale, float speed, float layer) {
+                uv *= scale;
+                uv.y += u_time * speed;
+                uv.x += sin(uv.y * 0.5 + layer * 3.14) * 0.2;
+
+                vec2 id = floor(uv);
+                vec2 gv = fract(uv) - 0.5;
+
+                float n = hash(id + vec2(layer, 0.0));
+
+                float x = (n - 0.5) * 0.8;
+                float y = (hash(id + vec2(layer, 1.0)) - 0.5) * 0.8;
+
+                vec2 p = gv - vec2(x, y);
+                float d = length(p);
+
+                float size = 0.05 + n * 0.05;
+                float flake = smoothstep(size, 0.0, d);
+
+                return flake * (0.5 + n * 0.5);
+            }
+
+            void main() {
+                vec2 uv = (gl_FragCoord.xy - 0.5 * u_resolution.xy) / u_resolution.y;
+
+                float col = 0.0;
+
+                col += snow(uv, 5.0, 0.1, 0.0) * 0.8;
+                col += snow(uv, 8.0, 0.15, 1.0) * 0.9;
+                col += snow(uv, 12.0, 0.22, 2.0) * 1.0;
+                col += snow(uv, 18.0, 0.3, 3.0) * 0.7;
+                col += snow(uv, 25.0, 0.4, 4.0) * 0.5;
+
+                vec3 color = vec3(col);
+                gl_FragColor = vec4(color, col * 0.9);
+            }
+        `;
+
+  function createShader(
+    gl: WebGLRenderingContext,
+    type: number,
+    source: string
+  ) {
+    const shader = gl.createShader(type) as WebGLShader;
+    gl.shaderSource(shader, source);
+    gl.compileShader(shader);
+
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+      gl.deleteShader(shader);
+      return null;
+    }
+    return shader;
+  }
+
+  function createProgram(
+    gl: WebGLRenderingContext,
+    vertexShader: WebGLShader,
+    fragmentShader: WebGLShader
+  ) {
+    const program = gl.createProgram() as WebGLProgram;
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+
+    if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+      console.error("Program link error:", gl.getProgramInfoLog(program));
+      return null;
+    }
+    return program;
+  }
+
+  const vertexShader = createShader(
+    gl,
+    gl.VERTEX_SHADER,
+    vertexShaderSource
+  ) as WebGLShader;
+  const fragmentShader = createShader(
+    gl,
+    gl.FRAGMENT_SHADER,
+    fragmentShaderSource
+  ) as WebGLShader;
+  const program = createProgram(
+    gl,
+    vertexShader,
+    fragmentShader
+  ) as WebGLProgram;
+
+  const positionLocation = gl.getAttribLocation(program, "a_position");
+  const resolutionLocation = gl.getUniformLocation(program, "u_resolution");
+  const timeLocation = gl.getUniformLocation(program, "u_time");
+
+  const positionBuffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+  gl.bufferData(
+    gl.ARRAY_BUFFER,
+    new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+    gl.STATIC_DRAW
+  );
+
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+  let startTime = Date.now();
+
+  function render() {
+    const time = (Date.now() - startTime) * 0.001;
+
+    gl.clearColor(0, 0, 0, 0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+
+    gl.useProgram(program);
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+    gl.enableVertexAttribArray(positionLocation);
+    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+    gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+    gl.uniform1f(timeLocation, time);
+
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+    requestAnimationFrame(render);
+  }
+
+  render();
+</script>
