@@ -3,10 +3,9 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
-import { TooltipAnchor } from "@/components/tooltip";
-import brevilleBarristaImage from "./breville-barista@2x.png";
-import moccamasterImage from "./moccamaster@2x.png";
-import kalitaWaveImage from "./kalita-wave@2x.png";
+import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
+import moccamasterImage from "@/assets/moccamaster@2x.png";
+import kalitaWaveImage from "@/assets/kalita-wave@2x.png";
 
 const products = await getCollection("products");
 
