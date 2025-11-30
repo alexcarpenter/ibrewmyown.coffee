@@ -14,7 +14,7 @@ const { variant = "primary", href, ...attrs } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   class:list={[
-    "group/button h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium",
+    "group/button h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium shadow-sm shadow-primary/20",
     {
       "bg-primary text-primary-foreground": variant === "primary",
       "bg-accent text-primary": variant === "accent",

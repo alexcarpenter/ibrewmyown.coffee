@@ -1,24 +1,28 @@
 ---
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
-import {
-  type CollectionEntry,
-  getCollection,
-  getEntry,
-  render,
-} from "astro:content";
+import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
 import brevilleBarristaImage from "./breville-barista@2x.png";
-import normcoreDosingFunnelImage from "./normcore-dosing-funnel.webp";
-import normcoreEspressoMeasuringCupImage from "./normcore-espresso-measuring-cup.webp";
-import normcoreSpringLoadedTamperImage from "./normcore-spring-loaded-tamper.webp";
-import normcoreWDTDistributionToolImage from "./normcore-wdt-distribution-tool.webp";
 import moccamasterImage from "./moccamaster@2x.png";
 import kalitaWaveImage from "./kalita-wave@2x.png";
-import bratzaEncoreGrinderImage from "./baratza-encore-grinder.webp";
 
 const products = await getCollection("products");
+
+const tierOneStockingStuffers = [
+  "normcore-dosing-funnel",
+  "normcore-espresso-measuring-cup",
+  "normcore-spring-loaded-tamper",
+  "normcore-wdt-distribution-tool",
+].map((id) => products.find((product) => product.id === id)?.data);
+
+const tierTwoStockingStuffers = ["baratza-encore-grinder"].map(
+  (id) => products.find((product) => product.id === id)?.data
+);
+
+const tierThreeStockingStuffers = [].map(
+  (id) => products.find((product) => product.id === id)?.data
+);
 ---
 
 <Layout title="2025 Holiday Coffee Gift Guide">
@@ -53,12 +57,14 @@ const products = await getCollection("products");
   <section class="mt-4 bg-muted rounded-lg">
     <ul>
       <li id="tier-one" class="scroll-mt-24">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center p-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center px-4 py-16 md:p-0"
+        >
           <div class="md:p-8 flex justify-center">
             <Image
               src={brevilleBarristaImage}
               alt="Breville Barista Express"
-              class="rounded-lg overflow-hidden max-w-md"
+              class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
           <div class="md:px-8 md:py-16">
@@ -85,38 +91,25 @@ const products = await getCollection("products");
               </p>
               <ul class="mt-4 grid grid-cols-6 gap-x-4">
                 {
-                  [
-                    // {
-                    //   href: normcoreDosingFunnel?.data.link,
-                    //   src: normcoreDosingFunnelImage,
-                    //   alt: normcoreDosingFunnel?.data.title,
-                    // },
-                    {
-                      src: normcoreEspressoMeasuringCupImage,
-                      alt: "Normcore Espresso Measuring Cup",
-                    },
-                    {
-                      src: normcoreSpringLoadedTamperImage,
-                      alt: "Normcore Spring Loaded Tamper",
-                    },
-                    {
-                      src: normcoreWDTDistributionToolImage,
-                      alt: "Normcore WDT Distribution Tool",
-                    },
-                  ].map(({ href, src, alt }) => (
-                    <li>
-                      <a
-                        href={href}
-                        class="rounded-lg overflow-hidden border-2 border-primary/30 block bg-white"
-                      >
-                        <Image
-                          src={src}
-                          alt={alt}
-                          class="aspect-square object-contain"
-                        />
-                      </a>
-                    </li>
-                  ))
+                  tierOneStockingStuffers.map((item) => {
+                    if (!item) return null;
+                    return (
+                      <li>
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
+                        >
+                          <img
+                            src={item.img}
+                            alt={item.title}
+                            class="absolute inset-0 size-full object-contain"
+                          />
+                        </a>
+                      </li>
+                    );
+                  })
                 }
               </ul>
             </div>
@@ -127,12 +120,14 @@ const products = await getCollection("products");
         id="tier-two"
         class="scroll-mt-24 border-t border-secondary/30 border-dashed"
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center p-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center px-4 py-16 md:p-0"
+        >
           <div class="md:p-8 flex justify-center md:order-1">
             <Image
               src={moccamasterImage}
               alt="Moccamaster KBGV Select Coffee Brewer"
-              class="rounded-lg overflow-hidden max-w-md"
+              class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
           <div class="md:px-8 md:py-16">
@@ -151,7 +146,7 @@ const products = await getCollection("products");
               sapiente pariatur ipsum vitae consequatur optio sequi?
             </p>
             <div class="mt-8">
-              <Button href="https://amzn.to/4oupwMa">Purchase </Button>
+              <Button href="https://amzn.to/4oupwMa">Purchase</Button>
             </div>
             <div class="mt-8">
               <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
@@ -159,25 +154,25 @@ const products = await getCollection("products");
               </p>
               <ul class="mt-4 grid grid-cols-6 gap-x-4">
                 {
-                  [
-                    {
-                      src: bratzaEncoreGrinderImage,
-                      alt: "Bratza Encore Coffee Grinder",
-                    },
-                  ].map(({ src, alt }) => (
-                    <li>
-                      <a
-                        href=""
-                        class="rounded-lg overflow-hidden border-2 border-primary/30 block bg-white"
-                      >
-                        <Image
-                          src={src}
-                          alt={alt}
-                          class="aspect-square object-contain"
-                        />
-                      </a>
-                    </li>
-                  ))
+                  tierTwoStockingStuffers.map((item) => {
+                    if (!item) return null;
+                    return (
+                      <li>
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
+                        >
+                          <img
+                            src={item.img}
+                            alt={item.title}
+                            class="absolute inset-0 size-full object-contain"
+                          />
+                        </a>
+                      </li>
+                    );
+                  })
                 }
               </ul>
             </div>
@@ -188,12 +183,14 @@ const products = await getCollection("products");
         id="tier-three"
         class="scroll-mt-24 border-t border-secondary/30 border-dashed"
       >
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center p-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-x-8 items-center px-4 py-16 md:p-0"
+        >
           <div class="md:p-8 flex justify-center">
             <Image
               src={kalitaWaveImage}
               alt="Kalita Wave 185 Stainless Steel Coffee Dripper"
-              class="rounded-lg overflow-hidden max-w-md"
+              class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
           <div class="md:px-8 md:py-16">
@@ -220,25 +217,25 @@ const products = await getCollection("products");
               </p>
               <ul class="mt-4 grid grid-cols-6 gap-x-4">
                 {
-                  [
-                    {
-                      src: bratzaEncoreGrinderImage,
-                      alt: "Bratza Encore Coffee Grinder",
-                    },
-                  ].map(({ src, alt }) => (
-                    <li>
-                      <a
-                        href=""
-                        class="rounded-lg overflow-hidden border-2 border-primary/30 block bg-white"
-                      >
-                        <Image
-                          src={src}
-                          alt={alt}
-                          class="aspect-square object-contain"
-                        />
-                      </a>
-                    </li>
-                  ))
+                  tierThreeStockingStuffers.map((item) => {
+                    if (!item) return null;
+                    return (
+                      <li>
+                        <a
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
+                        >
+                          <img
+                            src={item.img}
+                            alt={item.title}
+                            class="absolute inset-0 size-full object-contain"
+                          />
+                        </a>
+                      </li>
+                    );
+                  })
                 }
               </ul>
             </div>
@@ -249,7 +246,9 @@ const products = await getCollection("products");
         id="coffee-subscription"
         class="scroll-mt-24 border-t border-secondary/30 border-dashed rounded-b-lg"
       >
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-8 items-center p-4">
+        <div
+          class="grid grid-cols-1 md:grid-cols-4 gap-x-8 items-center px-4 py-16 md:p-0"
+        >
           <div class="md:px-8 md:py-16 md:col-start-2 md:col-end-4">
             <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
               Coffee Subscription&nbsp;&not;
