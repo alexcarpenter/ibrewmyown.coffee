@@ -1,0 +1,73 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  render,
+} from "astro:content";
+
+const products = await getCollection("products");
+---
+
+<Layout>
+  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24">
+    <h1
+      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
+    >
+      Products
+    </h1>
+  </header>
+
+  <section class="mt-4 bg-muted rounded-lg p-4 sm:p-8">
+    <ul class="grid grid-cols-4 gap-4">
+      {
+        products.map((product) => {
+          const { title, description, img } = product.data;
+          if (!img) return null;
+          return (
+            <li class="bg-white rounded-md overflow-hidden flex flex-col">
+              {img ? (
+                <div class="aspect-[4/3] relative overflow-hidden border-b border-muted">
+                  <img
+                    src={product.data.img}
+                    class="absolute size-full object-contain"
+                  />
+                </div>
+              ) : null}
+              <div class="p-4 flex flex-col flex-1">
+                <p class="text-xs font-mono uppercase tracking-widest opacity-70">
+                  {description}
+                </p>
+                <h3 class="mt-1 mb-4 font-semibold line-clamp-1">{title}</h3>
+                <ul class="flex mt-auto">
+                  <li class="size-6 rounded-full overflow-hidden relative ring-1 ring-white">
+                    <img
+                      src="/img/alex-carpenter.jpg"
+                      alt=""
+                      class="absolute size-full object-cover"
+                    />
+                  </li>
+                  <li class="size-6 rounded-full overflow-hidden relative ring-1 ring-white -ml-1">
+                    <img
+                      src="/img/alex-carpenter.jpg"
+                      alt=""
+                      class="absolute size-full object-cover"
+                    />
+                  </li>
+                  <li class="size-6 rounded-full overflow-hidden relative ring-1 ring-white -ml-1">
+                    <img
+                      src="/img/alex-carpenter.jpg"
+                      alt=""
+                      class="absolute size-full object-cover"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </section>
+</Layout>
