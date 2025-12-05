@@ -15,12 +15,15 @@ const products = await getCollection("products");
     <h1
       class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
     >
-      Products
+      Coffee Products. <span
+        class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
+        >Lorem ipsum dolor sit.</span
+      >
     </h1>
   </header>
 
   <section class="mt-4 bg-muted rounded-lg p-4 sm:p-8">
-    <ul class="grid grid-cols-4 gap-4">
+    <ul class="grid grid-cols-2 lg:grid-cols-4 gap-4">
       {
         products.map((product) => {
           const { title, description, img } = product.data;
