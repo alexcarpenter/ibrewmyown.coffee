@@ -12,20 +12,78 @@ const interviews = collection.sort((a, b) => {
   const bDate = b.data.published;
   return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
 });
+const featuredInterview = interviews.find(
+  ({ id }) => id === "2025-02-24-fatih-arslan"
+);
 ---
 
 <Layout>
   <header
-    class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24 sm:pt-72"
+    class="bg-primary rounded-b-lg pt-24 sm:pt-72 overflow-hidden relative"
   >
-    <h1
-      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground leading-[1.1]"
-    >
-      I Brew My Own Coffee.
-      <span class="text-secondary"
-        >A collection of personal coffee brewing setups.</span
-      >
-    </h1>
+    <div class="grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
+      <div class="sm:col-span-3 p-4 sm:p-8">
+        <h1
+          class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground leading-[1.1]"
+        >
+          I Brew My Own Coffee.
+          <span class="text-secondary"
+            >A collection of personal coffee brewing setups.</span
+          >
+        </h1>
+      </div>
+      {
+        featuredInterview ? (
+          <a
+            href={`/interviews/${getSlugFromId(featuredInterview.id)}`}
+            class="aspect-[4/3] relative *[grid-area:1/1] hidden sm:grid group"
+          >
+            <span class="sr-only">
+              View featured interview {featuredInterview.data.title}
+            </span>
+            {featuredInterview.data.gallery
+              ?.slice(0, 3)
+              .reverse()
+              .map(({ src, alt }, index) => (
+                <Image
+                  src={src}
+                  alt={alt || featuredInterview.data.title}
+                  width={800}
+                  height={600}
+                  class:list={[
+                    "absolute inset-0 size-full object-cover rounded-sm shadow-lg",
+                    {
+                      "rotate-3 -translate-x-2": index === 0,
+                      "-rotate-6 -translate-x-1": index === 1,
+                      "-rotate-1 translate-y-1": index === 2,
+                    },
+                  ]}
+                />
+              ))}
+            <span
+              class:list={[
+                "size-7 rounded-full grid place-content-center overflow-hidden absolute bottom-4 right-4",
+                {
+                  "sbg-primary text-accent": true,
+                },
+              ]}
+              aria-hidden="true"
+            >
+              <>
+                <Icon
+                  name="arrow-right"
+                  class="size-4 [grid-area:1/1] -translate-x-6 group-hover:translate-x-0 motion-reduce:transition-none group-focus-visible:translate-x-0 transition-transform duration-250 ease-custom"
+                />
+                <Icon
+                  name="arrow-right"
+                  class="size-4 [grid-area:1/1] opacity-70 group-hover:translate-x-6 motion-reduce:transition-none group-focus-visible:translate-x-6 transition-transform duration-250 ease-custom"
+                />
+              </>
+            </span>
+          </a>
+        ) : null
+      }
+    </div>
   </header>
   <section class="mt-4">
     <ul
