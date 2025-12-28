@@ -13,7 +13,7 @@ const interviews = collection.sort((a, b) => {
   return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
 });
 const featuredInterview = interviews.find(
-  ({ id }) => id === "2025-02-24-fatih-arslan"
+  ({ id }) => id === "2025-02-10-matthew-spade"
 );
 ---
 
@@ -147,7 +147,7 @@ const featuredInterview = interviews.find(
                   </span>
                 </a>
               </h3>
-              <p class="mt-1 text-sm opacity-70 text-balance">
+              <p class="mt-1 text-sm opacity-70 text-balance line-clamp-2">
                 Espresso machines, drippers, brewers, and bean subscriptions
                 that coffee lovers will actually use every day.
               </p>

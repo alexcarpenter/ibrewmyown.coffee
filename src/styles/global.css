@@ -59,8 +59,6 @@
 }
 
 @utility prose {
-  @apply max-w-prose;
-
   & > :where(* + *) {
     @apply mt-4;
   }
