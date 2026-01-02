@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@alexcarpenter/us-coffee-roasters": "^1.0.0",
     "@ariakit/react": "^0.4.20",
     "@astrojs/mdx": "^4.3.12",
     "@astrojs/react": "^4.4.2",

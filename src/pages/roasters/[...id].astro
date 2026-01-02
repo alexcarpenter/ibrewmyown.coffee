@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import roastersJSON from "./data.json";
+import roastersJSON from "@alexcarpenter/us-coffee-roasters";
 import slugify from "@sindresorhus/slugify";
 export async function getStaticPaths() {
   const states = [...new Set(roastersJSON.map((roaster) => roaster.state))];

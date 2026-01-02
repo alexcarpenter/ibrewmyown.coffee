@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
-import roasters from "./data.json";
+import roasters from "@alexcarpenter/us-coffee-roasters";
 import slugify from "@sindresorhus/slugify";
 const groupedRoasters = roasters
   .sort((a, b) => a.state.localeCompare(b.state))
