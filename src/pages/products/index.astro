@@ -1,7 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection } from "astro:content";
-
 const products = await getCollection("products");
 ---
 
@@ -12,63 +11,43 @@ const products = await getCollection("products");
     >
       Coffee Products. <span
         class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
-        >Lorem ipsum dolor sit.</span
+        >Gear for brewing and enjoying excellent coffee at home.</span
       >
     </h1>
   </header>
 
   <section class="mt-4 bg-muted rounded-lg p-4 sm:p-8">
-    <div class="grid grid-cols-4 gap-4">
-      <div class="bg-white rounded-lg"></div>
-      <ul class="col-span-3 grid grid-cols-2 lg:grid-cols-3 gap-4">
-        {
-          products.map((product) => {
-            const { title, description, img } = product.data;
-            if (!img) return null;
-            return (
-              <li class="bg-white rounded-md overflow-hidden flex flex-col">
-                {img ? (
-                  <div class="aspect-[4/3] relative overflow-hidden border-b border-muted">
-                    <img
-                      src={product.data.img}
-                      class="absolute size-full object-contain"
-                    />
-                  </div>
-                ) : null}
-                <div class="p-4 flex flex-col flex-1">
-                  <p class="text-xs font-mono uppercase tracking-widest opacity-70">
-                    {description}
-                  </p>
-                  <h3 class="mt-1 mb-4 font-semibold line-clamp-1">{title}</h3>
-                  <ul class="flex mt-auto">
-                    <li class="size-6 rounded-full overflow-hidden relative ring-1 ring-white">
-                      <img
-                        src="/img/alex-carpenter.jpg"
-                        alt=""
-                        class="absolute size-full object-cover"
-                      />
-                    </li>
-                    <li class="size-6 rounded-full overflow-hidden relative ring-1 ring-white -ml-1">
-                      <img
-                        src="/img/alex-carpenter.jpg"
-                        alt=""
-                        class="absolute size-full object-cover"
-                      />
-                    </li>
-                    <li class="size-6 rounded-full overflow-hidden relative ring-1 ring-white -ml-1">
-                      <img
-                        src="/img/alex-carpenter.jpg"
-                        alt=""
-                        class="absolute size-full object-cover"
-                      />
-                    </li>
-                  </ul>
+    <ul
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+    >
+      {
+        products.map((product) => {
+          const { title, description, img } = product.data;
+          if (!img) return null;
+          return (
+            <li class="bg-white rounded-md overflow-hidden flex flex-col relative group">
+              {img ? (
+                <div class="aspect-[4/3] relative overflow-hidden">
+                  <img
+                    src={product.data.img}
+                    class="absolute size-full object-contain group-hover:opacity-80 transition-opacity duration-250 ease-out"
+                  />
                 </div>
-              </li>
-            );
-          })
-        }
-      </ul>
-    </div>
+              ) : null}
+              <div class="px-4 pt-1 pb-4 flex flex-col flex-1">
+                <p class="text-xs font-mono uppercase tracking-widest opacity-70">
+                  {description}
+                </p>
+                <h2 class="mt-1 font-semibold text-sm text-pretty text-primary">
+                  <a href="/" class="after:absolute after:inset-0">
+                    {title}
+                  </a>
+                </h2>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
   </section>
 </Layout>
