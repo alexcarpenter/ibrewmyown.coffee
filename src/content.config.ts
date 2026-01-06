@@ -4,8 +4,16 @@ import { glob } from "astro/loaders";
 const brands = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/brands" }),
   schema: z.object({
-    title: z.string(),
-    link: z.string(),
+    name: z.string(),
+    website: z.string().url(),
+  }),
+});
+
+const categories = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/categories" }),
+  schema: z.object({
+    name: z.string(),
+    description: z.string().optional(),
   }),
 });
 
@@ -14,8 +22,11 @@ const products = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    link: z.string(),
+    link: z.string().url(),
     img: z.string().optional(),
+    brand: reference("brands").optional(),
+    category: reference("categories").optional(),
+    pricePoint: z.enum(["$", "$$", "$$$", "$$$$", "$$$$$"]).optional(),
   }),
 });
 
@@ -55,6 +66,7 @@ const interviews = defineCollection({
 
 export const collections = {
   brands,
+  categories,
   interviews,
   products,
 };
