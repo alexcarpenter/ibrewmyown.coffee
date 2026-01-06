@@ -6,18 +6,18 @@ import Button from "@/components/button.astro";
 import { TooltipAnchor } from "@/components/tooltipanchor.react";
 import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
 import moccamasterImage from "@/assets/moccamaster@2x.png";
-import kalitaWaveImage from "@/assets/kalita-wave@2x.png";
+import laMarzoccoLineaMicra from "@/assets/la-marzocco-linea-micra@2x.png";
 
 const products = await getCollection("products");
 
 const getProductData = (id: string) =>
   products.find((product) => product.id === id)?.data;
 
-const tierOneStockingStuffers = [].map((id) => getProductData(id));
+const tierOneAccessories = [].map((id) => getProductData(id));
 
-const tierTwoStockingStuffers = [].map((id) => getProductData(id));
+const tierTwoAccessories = [].map((id) => getProductData(id));
 
-const tierThreeStockingStuffers = ["la-marzocco-pico"].map((id) =>
+const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
   getProductData(id)
 );
 ---
@@ -75,29 +75,31 @@ const tierThreeStockingStuffers = ["la-marzocco-pico"].map((id) =>
             <div class="mt-8">
               <Button href="https://amzn.to/4p8DCUn">Purchase</Button>
             </div>
-            <div class="mt-8">
-              <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
-                Stocking stuffers:
-              </p>
-              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
-                {
-                  tierOneStockingStuffers.map((item) => {
-                    if (!item) return null;
-                    return (
-                      <li>
-                        <TooltipAnchor
-                          description={item.title}
-                          href={item.link}
-                          src={item.img!}
-                          alt={item.title}
-                          client:load
-                        />
-                      </li>
-                    );
-                  })
-                }
-              </ul>
-            </div>
+            {
+              tierOneAccessories.length ? (
+                <div class="mt-8">
+                  <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+                    Extra accessories:
+                  </p>
+                  <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
+                    {tierOneAccessories.map((item) => {
+                      if (!item) return null;
+                      return (
+                        <li>
+                          <TooltipAnchor
+                            description={item.title}
+                            href={item.link}
+                            src={item.img!}
+                            alt={item.title}
+                            client:load
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null
+            }
           </div>
         </div>
       </li>
@@ -135,29 +137,31 @@ const tierThreeStockingStuffers = ["la-marzocco-pico"].map((id) =>
             <div class="mt-8">
               <Button href="https://amzn.to/4oupwMa">Purchase</Button>
             </div>
-            <div class="mt-8">
-              <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
-                Stocking stuffers:
-              </p>
-              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
-                {
-                  tierTwoStockingStuffers.map((item) => {
-                    if (!item) return null;
-                    return (
-                      <li>
-                        <TooltipAnchor
-                          description={item.title}
-                          href={item.link}
-                          src={item.img!}
-                          alt={item.title}
-                          client:load
-                        />
-                      </li>
-                    );
-                  })
-                }
-              </ul>
-            </div>
+            {
+              tierTwoAccessories.length ? (
+                <div class="mt-8">
+                  <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+                    Extra accessories:
+                  </p>
+                  <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
+                    {tierTwoAccessories.map((item) => {
+                      if (!item) return null;
+                      return (
+                        <li>
+                          <TooltipAnchor
+                            description={item.title}
+                            href={item.link}
+                            src={item.img!}
+                            alt={item.title}
+                            client:load
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null
+            }
           </div>
         </div>
       </li>
@@ -170,8 +174,8 @@ const tierThreeStockingStuffers = ["la-marzocco-pico"].map((id) =>
         >
           <div class="lg:p-8 flex justify-center">
             <Image
-              src={kalitaWaveImage}
-              alt="Kalita Wave 185 Stainless Steel Coffee Dripper"
+              src={laMarzoccoLineaMicra}
+              alt=""
               class="rounded-lg overflow-hidden max-w-lg"
             />
           </div>
@@ -194,29 +198,31 @@ const tierThreeStockingStuffers = ["la-marzocco-pico"].map((id) =>
             <div class="mt-8">
               <Button href="https://amzn.to/4p7Cxfw">Purchase</Button>
             </div>
-            <div class="mt-8">
-              <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
-                Stocking stuffers:
-              </p>
-              <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-x-4">
-                {
-                  tierThreeStockingStuffers.map((item) => {
-                    if (!item) return null;
-                    return (
-                      <li>
-                        <TooltipAnchor
-                          description={item.title}
-                          href={item.link}
-                          src={item.img!}
-                          alt={item.title}
-                          client:load
-                        />
-                      </li>
-                    );
-                  })
-                }
-              </ul>
-            </div>
+            {
+              tierThreeAccessories.length ? (
+                <div class="mt-8">
+                  <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
+                    Extra accessories:
+                  </p>
+                  <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-x-4">
+                    {tierThreeAccessories.map((item) => {
+                      if (!item) return null;
+                      return (
+                        <li>
+                          <TooltipAnchor
+                            description={item.title}
+                            href={item.link}
+                            src={item.img!}
+                            alt={item.title}
+                            client:load
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
+                </div>
+              ) : null
+            }
           </div>
         </div>
       </li>
