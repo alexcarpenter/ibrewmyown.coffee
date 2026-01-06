@@ -1,0 +1,25 @@
+---
+draft: true
+title: Maxwell Mooney
+description: Home barista turned coffee professional. I still Brew My Own Coffee.
+published: 2026-01-06T18:54:45-0500
+avatar: /img/maxwell-mooney.jpg
+social:
+  instagram: MaxwellAMooney
+---
+
+## Who are you and what do you do?
+
+My name is Maxwell Mooney and I lead the wholesale team over at Onyx Coffee Lab.
+
+## What does your brewing setup look like?
+
+At home, I have the same Baratza Virtuoso and Bonavita kettle I’ve had for like 12 years. The Virtuoso has had a few repairs over the years because of Baratza’s incredible customer service department and commitment to building tools that are user-servicable. I have a V60, Kalita 185, and a Technivorm Mochamaster as well. For espresso, I have a Lelit Bianca V3 and a Turing DF83.
+
+## What is your prefered brewing method?
+
+I brew a V60 every day and almost always drink an espresso every day.
+
+## Lastly, any coffee bean recommendations?
+
+Have fun and explore! There are so many amazing roasters out there. If you’re like me and enjoy the lighter, more fruity coffees, I’m a big fan of what the folks at Ilse Coffee are doing, especially if you like clean, well handled, lower process heavy coffees. For the more processing driven stuff, Black and White, Dak, and others are great of course. Some friends are getting ready to launch a new roastery called Gloom that I think will offer very tasty, well roasted coffees. Finally, I’d be remiss if I didn’t mention where I work, because I work there for a reason - I believe in everything we do, including the coffee. I love all of our single origins of every stripe, but I think we do clean, lower process driven coffees super well (and even our wild coferments still all have articulate clarity). I also think our Geometry blend is the single best deal in specialty coffee and while it’s probably the coffee we make the least on, it’s so dang delicious and you should buy it for your drip or espresso.
