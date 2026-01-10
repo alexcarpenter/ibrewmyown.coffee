@@ -5,8 +5,8 @@ import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
 import { TooltipAnchor } from "@/components/tooltipanchor.react";
 import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
-import moccamasterImage from "@/assets/moccamaster@2x.png";
 import laMarzoccoLineaMicra from "@/assets/la-marzocco-linea-micra@2x.png";
+import rocketEspressoAppartamentoEspressoMachine from "@/assets/rocket-espresso-appartamento-nera-espresso-machine@2px.png";
 
 const products = await getCollection("products");
 
@@ -112,7 +112,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
         >
           <div class="lg:p-8 flex justify-center lg:order-1">
             <Image
-              src={moccamasterImage}
+              src={rocketEspressoAppartamentoEspressoMachine}
               alt="Moccamaster KBGV Select Coffee Brewer"
               class="rounded-lg overflow-hidden max-w-lg"
             />
@@ -124,7 +124,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
             <h2
               class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
             >
-              Moccamaster KBGV Select Coffee Brewer
+              Rocket Espresso Appartamento Nera Espresso Machine
             </h2>
             <p class="md:text-xl opacity-70">
               The Moccamaster KBGV Select brews coffee at the perfect
@@ -135,7 +135,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
               upgrade that'll last them years.
             </p>
             <div class="mt-8">
-              <Button href="https://amzn.to/4oupwMa">Purchase</Button>
+              <Button href="https://amzn.to/3ZaVvXe">Purchase</Button>
             </div>
             {
               tierTwoAccessories.length ? (
