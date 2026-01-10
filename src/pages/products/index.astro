@@ -74,11 +74,19 @@ const { pathname } = Astro.url;
                 </div>
               ) : null}
               <div class="px-4 pt-1 pb-4 flex flex-col flex-1">
-                <p class="text-xs font-mono uppercase tracking-widest opacity-70">
-                  {description}
+                <p class="text-xs font-mono uppercase tracking-widest opacity-70 flex justify-between">
+                  <span>{description}</span>
+                  {product.data.pricePoint ? (
+                    <span>{product.data.pricePoint}</span>
+                  ) : null}
                 </p>
                 <h2 class="mt-1 font-semibold tracking-tight leading-tight text-sm text-pretty text-primary">
-                  <a href="/" class="after:absolute after:inset-0">
+                  <a
+                    href={product.data.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="after:absolute after:inset-0"
+                  >
                     {title}
                   </a>
                 </h2>
