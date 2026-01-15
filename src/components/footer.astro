@@ -12,15 +12,19 @@ const NAVIGATION = [
     label: "Roasters",
     href: "/roasters",
   },
+] as const;
+
+const GUIDES = [
+  {
+    label: "Espresso Machines",
+    href: "/guides/espresso-machines",
+  },
   {
     label: "2025 Holiday Gift Guide",
     href: "/2025-holiday-gift-guide",
   },
-  // {
-  //   label: "Subscribe",
-  //   href: "/subscribe",
-  // },
 ] as const;
+
 const SOCIAL = [
   {
     label: "Instagram",
@@ -34,13 +38,13 @@ const SOCIAL = [
     label: "Twitter",
     href: "https://twitter.com/ibmoconline",
   },
-];
+] as const;
 ---
 
 <footer
   class="mt-4 px-4 pt-4 sm:pt-8 sm:px-8 bg-primary text-primary rounded-t-lg"
 >
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-x-4 items-start">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4 items-start">
     <div>
       <h2 class="mb-4 text-xs uppercase font-mono text-accent">
         Navigate&nbsp;&not;
@@ -68,6 +72,28 @@ const SOCIAL = [
             rel="noopener noreferrer">Submit a setup</a
           >
         </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="mb-4 text-xs uppercase font-mono text-accent">
+        Guides&nbsp;&not;
+      </h2>
+      <ul class="space-y-2">
+        {
+          GUIDES.map((item) => {
+            return (
+              <li>
+                <a
+                  href={item.href}
+                  class="tracking-tight text-primary-foreground hover:text-secondary transition-colors font-medium"
+                >
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
       </ul>
     </div>
 
