@@ -15,10 +15,12 @@ const getProductData = (id: string) =>
 
 const tierOneAccessories = [].map((id) => getProductData(id));
 
-const tierTwoAccessories = [].map((id) => getProductData(id));
+const tierTwoAccessories = [
+  "timemore-sculptor-064s-flat-burr-coffee-bean-grinder",
+].map((id) => getProductData(id));
 
 const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
-  getProductData(id)
+  getProductData(id),
 );
 ---
 
@@ -131,7 +133,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
             <h2
               class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
             >
-              Rocket Espresso Appartamento Nera Espresso Machine
+              Rocket Espresso Appartamento TCA Espresso Machine
             </h2>
             <p class="md:text-lg opacity-70">
               The Rocket Appartamento Nera is a step into true prosumer
@@ -148,7 +150,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
               capable of rivaling many cafés.
             </p>
             <div class="mt-8">
-              <Button href="https://amzn.to/3ZaVvXe">Purchase</Button>
+              <Button href="https://amzn.to/4sPLX1B">Purchase</Button>
             </div>
             {
               tierTwoAccessories.length ? (
