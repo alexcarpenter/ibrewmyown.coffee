@@ -53,25 +53,24 @@
     @apply mt-10;
   }
 
-  & > :where(h2 + *) {
+  & > :where(:is(h2,h3) + *) {
     @apply mt-5;
   }
 
-  & :where(h2) {
+  & :where(:is(h2,h3)) {
     @apply font-medium;
   }
 
-  & :where(p),
-  & :where(li) {
+  & :where(ul) {
+    @apply marker:text-foreground/20 list-disc space-y-1 pl-6;
+  }
+
+  & :where(:is(p,li)) {
     @apply text-neutral-500;
   }
 
   & :where(a) {
     @apply link;
-  }
-
-  & :where(ul) {
-    @apply marker:text-foreground/20 list-disc space-y-1 pl-6;
   }
 
   & :where(strong) {
