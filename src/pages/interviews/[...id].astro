@@ -72,17 +72,17 @@ const { Content } = await render(interview);
           <div class="embla__viewport">
             <div class="embla__container">
               {interview.data.gallery.map((image) => (
-                <Image
-                  src={image.src}
-                  width="1600"
-                  height="900"
-                  alt={image.alt}
-                  class="embla__slide"
-                />
+                <div class="embla__slide">
+                  <Image
+                    src={image.src}
+                    width="1600"
+                    height="900"
+                    alt={image.alt}
+                  />
+                </div>
               ))}
             </div>
           </div>
-
           <div class="embla__dots" />
         </div>
       ) : null
@@ -109,94 +109,48 @@ const { Content } = await render(interview);
     flex: 0 0 100%;
     min-width: 0;
     position: relative;
-    object-fit: cover;
     aspect-ratio: 3 / 2;
     overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .embla__dots {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: calc(var(--spacing) * 10);
+    align-items: end;
+    height: calc(var(--spacing) * 8);
+    gap: calc(var(--spacing) * 2);
+
+    button {
+      width: calc(var(--spacing) * 2);
+      height: calc(var(--spacing) * 2);
+      border-radius: 50%;
+      background-color: var(--color-neutral-300);
+
+      &.active {
+        background-color: var(--color-neutral-500);
+      }
+    }
   }
 </style>
 
 <script>
-  import EmblaCarousel, { type EmblaCarouselType } from "embla-carousel";
+  import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
+  import { addDotBtnsAndClickHandlers } from "@/lib/embla";
 
-  const wrapperNode = document.querySelector<HTMLElement>(".embla");
-  if (!wrapperNode) throw new Error("Embla wrapper not found");
+  const OPTIONS: EmblaOptionsType = {};
 
-  const viewportNode =
-    wrapperNode.querySelector<HTMLElement>(".embla__viewport");
-  const dotsNode = wrapperNode.querySelector<HTMLElement>(".embla__dots");
+  const emblaNode = document.querySelector(".embla") as HTMLElement;
+  const viewportNode = emblaNode.querySelector(
+    ".embla__viewport",
+  ) as HTMLElement;
+  const dotsNode = document.querySelector(".embla__dots") as HTMLElement;
+  const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
 
-  if (!viewportNode || !dotsNode) {
-    throw new Error("Embla viewport or dots not found");
-  }
-
-  const emblaApi: EmblaCarouselType = EmblaCarousel(viewportNode, {
-    loop: false,
-  });
-
-  let dotNodes: HTMLElement[] = [];
-
-  const buttonClassNames =
-    "embla__dot h-10 w-6 group flex justify-center items-center";
-  const buttonInnerClassNames =
-    "size-2 rounded-full bg-neutral-300 block group-[[aria-current=true]]:bg-neutral-900";
-
-  const createDotButtonHtml = (
-    emblaApi: EmblaCarouselType,
-    dotsNode: HTMLElement,
-  ) => {
-    const scrollSnaps = emblaApi.scrollSnapList();
-    dotsNode.innerHTML = scrollSnaps
-      .map(
-        () =>
-          `<button class="${buttonClassNames}" type="button" aria-label="Go to slide">
-            <span class="${buttonInnerClassNames}"></span>
-          </button>`,
-      )
-      .join("");
-    return Array.from(dotsNode.querySelectorAll<HTMLElement>(".embla__dot"));
-  };
-
-  const addDotButtonClickHandlers = (
-    emblaApi: EmblaCarouselType,
-    dotNodes: HTMLElement[],
-  ) => {
-    dotNodes.forEach((dotNode, index) => {
-      dotNode.addEventListener("click", () => emblaApi.scrollTo(index), false);
-    });
-  };
-
-  const toggleDotButtonsActive = (
-    emblaApi: EmblaCarouselType,
-    dotNodes: HTMLElement[],
-  ) => {
-    if (!dotNodes.length) return;
-    const previous = emblaApi.previousScrollSnap();
-    const selected = emblaApi.selectedScrollSnap();
-    if (previous !== -1) {
-      dotNodes[previous].removeAttribute("aria-current");
-    }
-    dotNodes[selected].setAttribute("aria-current", "true");
-  };
-
-  const createAndSetupDotButtons = (
-    emblaApi: EmblaCarouselType,
-    dotsNode: HTMLElement,
-  ) => {
-    dotNodes = createDotButtonHtml(emblaApi, dotsNode);
-    addDotButtonClickHandlers(emblaApi, dotNodes);
-    toggleDotButtonsActive(emblaApi, dotNodes);
-  };
-
-  createAndSetupDotButtons(emblaApi, dotsNode);
-  emblaApi.on("init", () => createAndSetupDotButtons(emblaApi, dotsNode));
-  emblaApi.on("select", (emblaApi) =>
-    toggleDotButtonsActive(emblaApi, dotNodes),
-  );
+  addDotBtnsAndClickHandlers(emblaApi, dotsNode);
 </script>
