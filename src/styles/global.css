@@ -2,23 +2,11 @@
 
 @theme {
   --font-sans: Inter, sans-serif;
-  --color-background: oklch(1 0 0);
-  --color-foreground: oklch(0.145 0 0);
+  --color-background: var(--color-neutral-100);
+  --color-foreground: var(--color-neutral-900);
+  --color-muted-foreground: var(--color-neutral-500);
   --color-primary: oklch(0.3146 0.0734 139.03);
-  --color-primary-foreground: oklch(1 0 0);
-  --color-secondary: color-mix(
-    in srgb,
-    var(--color-primary),
-    var(--color-white) 50%
-  );
-  --color-muted: oklch(0.97 0 0);
-  --color-muted-foreground: color-mix(
-    in oklch,
-    var(--color-foreground),
-    transparent 30%
-  );
   --color-accent: oklch(93.82% 0.2886 117.53);
-  --ease-custom: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @layer utilities {
@@ -55,24 +43,27 @@
 }
 
 @utility link {
-  @apply decoration-accent hover:bg-accent font-medium underline decoration-2;
+  @apply decoration-accent hover:bg-accent font-medium underline decoration-2 text-foreground;
 }
 
 @utility prose {
+  @apply text-sm;
+
   & > :where(* + *) {
-    @apply mt-4;
+    @apply mt-10;
   }
 
-  & > :where(* + h2) {
-    @apply mt-8;
+  & > :where(h2 + *) {
+    @apply mt-5;
   }
 
-  & > :where(h2) {
-    @apply text-primary text-xl font-semibold tracking-tight;
+  & :where(h2) {
+    @apply font-medium;
   }
 
-  & > :where(h3) {
-    @apply font-semibold tracking-tight;
+  & :where(p),
+  & :where(li) {
+    @apply text-neutral-500;
   }
 
   & :where(a) {
@@ -85,13 +76,5 @@
 
   & :where(strong) {
     @apply font-semibold underline decoration-dotted;
-  }
-
-  & :where(sup a) {
-    @apply bg-accent font-semibold;
-  }
-
-  & :where(hr) {
-    @apply border-primary/20 my-8 border-t border-dashed;
   }
 }

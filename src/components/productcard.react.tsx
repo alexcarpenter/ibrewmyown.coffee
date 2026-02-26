@@ -37,7 +37,7 @@ export default function Productcard({
             overlap
             portal
             gutter={8}
-            className="z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg bg-white ring-1 shadow-md ring-black/5"
+            className="z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg bg-white"
             render={
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
@@ -83,7 +83,7 @@ export default function Productcard({
                       href={product.data.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link bg-accent text-primary flex h-8 items-center justify-center gap-x-2 rounded-sm font-medium"
+                      className="group/link bg-accent text-primary flex h-8 text-sm items-center justify-center gap-x-2 rounded-sm font-medium"
                     >
                       Purchase
                     </a>
