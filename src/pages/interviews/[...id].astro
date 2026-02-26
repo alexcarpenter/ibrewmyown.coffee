@@ -142,6 +142,11 @@ const { Content } = await render(interview);
 
   let dotNodes: HTMLElement[] = [];
 
+  const buttonClassNames =
+    "embla__dot h-10 w-6 group flex justify-center items-center";
+  const buttonInnerClassNames =
+    "size-2 rounded-full bg-neutral-300 block group-[[aria-current=true]]:bg-neutral-900";
+
   const createDotButtonHtml = (
     emblaApi: EmblaCarouselType,
     dotsNode: HTMLElement,
@@ -150,8 +155,8 @@ const { Content } = await render(interview);
     dotsNode.innerHTML = scrollSnaps
       .map(
         () =>
-          `<button class="embla__dot h-10 w-6 group flex justify-center items-center" type="button" aria-label="Go to slide">
-            <span class="size-2 rounded-full bg-neutral-300 block group-[[aria-current=true]]:bg-neutral-900"></span>
+          `<button class="${buttonClassNames}" type="button" aria-label="Go to slide">
+            <span class="${buttonInnerClassNames}"></span>
           </button>`,
       )
       .join("");
