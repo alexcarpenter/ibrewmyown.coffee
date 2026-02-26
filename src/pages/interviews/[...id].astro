@@ -68,22 +68,30 @@ const { Content } = await render(interview);
     </header>
     {
       interview.data.gallery ? (
-        <div class="embla max-w-3xl mx-auto mt-10">
+        <div class="embla relative max-w-3xl mx-auto mt-10">
           <div class="embla__viewport">
             <div class="embla__container">
-              {interview.data.gallery.map((image) => (
+              {interview.data.gallery.map((image, i) => (
                 <div class="embla__slide">
                   <Image
                     src={image.src}
                     width="1600"
                     height="900"
                     alt={image.alt}
+                    loading={i === 0 ? "eager" : "lazy"}
                   />
                 </div>
               ))}
             </div>
           </div>
           <div class="embla__dots" />
+          <span
+            class="absolute top-4 left-4 text-xs font-mono text-accent z-10 inline-flex items-baseline"
+            aria-hidden="true"
+          >
+            FIG_
+            <number-flow id="gallery-figcaption" data-will-change />
+          </span>
         </div>
       ) : null
     }
@@ -140,17 +148,42 @@ const { Content } = await render(interview);
 </style>
 
 <script>
-  import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
+  import "number-flow";
+  import EmblaCarousel from "embla-carousel";
   import { addDotBtnsAndClickHandlers } from "@/lib/embla";
 
-  const OPTIONS: EmblaOptionsType = {};
-
   const emblaNode = document.querySelector(".embla") as HTMLElement;
+  if (!emblaNode) throw new Error("No gallery found");
+
   const viewportNode = emblaNode.querySelector(
     ".embla__viewport",
   ) as HTMLElement;
-  const dotsNode = document.querySelector(".embla__dots") as HTMLElement;
-  const emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+  const dotsNode = emblaNode.querySelector(".embla__dots") as HTMLElement;
+  const figcaptionElement = document.querySelector(
+    "#gallery-figcaption",
+  ) as any;
+
+  await customElements.whenDefined("number-flow");
+
+  const emblaApi = EmblaCarousel(viewportNode, {});
 
   addDotBtnsAndClickHandlers(emblaApi, dotsNode);
+
+  const updateFigcaption = (index: number) => {
+    if (figcaptionElement) figcaptionElement.update(index + 1);
+  };
+
+  if (figcaptionElement) {
+    figcaptionElement.format = {
+      minimumIntegerDigits: 3,
+      useGrouping: false,
+    };
+    updateFigcaption(emblaApi.selectedScrollSnap());
+  }
+
+  emblaApi.on("select", () => updateFigcaption(emblaApi.selectedScrollSnap()));
+
+  document.addEventListener("astro:before-swap", () => emblaApi.destroy(), {
+    once: true,
+  });
 </script>
