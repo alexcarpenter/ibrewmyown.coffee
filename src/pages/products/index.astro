@@ -1,5 +1,6 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 import { getCollection } from "astro:content";
 const products = await getCollection("products");
 const { pathname } = Astro.url;
@@ -15,7 +16,7 @@ const { pathname } = Astro.url;
         const { title, description, img } = product.data;
         if (!img) return null;
         return (
-          <li class="bg-white rounded-md overflow-hidden flex flex-col relative group">
+          <li class="bg-white rounded-md overflow-hidden flex flex-col relative group/card">
             {img ? (
               <div class="aspect-[4/3] relative overflow-hidden">
                 <img
@@ -36,9 +37,15 @@ const { pathname } = Astro.url;
                   href={product.data.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class="after:absolute after:inset-0"
+                  class="after:absolute after:inset-0 pe-3.5 inline-block"
                 >
                   {title}
+                  <span class="absolute h-[1lh] inline-flex items-center pl-1 overflow-clip">
+                    <Icon
+                      name="arrow-right"
+                      class="size-3.5 opacity-0 group-hover/card:opacity-70 motion-reduce:transition-none duration-250 -translate-x-6 group-hover/card:translate-x-0 transition ease-custom"
+                    />
+                  </span>
                 </a>
               </h2>
             </div>
