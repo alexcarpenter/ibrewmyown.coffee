@@ -17,19 +17,8 @@ const meta = {
 ---
 
 <Layout {...meta}>
-  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24">
-    <h1
-      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
-    >
-      US.
-      <span
-        class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
-        >Coffee Roasters.</span
-      >
-    </h1>
-  </header>
-
-  <section class="mt-4 relative bg-muted p-4 sm:p-8 rounded-lg">
+  <h1 class="sr-only">US Coffee Roasters</h1>
+  <section class="relative">
     <div class="overflow-x-auto scroll-fade">
       <table
         class:list={[
@@ -38,7 +27,7 @@ const meta = {
           "[&_td]:px-1 [&_td]:py-0.5 [&_td]:align-top",
         ]}
       >
-        <thead class="text-left font-semibold">
+        <thead class="text-left font-medium">
           <tr>
             <th>State</th>
             <th>Name</th>
@@ -54,10 +43,7 @@ const meta = {
                   {roasters.map((roaster, i) => (
                     <tr class="border-t border-black/10 first:border-solid first:border-t-2">
                       {i === 0 ? (
-                        <td
-                          rowspan={roasters.length}
-                          class="font-semibold bg-muted"
-                        >
+                        <td rowspan={roasters.length} class="font-medium">
                           <a href={`/roasters/${slugify(state)}`}>{state}</a>
                         </td>
                       ) : null}
@@ -86,7 +72,7 @@ const meta = {
                               View
                             </a>
                             <Icon
-                              class="absolute right-0 top-0.25 size-4 text-secondary"
+                              class="absolute right-0 top-0.25 size-4 text-muted-foreground"
                               name="arrow-up-right"
                             />
                           </span>

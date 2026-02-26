@@ -1,14 +1,8 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getSlugFromId, getIndexById, isProd } from "@/utils";
-import {
-  type CollectionEntry,
-  getCollection,
-  getEntry,
-  render,
-} from "astro:content";
+import { type CollectionEntry, getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon/components";
 export async function getStaticPaths() {
   const collection = await getCollection("interviews", ({ data }) => {
     return isProd ? data.draft !== true : true;
@@ -42,9 +36,13 @@ type Props = {
   previous: CollectionEntry<"interviews"> | undefined;
   next: CollectionEntry<"interviews"> | undefined;
 };
-const { issue, interview, previous, next } = Astro.props;
+const {
+  issue: _issue,
+  interview,
+  previous: _previous,
+  next: _next,
+} = Astro.props;
 const { Content } = await render(interview);
-const thumbnail = interview.data.gallery?.at(0);
 ---
 
 <Layout
@@ -52,365 +50,148 @@ const thumbnail = interview.data.gallery?.at(0);
   description={interview.data.description}
   image={interview.data.image}
 >
-  <header class="bg-primary px-4 sm:px-8 pb-4 sm:pb-8 rounded-b-lg pt-24">
-    <div class="size-9 sm:size-18 relative overflow-hidden rounded-full mb-4">
+  <article class="my-20">
+    <header class="max-w-lg mx-auto text-pretty">
       <Image
         src={interview.data.avatar}
-        width={64}
-        height={64}
+        width="48"
+        height="48"
         alt=""
-        class="absolute size-full"
+        class="rounded-full object-cover aspect-square size-10"
       />
-    </div>
-    <h1
-      class="text-3xl sm:text-5xl tracking-tight text-balance text-primary-foreground max-w-prose leading-[1.1]"
-    >
-      {interview.data.title}.
-      <span
-        class="text-[color-mix(in_srgb,var(--color-primary-foreground),var(--color-primary)_50%)]"
-        >{interview.data.description}</span
-      >
-    </h1>
-  </header>
-  {
-    thumbnail ? (
-      <div class="mt-4 md:hidden">
-        <button
-          class="group/button bg-primary text-primary-foreground rounded-lg w-full h-9 px-4 flex items-center justify-center gap-x-2 font-medium"
-          type="button"
-          data-a11y-dialog-show="gallery-dialog"
-        >
-          <Icon name="gallery" class="size-4 text-secondary" />
-          View gallery
-        </button>
+      <div class="mt-5">
+        <h1 class="text-sm font-medium inline">{interview.data.title}.</h1>
+        <p class="inline mt-5 text-sm text-neutral-500">
+          {interview.data.description}
+        </p>
       </div>
-    ) : null
-  }
-  <div
-    class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-x-4 bg-muted rounded-lg flex-1"
-  >
-    <div class="md:col-span-3 lg:col-span-2 p-4 sm:p-8">
-      <div class="prose">
-        <Content />
-      </div>
-      {
-        interview.data.products ? (
-          <>
-            <h2 class="mt-8 flex items-center gap-x-4 font-semibold text-xl tracking-tight text-primary">
-              Products referenced&nbsp;&not;
-            </h2>
-            <ul class="mt-4 space-y-4">
-              {interview.data.products?.map(async ({ id }, i) => {
-                const product = await getEntry("products", id);
-                if (!product) {
-                  return null;
-                }
-                return (
-                  <li id={(i + 1).toString()}>
-                    <span class="text-muted-foreground font-mono uppercase text-xs block">
-                      {product.data.description}
-                    </span>
-                    <a
-                      href={product.data.link}
-                      target="_blank"
-                      class="font-medium underline decoration-2 decoration-accent hover:bg-accent"
-                    >
-                      {product.data.title}
-                    </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </>
-        ) : null
-      }
-    </div>
-    <div
-      class="hidden relative md:flex flex-col justify-end p-4 sm:p-8 col-start-4"
-    >
-      {
-        thumbnail ? (
-          <button
-            class="aspect-[3/2] rounded-sm overflow-hidden sticky bottom-8 group/thumbnail cursor-zoom-in bg-primary"
-            type="button"
-            data-a11y-dialog-show="gallery-dialog"
-          >
-            <Image
-              src={thumbnail.src}
-              alt={thumbnail.alt}
-              width={1500}
-              height={1000}
-              class="absolute inset-0 size-full object-cover group-hover/thumbnail:opacity-5 transition duration-250 ease-custom"
-            />
-            <span class="relative text-xs font-mono uppercase text-accent opacity-0 group-hover/thumbnail:opacity-100 transition duration-250 ease-custom pointer-coarse:opacity-100">
-              View gallery
-            </span>
-          </button>
-        ) : null
-      }
-    </div>
-  </div>
-
-  <!-- <section class="p-8 bg-secondary rounded-lg mt-4">
+    </header>
     {
-      previous?.data ? (
-        <a href={`/interviews/${getSlugFromId(previous.id)}`}>
-          {previous.data.title}
-        </a>
-      ) : null
-    }
-    {
-      next?.data ? (
-        <a href={`/interviews/${getSlugFromId(next.id)}`}>{next?.data.title}</a>
-      ) : null
-    }
-  </section> -->
-
-  <div
-    slot="dialog"
-    id="gallery-dialog"
-    class="dialog-container"
-    aria-labelledby="gallery-dialog-title"
-    aria-hidden="true"
-  >
-    <div data-a11y-dialog-hide class="dialog-overlay"></div>
-    <div role="document" class="dialog-content">
-      <span
-        class="absolute top-4 left-4 text-xs font-mono text-accent z-10 inline-flex items-baseline"
-        aria-hidden="true"
-      >
-        FIG_<number-flow id="gallery-figcaption" data-will-change></number-flow>
-      </span>
-      <button
-        type="button"
-        data-a11y-dialog-hide
-        aria-label="Close dialog"
-        class="group/button p-4 absolute top-0 right-0 z-10 text-accent"
-      >
-        <span
-          class="size-7 grid place-content-center rounded-full group-hover/button:bg-primary transition-colors ease-custom duration-250"
-        >
-          <Icon name="close" class="size-4" />
-        </span>
-      </button>
-      <h1 id="gallery-dialog-title" class="sr-only">Gallery images</h1>
-      {
-        interview.data.gallery ? (
-          <figure class:list={["embla", "relative"]}>
-            <div class:list={["embla__viewport", "overflow-hidden"]}>
-              <div class:list={["embla__container", "flex"]}>
-                {interview.data.gallery.map((img, i) => {
-                  return (
-                    <div
-                      class:list={[
-                        "embla__slide",
-                        "relative overflow-hidden aspect-[3/2] flex-[0_0_100%] min-w-0 grid place-content-center",
-                      ]}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        width={1500}
-                        height={1000}
-                        loading={i === 0 ? "eager" : "lazy"}
-                        class="absolute w-full h-full object-cover"
-                      />
-                    </div>
-                  );
-                })}
-              </div>
+      interview.data.gallery ? (
+        <div class="embla max-w-3xl mx-auto mt-10">
+          <div class="embla__viewport">
+            <div class="embla__container">
+              {interview.data.gallery.map((image) => (
+                <Image
+                  src={image.src}
+                  width="1600"
+                  height="900"
+                  alt={image.alt}
+                  class="embla__slide"
+                />
+              ))}
             </div>
-            {interview.data.gallery.length > 1 ? (
-              <Fragment>
-                <button
-                  class:list={[
-                    "embla__button--prev",
-                    "group/button",
-                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center left-0 transition-opacity ease-custom duration-250",
-                    "disabled:opacity-0",
-                  ]}
-                  disabled
-                  type="button"
-                >
-                  <span class="sr-only">Previous</span>
-                  <span
-                    class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
-                    aria-hidden="true"
-                  >
-                    <Icon
-                      name="arrow-left"
-                      class="size-4 [grid-area:1/1] translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
-                    />
-                    <Icon
-                      name="arrow-left"
-                      class="size-4 [grid-area:1/1] opacity-70 group-hover/button:-translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
-                    />
-                  </span>
-                </button>
-                <button
-                  class:list={[
-                    "embla__button--next",
-                    "group/button",
-                    "absolute top-1/2 -translate-y-1/2 px-4 aspect-square grid place-content-center right-0 transition-opacity ease-custom duration-250",
-                    "disabled:opacity-0",
-                  ]}
-                  type="button"
-                >
-                  <span class="sr-only">Next</span>
-                  <span
-                    class="size-7 bg-accent rounded-full text-primary grid place-content-center overflow-hidden"
-                    aria-hidden="true"
-                  >
-                    <Icon
-                      name="arrow-right"
-                      class="size-4 [grid-area:1/1] -translate-x-6 group-hover/button:translate-x-0 motion-reduce:transition-none group-focus-visible/button:translate-x-0 transition-transform duration-250 ease-custom"
-                    />
-                    <Icon
-                      name="arrow-right"
-                      class="size-4 [grid-area:1/1] opacity-70 group-hover/button:translate-x-6 motion-reduce:transition-none group-focus-visible/button:translate-x-6 transition-transform duration-250 ease-custom"
-                    />
-                  </span>
-                </button>
-              </Fragment>
-            ) : null}
-          </figure>
-        ) : null
-      }
+          </div>
+
+          <div class="embla__dots" />
+        </div>
+      ) : null
+    }
+    <div class="prose mt-10 max-w-lg mx-auto">
+      <Content />
     </div>
-  </div>
+  </article>
 </Layout>
 
 <style>
-  .dialog-container,
-  .dialog-overlay {
-    position: fixed;
-    inset: 0;
-  }
-
-  .dialog-container {
-    z-index: 2;
-    display: flex;
-  }
-
-  .dialog-container[aria-hidden="true"] {
-    display: none;
-  }
-
-  .dialog-overlay {
-    background-color: color-mix(in srgb, var(--color-primary) 95%, transparent);
-    backdrop-filter: blur(12px);
-    transition: opacity 250ms;
-    opacity: 1;
-
-    @starting-style {
-      opacity: 0;
-    }
-  }
-
-  .dialog-content {
-    margin: auto;
-    z-index: 2;
-    position: relative;
-    background-color: var(--color-secondary);
-    aspect-ratio: 3 / 2;
-    height: min(calc(100vh - 4rem), calc((100vw - 2rem) * 2 / 3));
-    border-radius: var(--radius-lg);
+  .embla__viewport {
     overflow: hidden;
-    opacity: 1;
-    transform: scale(1);
-    transition-property: opacity, transform;
-    transition-duration: 0.3s;
+    width: 100%;
+  }
 
-    @starting-style {
-      opacity: 0;
-      transform: scale(0.95);
-    }
+  .embla__container {
+    display: flex;
+    aspect-ratio: 3 / 2;
+    width: 100%;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .embla__slide {
+    width: 100%;
+    flex: 0 0 100%;
+    min-width: 0;
+    position: relative;
+    object-fit: cover;
+  }
+
+  .embla__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(var(--spacing) * 10);
   }
 </style>
 
 <script>
-  import "number-flow";
-  import A11yDialog from "a11y-dialog";
-  import { disableBodyScroll, enableBodyScroll } from "@/lib/body-scroll-lock";
-  import { addPrevNextBtnsClickHandlers } from "@/lib/embla";
-  import EmblaCarousel, { type EmblaOptionsType } from "embla-carousel";
+  import EmblaCarousel, { type EmblaCarouselType } from "embla-carousel";
 
-  const OPTIONS: EmblaOptionsType = {};
+  const wrapperNode = document.querySelector<HTMLElement>(".embla");
+  if (!wrapperNode) throw new Error("Embla wrapper not found");
 
-  (function () {
-    const element = document.querySelector("#gallery-dialog") as HTMLElement;
-    const dialog = new A11yDialog(element);
-    let emblaApi: ReturnType<typeof EmblaCarousel> | undefined;
-    let cleanupHandlers: (() => void) | undefined;
+  const viewportNode =
+    wrapperNode.querySelector<HTMLElement>(".embla__viewport");
+  const dotsNode = wrapperNode.querySelector<HTMLElement>(".embla__dots");
 
-    const initEmbla = () => {
-      const emblaNode = document.querySelector(".embla") as HTMLElement;
-      if (!emblaNode) return;
+  if (!viewportNode || !dotsNode) {
+    throw new Error("Embla viewport or dots not found");
+  }
 
-      const viewportNode = emblaNode.querySelector(
-        ".embla__viewport"
-      ) as HTMLElement;
-      const prevBtnNode = emblaNode.querySelector(
-        ".embla__button--prev"
-      ) as HTMLElement;
-      const nextBtnNode = emblaNode.querySelector(
-        ".embla__button--next"
-      ) as HTMLElement;
-      const figcaptionElement = document.querySelector(
-        "#gallery-figcaption"
-      ) as any;
+  const emblaApi: EmblaCarouselType = EmblaCarousel(viewportNode, {
+    loop: false,
+  });
 
-      emblaApi = EmblaCarousel(viewportNode, OPTIONS);
+  let dotNodes: HTMLElement[] = [];
 
-      if (figcaptionElement && typeof figcaptionElement.update === "function") {
-        figcaptionElement.format = {
-          minimumIntegerDigits: 3,
-          useGrouping: false,
-        };
+  const createDotButtonHtml = (
+    emblaApi: EmblaCarouselType,
+    dotsNode: HTMLElement,
+  ) => {
+    const scrollSnaps = emblaApi.scrollSnapList();
+    dotsNode.innerHTML = scrollSnaps
+      .map(
+        () =>
+          `<button class="embla__dot h-10 w-6 group flex justify-center items-center" type="button" aria-label="Go to slide">
+            <span class="size-2 rounded-full bg-neutral-300 block group-[[aria-current=true]]:bg-neutral-900"></span>
+          </button>`,
+      )
+      .join("");
+    return Array.from(dotsNode.querySelectorAll<HTMLElement>(".embla__dot"));
+  };
 
-        const initialIndex = emblaApi.selectedScrollSnap();
-        figcaptionElement.update(initialIndex + 1);
-      } else {
-        console.error(
-          "number-flow element not ready or update method not available"
-        );
-      }
+  const addDotButtonClickHandlers = (
+    emblaApi: EmblaCarouselType,
+    dotNodes: HTMLElement[],
+  ) => {
+    dotNodes.forEach((dotNode, index) => {
+      dotNode.addEventListener("click", () => emblaApi.scrollTo(index), false);
+    });
+  };
 
-      const onSelect = () => {
-        if (figcaptionElement && emblaApi) {
-          const selectedIndex = emblaApi.selectedScrollSnap();
-          figcaptionElement.update(selectedIndex + 1);
-        }
-      };
+  const toggleDotButtonsActive = (
+    emblaApi: EmblaCarouselType,
+    dotNodes: HTMLElement[],
+  ) => {
+    if (!dotNodes.length) return;
+    const previous = emblaApi.previousScrollSnap();
+    const selected = emblaApi.selectedScrollSnap();
+    if (previous !== -1) {
+      dotNodes[previous].removeAttribute("aria-current");
+    }
+    dotNodes[selected].setAttribute("aria-current", "true");
+  };
 
-      emblaApi.on("select", onSelect);
+  const createAndSetupDotButtons = (
+    emblaApi: EmblaCarouselType,
+    dotsNode: HTMLElement,
+  ) => {
+    dotNodes = createDotButtonHtml(emblaApi, dotsNode);
+    addDotButtonClickHandlers(emblaApi, dotNodes);
+    toggleDotButtonsActive(emblaApi, dotNodes);
+  };
 
-      cleanupHandlers = addPrevNextBtnsClickHandlers(
-        emblaApi,
-        prevBtnNode,
-        nextBtnNode
-      );
-    };
-
-    const cleanupEmbla = () => {
-      if (cleanupHandlers) {
-        cleanupHandlers();
-      }
-      if (emblaApi) {
-        emblaApi.destroy();
-      }
-      emblaApi = undefined;
-      cleanupHandlers = undefined;
-    };
-
-    dialog
-      .on("show", () => {
-        disableBodyScroll(element, { reserveScrollBarGap: true });
-        initEmbla();
-      })
-      .on("hide", () => {
-        enableBodyScroll(element);
-        cleanupEmbla();
-      });
-  })();
+  createAndSetupDotButtons(emblaApi, dotsNode);
+  emblaApi.on("init", () => createAndSetupDotButtons(emblaApi, dotsNode));
+  emblaApi.on("select", (emblaApi) =>
+    toggleDotButtonsActive(emblaApi, dotNodes),
+  );
 </script>
