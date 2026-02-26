@@ -101,17 +101,17 @@ const { Content } = await render(interview);
 
   .embla__container {
     display: flex;
-    aspect-ratio: 3 / 2;
     width: 100%;
     touch-action: pan-y pinch-zoom;
   }
 
   .embla__slide {
-    width: 100%;
     flex: 0 0 100%;
     min-width: 0;
     position: relative;
     object-fit: cover;
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
   }
 
   .embla__dots {

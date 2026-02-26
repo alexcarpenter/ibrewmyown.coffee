@@ -20,7 +20,7 @@ const { pathname } = Astro.url;
               <div class="aspect-[4/3] relative overflow-hidden">
                 <img
                   src={product.data.img}
-                  class="absolute size-full object-contain group-hover:opacity-80 transition-opacity duration-250 ease-out"
+                  class="absolute inset-0 m-auto size-full max-w-2xs object-contain group-hover:opacity-80 transition-opacity duration-250 ease-out"
                 />
               </div>
             ) : null}
