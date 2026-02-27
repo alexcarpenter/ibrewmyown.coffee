@@ -1,0 +1,62 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Guides"
+  description="Explore our comprehensive guides to help you make the most of your coffee setup. From the 2025 holiday gift guide to our espresso buying guide, find recommendations and tips for your brewing journey."
+>
+  <article class="my-20">
+    <header
+      class="max-w-lg mx-auto text-pretty border-b border-dashed border-black/10 pb-10"
+    >
+      <div class="mt-5">
+        <h1 class="text-sm font-medium inline">Guides.</h1>
+        <p class="inline mt-5 text-sm text-neutral-500">
+          Explore our comprehensive guides to help you make the most of your
+          coffee setup. From the 2025 holiday gift guide to our espresso buying
+          guide, find recommendations and tips for your brewing journey.
+        </p>
+      </div>
+    </header>
+    <ul class="max-w-lg mx-auto mt-5">
+      <li>
+        <article
+          class="relative p-4 -mx-4 hover:bg-white rounded-lg transition-colors"
+        >
+          <h2 class="inline text-sm font-medium">
+            <a
+              href="/guides/espresso-machines"
+              class="before:absolute before:inset-0"
+              >Espresso Machines Buying Guide.</a
+            >
+          </h2>
+          <p class="inline text-sm text-muted-foreground">
+            Looking for the right espresso machine for your setup? This guide
+            breaks down three tiers of espresso machines, from easy entry-level
+            options to high-end home machines, so you can find something that
+            fits your space, budget, and how deep you want to go with espresso
+            at home.
+          </p>
+        </article>
+      </li>
+      <li>
+        <article
+          class="relative p-4 -mx-4 hover:bg-white rounded-lg transition-colors"
+        >
+          <h2 class="inline text-sm font-medium">
+            <a
+              href="/guides/2025-holiday-gift-guide"
+              class="before:absolute before:inset-0">2025 Holiday Gift Guide.</a
+            >
+          </h2>
+          <p class="inline text-sm text-muted-foreground">
+            Discover the best coffee gifts for the holidays—espresso machines,
+            drippers, brewers, and bean subscriptions that coffee lovers will
+            actually use every day.
+          </p>
+        </article>
+      </li>
+    </ul>
+  </article>
+</Layout>
