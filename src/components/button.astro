@@ -14,7 +14,7 @@ const { variant = "primary", href, ...attrs } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   class:list={[
-    "group/button h-9 text-sm flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium",
+    "group/button h-10 text-sm flex items-center justify-center w-fit pl-6 pr-1 gap-x-3 tracking-tight rounded-full font-medium",
     {
       "bg-black/10 text-primary-foreground": variant === "primary",
       "bg-accent text-primary": variant === "accent",
@@ -24,7 +24,7 @@ const { variant = "primary", href, ...attrs } = Astro.props;
   ><slot />
   <span
     class:list={[
-      "size-7 rounded-full grid place-content-center overflow-hidden",
+      "size-8 rounded-full grid place-content-center overflow-hidden",
       {
         "bg-accent text-neutral-900": variant === "primary",
         "bg-primary text-accent": variant === "accent",
