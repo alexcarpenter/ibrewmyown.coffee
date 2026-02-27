@@ -50,11 +50,11 @@
   @apply text-sm;
 
   & > :where(* + *) {
-    @apply mt-10;
+    @apply mt-5;
   }
 
-  & > :where(:is(h2,h3) + *) {
-    @apply mt-5;
+  & > :where(* + :is(h2,h3)) {
+    @apply mt-10;
   }
 
   & :where(:is(h2,h3)) {
