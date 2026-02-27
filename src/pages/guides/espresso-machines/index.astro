@@ -11,308 +11,274 @@ import rocketEspressoAppartamentoEspressoMachine from "@/assets/rocket-espresso-
 const products = await getCollection("products");
 
 const getProductData = (id: string) =>
-    products.find((product) => product.id === id)?.data;
+  products.find((product) => product.id === id)?.data;
 
 const tierOneAccessories = [
-    "timemore-coffee-scale-basic-2-0",
-    "normcore-spring-loaded-tamper",
-    "normcore-wdt-distribution-tool",
-    "timemore-coffee-scale-basic-2-0",
+  "timemore-coffee-scale-basic-2-0",
+  "normcore-spring-loaded-tamper",
+  "normcore-wdt-distribution-tool",
+  "timemore-coffee-scale-basic-2-0",
 ].map((id) => getProductData(id));
 
 const tierTwoAccessories = [
-    "timemore-sculptor-064s-flat-burr-coffee-bean-grinder",
+  "timemore-sculptor-064s-flat-burr-coffee-bean-grinder",
 ].map((id) => getProductData(id));
 
 const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
-    getProductData(id),
+  getProductData(id),
 );
 ---
 
 <Layout
-    title="Espresso Machines buying guide"
-    description="Looking for the right espresso machine for your setup? This guide breaks down three tiers of espresso machines, from easy entry-level options to high-end home machines, so you can find something that fits your space, budget, and how deep you want to go with espresso at home."
-    image="/og/2025-holiday-gift-guide.jpg"
+  title="Espresso Machines buying guide"
+  description="Looking for the right espresso machine for your setup? This guide breaks down three tiers of espresso machines, from easy entry-level options to high-end home machines, so you can find something that fits your space, budget, and how deep you want to go with espresso at home."
+  image="/og/2025-holiday-gift-guide.jpg"
 >
-    <header class="bg-primary px-4 sm:px-8 rounded-b-lg py-24 relative">
-        <h1 class="sr-only">Espresso Machines buying guide</h1>
-        <svg
-            fill="none"
-            viewBox="0 0 478 123"
-            class="fill-accent max-h-32 mx-auto"
-            ><path
-                d="M477.585 44.928h-9.472V11.776c0-2.048-1.152-3.328-3.2-3.328s-3.072 1.28-3.072 3.072v32.768c0 3.84.896 5.632 3.712 7.424l4.352 2.304c5.12 2.944 8.064 5.76 8.064 13.696v41.984c0 7.936-4.864 12.416-12.672 12.416-8.064 0-13.056-4.352-13.056-11.776V70.272h9.6v39.68c0 2.176 1.152 3.712 3.328 3.712 2.048 0 3.072-1.536 3.072-3.584V70.528c0-4.224-1.024-6.144-3.84-7.808l-4.608-2.432c-5.248-2.944-7.68-6.272-7.68-13.824V11.648C452.113 4.736 456.465 0 465.169 0c8.32 0 12.416 4.224 12.416 11.264v33.664ZM438.85 112.896h9.344v8.576H429.25V.512h18.688v8.576h-9.088V54.4h8.576v8.448h-8.576v50.048ZM415.807 74.624l-1.408-40.832V.512h8.576v120.96h-9.088l-8.448-78.336h-.768l1.28 41.088v37.248h-8.576V.512h9.472l8.192 74.112h.768ZM381.5.512h9.472v120.96H381.5V.512ZM365.491.512h9.728v120.96h-9.728V62.976h-6.016v58.496h-9.6V.512h9.6V54.4h6.016V.512ZM343.966 62.976v46.72c0 8.064-4.352 12.416-12.672 12.416s-12.928-4.736-12.928-13.312V13.056C318.366 4.608 322.974 0 331.294 0s12.672 4.224 12.672 12.16v41.088h-9.6v-40.96c0-2.304-1.024-3.84-3.072-3.84-1.92 0-3.2 1.408-3.2 3.84v97.408c0 2.432 1.28 3.968 3.2 3.968 2.048 0 3.072-1.664 3.072-3.968v-46.72h9.6ZM305.634 121.472l-1.152-31.488h-7.04l-1.152 31.488h-9.728L293.474.512h14.976l7.168 120.96h-9.984Zm-7.808-40.064h6.272l-1.92-51.84-.768-18.048h-.896l-.768 18.048-1.92 51.84ZM264.944 86.272l1.152-29.056L269.808.512h13.184v120.96h-8.576l.128-42.624.64-48.384h-.768l-5.12 91.008h-9.728l-4.992-91.008h-.768l.64 48.384v42.624H246V.512h13.44l3.584 56.704 1.152 29.056h.768ZM214.919 0c8.448 0 12.928 4.608 12.928 13.056V108.8c0 8.576-4.608 13.312-12.928 13.312-8.448 0-12.928-4.736-12.928-13.312V13.056c0-8.448 4.48-13.056 12.928-13.056Zm3.2 109.696V12.288c0-2.304-1.152-3.84-3.2-3.84s-3.2 1.408-3.2 3.84v97.408c0 2.432 1.28 3.968 3.2 3.968 1.92 0 3.2-1.664 3.2-3.968ZM196.21 44.928h-9.472V11.776c0-2.048-1.152-3.328-3.2-3.328s-3.072 1.28-3.072 3.072v32.768c0 3.84.896 5.632 3.712 7.424l4.352 2.304c5.12 2.944 8.064 5.76 8.064 13.696v41.984c0 7.936-4.864 12.416-12.672 12.416-8.064 0-13.056-4.352-13.056-11.776V70.272h9.6v39.68c0 2.176 1.152 3.712 3.328 3.712 2.048 0 3.072-1.536 3.072-3.584V70.528c0-4.224-1.024-6.144-3.84-7.808l-4.608-2.432c-5.248-2.944-7.68-6.272-7.68-13.824V11.648C170.738 4.736 175.09 0 183.794 0c8.32 0 12.416 4.224 12.416 11.264v33.664ZM165.085 44.928h-9.472V11.776c0-2.048-1.152-3.328-3.2-3.328s-3.072 1.28-3.072 3.072v32.768c0 3.84.896 5.632 3.712 7.424l4.352 2.304c5.12 2.944 8.064 5.76 8.064 13.696v41.984c0 7.936-4.864 12.416-12.672 12.416-8.064 0-13.056-4.352-13.056-11.776V70.272h9.6v39.68c0 2.176 1.152 3.712 3.328 3.712 2.048 0 3.072-1.536 3.072-3.584V70.528c0-4.224-1.024-6.144-3.84-7.808l-4.608-2.432c-5.248-2.944-7.68-6.272-7.68-13.824V11.648C139.613 4.736 143.965 0 152.669 0c8.32 0 12.416 4.224 12.416 11.264v33.664ZM126.35 112.896h9.344v8.576H116.75V.512h18.688v8.576h-9.088V54.4h8.576v8.448h-8.576v50.048ZM111.874 121.472h-9.6l-3.2-49.152h-4.352v49.152H85.25V.512h13.056c7.552 0 12.544 3.968 12.544 12.288v46.336c0 4.224-1.408 7.168-3.328 9.088l4.352 53.248ZM94.85 63.744h2.432c2.56 0 3.84-1.408 3.84-4.608v-45.44c0-3.072-1.408-4.608-3.84-4.608H94.85v54.656ZM67.556 81.024h-3.584v40.448H54.5V.512h13.056c7.552 0 12.672 4.096 12.672 12.416v55.424c0 8.32-5.376 12.672-12.672 12.672Zm-.768-8.576c2.432 0 3.712-1.536 3.712-4.608V13.568c0-2.944-1.408-4.48-3.712-4.48h-2.816v63.36h2.816ZM48.335 44.928h-9.472V11.776c0-2.048-1.152-3.328-3.2-3.328s-3.072 1.28-3.072 3.072v32.768c0 3.84.896 5.632 3.712 7.424l4.352 2.304c5.12 2.944 8.064 5.76 8.064 13.696v41.984c0 7.936-4.864 12.416-12.672 12.416-8.064 0-13.056-4.352-13.056-11.776V70.272h9.6v39.68c0 2.176 1.152 3.712 3.328 3.712 2.048 0 3.072-1.536 3.072-3.584V70.528c0-4.224-1.024-6.144-3.84-7.808l-4.608-2.432c-5.248-2.944-7.68-6.272-7.68-13.824V11.648C22.863 4.736 27.215 0 35.92 0c8.32 0 12.416 4.224 12.416 11.264v33.664ZM9.6 112.896h9.344v8.576H0V.512h18.688v8.576H9.6V54.4h8.576v8.448H9.6v50.048Z"
-            ></path></svg
-        >
-        <p
-            class="text-white text-xl max-w-2xl text-balance mx-auto mt-8 text-center"
-        >
-            Looking for the right espresso machine for your setup? This guide
-            breaks down three tiers of espresso machines, from easy entry-level
-            options to high-end home machines, so you can find something that
-            fits your space, budget, and how deep you want to go with espresso
-            at home.
+  <article class="my-20">
+    <header class="max-w-lg mx-auto text-pretty">
+      <div class="mt-5">
+        <h1 class="text-sm font-medium inline">
+          Espresso Machines buying guide.
+        </h1>
+        <p class="inline mt-5 text-sm text-neutral-500">
+          Looking for the right espresso machine for your setup? This guide
+          breaks down three tiers of espresso machines, from easy entry-level
+          options to high-end home machines, so you can find something that
+          fits your space, budget, and how deep you want to go with espresso
+          at home.
         </p>
+      </div>
     </header>
-    <section class="mt-4 bg-muted rounded-lg">
-        <ul>
-            <li id="tier-one" class="scroll-mt-24">
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
-                >
-                    <div class="lg:p-8 flex justify-center">
-                        <Image
-                            src={brevilleBarristaImage}
-                            alt="Breville Barista Express"
-                            class="rounded-lg overflow-hidden max-w-lg"
-                        />
-                    </div>
-                    <div class="lg:px-8 lg:py-24">
-                        <p
-                            class="text-xs font-mono uppercase opacity-70 tracking-widest"
-                        >
-                            Tier one&nbsp;&not;
-                        </p>
-                        <h2
-                            class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
-                        >
-                            Breville Barista Express Espresso Machine
-                        </h2>
-                        <p class="md:text-lg opacity-70">
-                            The Breville Barista Express is one of the most
-                            approachable ways to start making real espresso at
-                            home. It combines a built-in conical burr grinder,
-                            PID temperature control, and a straightforward
-                            interface that helps beginners get consistent
-                            results quickly. This all-in-one design keeps the
-                            learning curve manageable while still allowing room
-                            to experiment with grind size, dose, and extraction.
-                        </p>
-                        <p class="mt-4 md:text-lg opacity-70">
-                            If you want hands-on espresso without needing
-                            multiple pieces of equipment, or the commitment of a
-                            prosumer setup, the Barista Express hits a sweet
-                            spot between convenience, control, and value.
-                        </p>
-                        <div class="mt-8">
-                            <Button href="https://amzn.to/4p8DCUn"
-                                >Purchase</Button
-                            >
-                        </div>
-                        {
-                            tierOneAccessories.length ? (
-                                <div class="mt-8">
-                                    <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
-                                        Extra accessories:
-                                    </p>
-                                    <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
-                                        {tierOneAccessories.map((item) => {
-                                            if (!item) return null;
-                                            return (
-                                                <li>
-                                                    <TooltipAnchor
-                                                        description={item.title}
-                                                        href={item.link}
-                                                        src={item.img!}
-                                                        alt={item.title}
-                                                        client:load
-                                                    />
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                </div>
-                            ) : null
-                        }
-                    </div>
-                </div>
-            </li>
-            <li
-                id="tier-two"
-                class="scroll-mt-24 border-t border-secondary/30 border-dashed"
+    <ul>
+      <li id="tier-one" class="scroll-mt-20 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="flex justify-center">
+            <Image
+              src={brevilleBarristaImage}
+              alt="Breville Barista Express"
+              class="rounded-lg overflow-hidden max-w-lg"
+            />
+          </div>
+          <div class="max-w-lg max-lg:mx-auto">
+            <p
+              class="text-xxs font-mono uppercase text-muted-foreground tracking-widest"
             >
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
-                >
-                    <div class="lg:p-8 flex justify-center lg:order-1">
-                        <Image
-                            src={rocketEspressoAppartamentoEspressoMachine}
-                            alt="Moccamaster KBGV Select Coffee Brewer"
-                            class="rounded-lg overflow-hidden max-w-lg"
-                        />
-                    </div>
-                    <div class="lg:px-8 lg:py-24">
-                        <p
-                            class="text-xs font-mono uppercase opacity-70 tracking-widest"
-                        >
-                            Tier two&nbsp;&not;
-                        </p>
-                        <h2
-                            class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
-                        >
-                            Rocket Espresso Appartamento TCA Espresso Machine
-                        </h2>
-                        <p class="md:text-lg opacity-70">
-                            The Rocket Appartamento Nera is a step into true
-                            prosumer territory. Built in Italy with
-                            commercial-grade components, it uses a heat
-                            exchanger system that allows you to brew espresso
-                            and steam milk simultaneously. The E61 group head
-                            provides excellent temperature stability, while the
-                            powerful steam performance makes silky microfoam
-                            easy to achieve.
-                        </p>
-                        <p class="mt-4 md:text-lg opacity-70">
-                            This machine is ideal for espresso lovers who
-                            already understand the basics and want more control,
-                            durability, and aesthetic presence. Pair it with a
-                            quality grinder and you’ll have a setup capable of
-                            rivaling many cafés.
-                        </p>
-                        <div class="mt-8">
-                            <Button href="https://amzn.to/4sPLX1B"
-                                >Purchase</Button
-                            >
-                        </div>
-                        {
-                            tierTwoAccessories.length ? (
-                                <div class="mt-8">
-                                    <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
-                                        Extra accessories:
-                                    </p>
-                                    <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-4">
-                                        {tierTwoAccessories.map((item) => {
-                                            if (!item) return null;
-                                            return (
-                                                <li>
-                                                    <TooltipAnchor
-                                                        description={item.title}
-                                                        href={item.link}
-                                                        src={item.img!}
-                                                        alt={item.title}
-                                                        client:load
-                                                    />
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                </div>
-                            ) : null
-                        }
-                    </div>
+              Tier one&nbsp;&not;
+            </p>
+            <div class="text-pretty mt-5">
+              <h2 class="text-sm font-medium inline">
+                Breville Barista Express Espresso Machine.
+              </h2>
+              <p class="inline text-sm text-muted-foreground">
+                The Breville Barista Express is one of the most approachable
+                ways to start making real espresso at home. It combines a
+                built-in conical burr grinder, PID temperature control, and a
+                straightforward interface that helps beginners get consistent
+                results quickly. This all-in-one design keeps the learning
+                curve manageable while still allowing room to experiment with
+                grind size, dose, and extraction.
+              </p>
+              <p class="inline text-sm text-muted-foreground mt-5 block">
+                If you want hands-on espresso without needing multiple pieces of
+                equipment, or the commitment of a prosumer setup, the Barista
+                Express hits a sweet spot between convenience, control, and
+                value.
+              </p>
+            </div>
+            <div class="mt-10">
+              <Button href="https://amzn.to/4p8DCUn">Purchase</Button>
+            </div>
+            {
+              tierOneAccessories.length ? (
+                <div class="mt-10">
+                  <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
+                    Extra accessories:
+                  </p>
+                  <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-4">
+                    {tierOneAccessories.map((item) => {
+                      if (!item) return null;
+                      return (
+                        <li>
+                          <TooltipAnchor
+                            description={item.title}
+                            href={item.link}
+                            src={item.img!}
+                            alt={item.title}
+                            client:load
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
-            </li>
-            <li
-                id="tier-three"
-                class="scroll-mt-24 border-t border-secondary/30 border-dashed"
+              ) : null
+            }
+          </div>
+        </div>
+      </li>
+      <li
+        id="tier-two"
+        class="scroll-mt-20 py-20 border-t border-black/10 border-dashed"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="flex justify-center lg:order-1">
+            <Image
+              src={rocketEspressoAppartamentoEspressoMachine}
+              alt="Rocket Espresso Appartamento TCA"
+              class="rounded-lg overflow-hidden max-w-lg"
+            />
+          </div>
+          <div class="max-w-lg mx-auto lg:ml-auto">
+            <p
+              class="text-xxs font-mono uppercase text-muted-foreground tracking-widest"
             >
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center px-4 py-16 lg:p-0"
-                >
-                    <div class="lg:p-8 flex justify-center">
-                        <Image
-                            src={laMarzoccoLineaMicra}
-                            alt=""
-                            class="rounded-lg overflow-hidden max-w-lg"
-                        />
-                    </div>
-                    <div class="lg:px-8 lg:py-24">
-                        <p
-                            class="text-xs font-mono uppercase opacity-70 tracking-widest"
-                        >
-                            Tier three&nbsp;&not;
-                        </p>
-                        <h2
-                            class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
-                        >
-                            La Marzocco Linea Micra
-                        </h2>
-                        <p class="md:text-lg opacity-70">
-                            The La Marzocco Linea Micra brings commercial
-                            espresso engineering into a compact home machine.
-                            Featuring dual boilers, exceptional thermal
-                            stability, and digital control via the La Marzocco
-                            Home app, it delivers consistency shot after shot
-                            with virtually no warm-up compromise. The build
-                            quality is exceptional, designed to last for decades
-                            rather than years.
-                        </p>
-                        <p class="mt-4 md:text-lg opacity-70">
-                            This machine is for those who see espresso as a
-                            craft and want the same level of control and
-                            reliability used by professional cafés, without
-                            dedicating an entire counter to a commercial
-                            machine. It’s the pinnacle of home espresso
-                            performance.
-                        </p>
-                        <div class="mt-8">
-                            <Button href="https://amzn.to/4p7Cxfw"
-                                >Purchase</Button
-                            >
-                        </div>
-                        {
-                            tierThreeAccessories.length ? (
-                                <div class="mt-8">
-                                    <p class="text-xs font-mono uppercase opacity-70 tracking-widest">
-                                        Extra accessories:
-                                    </p>
-                                    <ul class="mt-4 grid grid-cols-5 gap-2 md:gap-x-4">
-                                        {tierThreeAccessories.map((item) => {
-                                            if (!item) return null;
-                                            return (
-                                                <li>
-                                                    <TooltipAnchor
-                                                        description={item.title}
-                                                        href={item.link}
-                                                        src={item.img!}
-                                                        alt={item.title}
-                                                        client:load
-                                                    />
-                                                </li>
-                                            );
-                                        })}
-                                    </ul>
-                                </div>
-                            ) : null
-                        }
-                    </div>
+              Tier two&nbsp;&not;
+            </p>
+            <div class="text-pretty mt-5">
+              <h2 class="text-sm font-medium inline">
+                Rocket Espresso Appartamento TCA Espresso Machine.
+              </h2>
+              <p class="inline text-sm text-muted-foreground">
+                The Rocket Appartamento Nera is a step into true prosumer
+                territory. Built in Italy with commercial-grade components, it
+                uses a heat exchanger system that allows you to brew espresso
+                and steam milk simultaneously. The E61 group head provides
+                excellent temperature stability, while the powerful steam
+                performance makes silky microfoam easy to achieve.
+              </p>
+              <p class="inline text-sm text-muted-foreground mt-5 block">
+                This machine is ideal for espresso lovers who already
+                understand the basics and want more control, durability, and
+                aesthetic presence. Pair it with a quality grinder and you'll
+                have a setup capable of rivaling many cafés.
+              </p>
+            </div>
+            <div class="mt-10">
+              <Button href="https://amzn.to/4sPLX1B">Purchase</Button>
+            </div>
+            {
+              tierTwoAccessories.length ? (
+                <div class="mt-10">
+                  <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
+                    Extra accessories:
+                  </p>
+                  <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-4">
+                    {tierTwoAccessories.map((item) => {
+                      if (!item) return null;
+                      return (
+                        <li>
+                          <TooltipAnchor
+                            description={item.title}
+                            href={item.link}
+                            src={item.img!}
+                            alt={item.title}
+                            client:load
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
-            </li>
-            <li
-                id="coffee-subscription"
-                class="scroll-mt-24 border-t border-secondary/30 border-dashed rounded-b-lg"
+              ) : null
+            }
+          </div>
+        </div>
+      </li>
+      <li
+        id="tier-three"
+        class="scroll-mt-20 py-20 border-t border-black/10 border-dashed"
+      >
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div class="flex justify-center">
+            <Image
+              src={laMarzoccoLineaMicra}
+              alt="La Marzocco Linea Micra"
+              class="rounded-lg overflow-hidden max-w-lg"
+            />
+          </div>
+          <div class="max-w-lg max-lg:mx-auto">
+            <p
+              class="text-xxs font-mono uppercase text-muted-foreground tracking-widest"
             >
-                <div
-                    class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 items-center px-4 py-16 lg:p-0"
-                >
-                    <div class="lg:px-8 lg:py-24 lg:col-start-2 lg:col-end-4">
-                        <p
-                            class="text-xs font-mono uppercase opacity-70 tracking-widest"
-                        >
-                            Coffee Subscription&nbsp;&not;
-                        </p>
-                        <h2
-                            class="my-4 text-3xl sm:text-5xl tracking-tight text-balance text-primary leading-[1.1]"
-                        >
-                            Trade Coffee Subscription
-                        </h2>
-                        <p class="md:text-xl opacity-70">
-                            Now that you've got the gear, keep it stocked with
-                            Trade Coffee. They match you with beans from top
-                            roasters based on your taste preferences, then ship
-                            fresh bags right to your door. It's like having a
-                            coffee expert curating your stash—no more guessing
-                            at the grocery store or ending up with stale beans
-                            from who knows where.
-                        </p>
-                        <div class="mt-8">
-                            <Button href="https://rwrd.io/ref_2JQN4EP?c"
-                                >Subscribe</Button
-                            >
-                        </div>
-                    </div>
+              Tier three&nbsp;&not;
+            </p>
+            <div class="text-pretty mt-5">
+              <h2 class="text-sm font-medium inline">
+                La Marzocco Linea Micra.
+              </h2>
+              <p class="inline text-sm text-muted-foreground">
+                The La Marzocco Linea Micra brings commercial espresso
+                engineering into a compact home machine. Featuring dual
+                boilers, exceptional thermal stability, and digital control via
+                the La Marzocco Home app, it delivers consistency shot after
+                shot with virtually no warm-up compromise. The build quality is
+                exceptional, designed to last for decades rather than years.
+              </p>
+              <p class="inline text-sm text-muted-foreground mt-5 block">
+                This machine is for those who see espresso as a craft and want
+                the same level of control and reliability used by professional
+                cafés, without dedicating an entire counter to a commercial
+                machine. It's the pinnacle of home espresso performance.
+              </p>
+            </div>
+            <div class="mt-10">
+              <Button href="https://amzn.to/4p7Cxfw">Purchase</Button>
+            </div>
+            {
+              tierThreeAccessories.length ? (
+                <div class="mt-10">
+                  <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
+                    Extra accessories:
+                  </p>
+                  <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-x-4">
+                    {tierThreeAccessories.map((item) => {
+                      if (!item) return null;
+                      return (
+                        <li>
+                          <TooltipAnchor
+                            description={item.title}
+                            href={item.link}
+                            src={item.img!}
+                            alt={item.title}
+                            client:load
+                          />
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </div>
-            </li>
-        </ul>
-    </section>
+              ) : null
+            }
+          </div>
+        </div>
+      </li>
+      <li
+        id="coffee-subscription"
+        class="scroll-mt-20 pt-20 border-t border-black/10 border-dashed"
+      >
+        <div class="max-w-lg mx-auto">
+          <p
+            class="text-xxs font-mono uppercase text-muted-foreground tracking-widest"
+          >
+            Coffee Subscription&nbsp;&not;
+          </p>
+          <div class="mt-5 text-pretty">
+            <h2 class="inline text-sm font-medium">
+              Trade Coffee Subscription.
+            </h2>
+            <p class="inline text-sm text-muted-foreground">
+              Now that you've got the gear, keep it stocked with Trade Coffee.
+              They match you with beans from top roasters based on your taste
+              preferences, then ship fresh bags right to your door. It's like
+              having a coffee expert curating your stash—no more guessing at the
+              grocery store or ending up with stale beans from who knows where.
+            </p>
+          </div>
+          <div class="mt-10">
+            <Button href="https://rwrd.io/ref_2JQN4EP?c">Subscribe</Button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </article>
 </Layout>
