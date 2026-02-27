@@ -16,7 +16,7 @@ const { pathname } = Astro.url;
         const { title, description, img } = product.data;
         if (!img) return null;
         return (
-          <li class="bg-white rounded-md overflow-hidden flex flex-col relative group/card">
+          <li class="bg-white rounded-lg overflow-hidden flex flex-col relative group/card">
             {img ? (
               <div class="aspect-[4/3] relative overflow-hidden">
                 <img

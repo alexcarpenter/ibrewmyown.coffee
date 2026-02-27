@@ -23,7 +23,7 @@ const interviews = collection.sort((a, b) => {
       interviews.map((interview) => {
         const thumbnail = interview.data.gallery?.at(0);
         return (
-          <article class="rounded-md flex overflow-hidden bg-white group/card relative">
+          <article class="rounded-lg flex overflow-hidden bg-white group/card relative">
             <div class="p-4 flex-1">
               <Image
                 src={interview.data.avatar}
