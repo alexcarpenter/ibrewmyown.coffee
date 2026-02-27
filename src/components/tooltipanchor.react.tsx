@@ -23,7 +23,7 @@ export const TooltipAnchor = forwardRef<HTMLDivElement, TooltipAnchorProps>(
     return (
       <Ariakit.TooltipProvider store={tooltip} hideTimeout={250}>
         <Ariakit.TooltipAnchor
-          className="relative rounded-lg overflow-hidden shadow-sm ring-1 ring-black/10 bg-white aspect-square flex items-center justify-center"
+          className="relative rounded-lg overflow-hidden bg-white aspect-square flex items-center justify-center"
           render={
             <a href={href} target="_blank" rel="noopener noreferrer">
               <img src={src} alt={alt} />
@@ -37,7 +37,7 @@ export const TooltipAnchor = forwardRef<HTMLDivElement, TooltipAnchorProps>(
             <Ariakit.Tooltip
               gutter={4}
               alwaysVisible
-              className="text-sm bg-primary text-primary-foreground px-2 py-1 inline-flex items-center rounded-md max-w-64 text-pretty will-change-transform"
+              className="text-sm bg-black/10 backdrop-blur-sm px-2 py-1 inline-flex items-center rounded-md max-w-64 text-pretty will-change-transform"
               render={
                 <motion.div
                   initial={{ opacity: 0, y }}

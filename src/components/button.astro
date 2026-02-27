@@ -14,9 +14,9 @@ const { variant = "primary", href, ...attrs } = Astro.props;
   target="_blank"
   rel="noopener noreferrer"
   class:list={[
-    "group/button h-9 flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium shadow-sm shadow-primary/20",
+    "group/button h-9 text-sm flex items-center justify-center w-fit pl-4 pr-1 gap-x-2 rounded-full font-medium",
     {
-      "bg-primary text-primary-foreground": variant === "primary",
+      "bg-black/10 text-primary-foreground": variant === "primary",
       "bg-accent text-primary": variant === "accent",
     },
   ]}
@@ -26,7 +26,7 @@ const { variant = "primary", href, ...attrs } = Astro.props;
     class:list={[
       "size-7 rounded-full grid place-content-center overflow-hidden",
       {
-        "bg-accent text-primary": variant === "primary",
+        "bg-accent text-neutral-900": variant === "primary",
         "bg-primary text-accent": variant === "accent",
       },
     ]}

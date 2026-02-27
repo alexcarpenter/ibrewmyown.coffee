@@ -2,6 +2,7 @@
 
 @theme {
   --font-sans: Inter, sans-serif;
+  --text-xxs: 0.625rem;
   --color-background: var(--color-neutral-100);
   --color-foreground: var(--color-neutral-900);
   --color-muted-foreground: var(--color-neutral-500);
