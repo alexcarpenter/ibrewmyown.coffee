@@ -1,5 +1,4 @@
 import { PreviewCard } from "@base-ui/react/preview-card";
-import { AnimatePresence, motion } from "motion/react";
 import { useStore } from "@nanostores/react";
 import { getProductStore } from "../stores/products";
 import { Skeleton } from "./skeleton.react";
@@ -30,18 +29,7 @@ export default function Productcard({
       </PreviewCard.Trigger>
       <PreviewCard.Portal>
         <PreviewCard.Positioner side="top" sideOffset={8}>
-          <PreviewCard.Popup
-            className="z-50 w-2xs overflow-hidden rounded-lg bg-white"
-            render={
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.15, ease: "easeIn" }}
-                style={{ transformOrigin: "var(--transform-origin)" }}
-              />
-            }
-          >
+          <PreviewCard.Popup className="z-50 w-2xs overflow-hidden rounded-lg bg-white origin-[var(--transform-origin)] transition-[scale,opacity] duration-150 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:scale-90 data-[ending-style]:opacity-0">
             {loading && (
               <>
                 <Skeleton className="aspect-[3/2] rounded-none" />
