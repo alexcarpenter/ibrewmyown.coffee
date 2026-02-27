@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
-import { TooltipAnchor } from "@/components/tooltipanchor.react";
+import { ProductGroup } from "@/components/product-group.react";
 import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
 import moccamasterImage from "@/assets/moccamaster@2x.png";
 import kalitaWaveImage from "@/assets/kalita-wave@2x.png";
@@ -94,24 +94,7 @@ const tierThreeStockingStuffers = [
               >
                 Stocking stuffers:
               </p>
-              <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-4">
-                {
-                  tierOneStockingStuffers.map((item) => {
-                    if (!item) return null;
-                    return (
-                      <li>
-                        <TooltipAnchor
-                          description={item.title}
-                          href={item.link}
-                          src={item.img!}
-                          alt={item.title}
-                          client:load
-                        />
-                      </li>
-                    );
-                  })
-                }
-              </ul>
+              <ProductGroup products={tierOneStockingStuffers} client:load />
             </div>
           </div>
         </div>
@@ -156,24 +139,7 @@ const tierThreeStockingStuffers = [
               >
                 Stocking stuffers:
               </p>
-              <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-4">
-                {
-                  tierTwoStockingStuffers.map((item) => {
-                    if (!item) return null;
-                    return (
-                      <li>
-                        <TooltipAnchor
-                          description={item.title}
-                          href={item.link}
-                          src={item.img!}
-                          alt={item.title}
-                          client:load
-                        />
-                      </li>
-                    );
-                  })
-                }
-              </ul>
+              <ProductGroup products={tierTwoStockingStuffers} client:load />
             </div>
           </div>
         </div>
@@ -217,24 +183,7 @@ const tierThreeStockingStuffers = [
               >
                 Stocking stuffers:
               </p>
-              <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-x-4">
-                {
-                  tierThreeStockingStuffers.map((item) => {
-                    if (!item) return null;
-                    return (
-                      <li>
-                        <TooltipAnchor
-                          description={item.title}
-                          href={item.link}
-                          src={item.img!}
-                          alt={item.title}
-                          client:load
-                        />
-                      </li>
-                    );
-                  })
-                }
-              </ul>
+              <ProductGroup products={tierThreeStockingStuffers} client:load />
             </div>
           </div>
         </div>

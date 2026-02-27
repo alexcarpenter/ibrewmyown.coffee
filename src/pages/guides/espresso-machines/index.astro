@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/button.astro";
-import { TooltipAnchor } from "@/components/tooltipanchor.react";
+import { ProductGroup } from "@/components/product-group.react";
 import brevilleBarristaImage from "@/assets/breville-barista@2x.png";
 import laMarzoccoLineaMicra from "@/assets/la-marzocco-linea-micra@2x.png";
 import rocketEspressoAppartamentoEspressoMachine from "@/assets/rocket-espresso-appartamento-nera-espresso-machine@2px.png";
@@ -91,22 +91,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
                   <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
                     Extra accessories:
                   </p>
-                  <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-4">
-                    {tierOneAccessories.map((item) => {
-                      if (!item) return null;
-                      return (
-                        <li>
-                          <TooltipAnchor
-                            description={item.title}
-                            href={item.link}
-                            src={item.img!}
-                            alt={item.title}
-                            client:load
-                          />
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <ProductGroup products={tierOneAccessories} client:load />
                 </div>
               ) : null
             }
@@ -159,22 +144,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
                   <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
                     Extra accessories:
                   </p>
-                  <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-4">
-                    {tierTwoAccessories.map((item) => {
-                      if (!item) return null;
-                      return (
-                        <li>
-                          <TooltipAnchor
-                            description={item.title}
-                            href={item.link}
-                            src={item.img!}
-                            alt={item.title}
-                            client:load
-                          />
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <ProductGroup products={tierTwoAccessories} client:load />
                 </div>
               ) : null
             }
@@ -227,22 +197,7 @@ const tierThreeAccessories = ["la-marzocco-pico"].map((id) =>
                   <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
                     Extra accessories:
                   </p>
-                  <ul class="mt-5 grid grid-cols-5 gap-2 md:gap-x-4">
-                    {tierThreeAccessories.map((item) => {
-                      if (!item) return null;
-                      return (
-                        <li>
-                          <TooltipAnchor
-                            description={item.title}
-                            href={item.link}
-                            src={item.img!}
-                            alt={item.title}
-                            client:load
-                          />
-                        </li>
-                      );
-                    })}
-                  </ul>
+                  <ProductGroup products={tierThreeAccessories} client:load />
                 </div>
               ) : null
             }
