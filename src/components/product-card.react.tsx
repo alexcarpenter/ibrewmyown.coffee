@@ -1,4 +1,4 @@
-import * as Ariakit from "@ariakit/react";
+import { PreviewCard } from "@base-ui/react/preview-card";
 import { AnimatePresence, motion } from "motion/react";
 import { useStore } from "@nanostores/react";
 import { getProductStore } from "../stores/products";
@@ -12,41 +12,33 @@ export default function Productcard({
   id: string;
   children: React.ReactNode;
 }) {
-  const hovercard = Ariakit.useHovercardStore();
-  const mounted = Ariakit.useStoreState(hovercard, "mounted");
-
   const { store } = getProductStore(id);
   const { data: product, loading } = useStore(store);
 
   return (
-    <Ariakit.HovercardProvider store={hovercard}>
-      <Ariakit.HovercardAnchor
+    <PreviewCard.Root>
+      <PreviewCard.Trigger
         className="link group inline-block pr-4"
         href={product?.data.link}
+        delay={200}
       >
         {children}{" "}
         <ShoppingBagIcon
           className="text-secondary group-hover:text-primary absolute ml-1 inline-flex h-[1lh] w-3 flex-none items-center"
           aria-hidden
         />
-      </Ariakit.HovercardAnchor>
-      <AnimatePresence>
-        {mounted && (
-          <Ariakit.Hovercard
-            alwaysVisible
-            overlap
-            portal
-            gutter={8}
-            className="z-50 w-2xs origin-[var(--popover-transform-origin)] overflow-hidden rounded-lg bg-white"
+      </PreviewCard.Trigger>
+      <PreviewCard.Portal>
+        <PreviewCard.Positioner side="top" sideOffset={8}>
+          <PreviewCard.Popup
+            className="z-50 w-2xs overflow-hidden rounded-lg bg-white"
             render={
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
-                animate={{
-                  opacity: 1,
-                  scale: 1,
-                  transition: { duration: 0.15, ease: "easeIn" },
-                }}
-                exit={{ opacity: 0, transition: { duration: 0.1 } }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.98 }}
+                transition={{ duration: 0.15, ease: "easeIn" }}
+                style={{ transformOrigin: "var(--transform-origin)" }}
               />
             }
           >
@@ -72,18 +64,18 @@ export default function Productcard({
                   </div>
                 ) : null}
                 <div className="p-4">
-                  <p className="text-muted-foreground font-mono text-xs uppercase">
+                  <p className="text-muted-foreground text-xxs font-mono tracking-widest uppercase">
                     {product.data.description}
                   </p>
-                  <Ariakit.HovercardHeading className="mt-1 text-sm font-medium">
+                  <h2 className="mt-1 text-sm font-medium">
                     {product.data.title}
-                  </Ariakit.HovercardHeading>
+                  </h2>
                   <div className="mt-2">
                     <a
                       href={product.data.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link bg-accent text-primary flex h-8 text-sm items-center justify-center gap-x-2 rounded-sm font-medium"
+                      className="group/link bg-accent text-foreground flex h-8 items-center justify-center gap-x-2 rounded-sm text-sm font-medium"
                     >
                       Purchase
                     </a>
@@ -91,9 +83,9 @@ export default function Productcard({
                 </div>
               </>
             )}
-          </Ariakit.Hovercard>
-        )}
-      </AnimatePresence>
-    </Ariakit.HovercardProvider>
+          </PreviewCard.Popup>
+        </PreviewCard.Positioner>
+      </PreviewCard.Portal>
+    </PreviewCard.Root>
   );
 }
