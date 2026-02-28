@@ -2,16 +2,16 @@
 title: Matthew Spade
 description: Digital Content Creator based in Blackpool, UK, specializing in Design, Interiors, Personal Style, Lifestyle and Travel, with an emphasis on the creative community, discovery of smaller brands and culture.
 published: 2025-02-10T12:28:58-0500
-avatar: /img/matt-spade.jpg
-image: /og/matthew-spade.jpg
+avatar: /img/matt-spade.webp
+image: /og/matthew-spade.webp
 gallery:
-  - src: /img/matt-spade-001.jpg
+  - src: /img/matt-spade-001.webp
     alt: "Glass coffee mug on counter top near coffee"
-  - src: /img/matt-spade-002.jpg
+  - src: /img/matt-spade-002.webp
     alt: ""
-  - src: /img/matt-spade-003.jpg
+  - src: /img/matt-spade-003.webp
     alt: ""
-  - src: /img/matt-spade-004.jpg
+  - src: /img/matt-spade-004.webp
     alt: ""
 products:
   - breville-barista-touch-espresso-machine

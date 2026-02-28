@@ -3,7 +3,7 @@ draft: true
 title: Jeff Sheldon
 description: Founder & Designer of Ugmonk.
 published: 2025-02-03T17:25:41-0500
-avatar: /img/jeff-sheldon.jpg
+avatar: /img/jeff-sheldon.webp
 social:
   twitter: ugmonk
   instagram: ugmonk

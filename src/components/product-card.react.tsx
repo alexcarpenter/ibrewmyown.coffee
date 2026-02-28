@@ -29,7 +29,7 @@ export default function Productcard({
       </PreviewCard.Trigger>
       <PreviewCard.Portal>
         <PreviewCard.Positioner side="top" sideOffset={8}>
-          <PreviewCard.Popup className="z-50 w-2xs overflow-hidden rounded-lg bg-white origin-[var(--transform-origin)] transition-[scale,opacity] duration-150 data-[starting-style]:scale-90 data-[starting-style]:opacity-0 data-[ending-style]:scale-90 data-[ending-style]:opacity-0">
+          <PreviewCard.Popup className="z-50 w-2xs origin-[var(--transform-origin)] overflow-hidden rounded-lg bg-white transition-[scale,opacity] duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0">
             {loading && (
               <>
                 <Skeleton className="aspect-[3/2] rounded-none" />
