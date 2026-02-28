@@ -99,7 +99,7 @@ const getProductData = (id: string) =>
                   </p>
                   <div
                     class="text-pretty mt-5 [&_*]:leading-relaxed [&_*]:text-sm [&_p]:text-muted-foreground [&_p:first-of-type]:inline [&_p:not(:first-of-type)]:mt-5"
-                    set:html={`<h2 class="font-medium inline">${tier.title}</h2>${md.render(tier.description)}`}
+                    set:html={`<h2 class="font-medium inline">${tier.title}.</h2> ${md.render(tier.description)}`}
                   />
                   <div class="mt-10">
                     <Button href={tier.link}>Purchase</Button>
@@ -130,7 +130,7 @@ const getProductData = (id: string) =>
               </p>
               <div class="mt-5 text-pretty">
                 <h2 class="inline text-sm font-medium">
-                  {guide.data.subscription.title}
+                  {guide.data.subscription.title}.
                 </h2>
                 <p class="inline text-sm text-muted-foreground">
                   {guide.data.subscription.description}
