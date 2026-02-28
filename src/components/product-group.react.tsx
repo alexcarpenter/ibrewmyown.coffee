@@ -11,7 +11,7 @@ export function ProductGroup({ products }: { products: any[] }) {
 
   return (
     <Tooltip.Provider>
-      <div className="mt-5 grid grid-cols-5 gap-4">
+      <div className="mt-5 grid grid-cols-5 gap-2 sm:gap-4">
         {products.map((product, index) => {
           const Payload = useMemo(
             () => () => <span>{product.title}</span>,
