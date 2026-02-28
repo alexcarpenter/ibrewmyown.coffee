@@ -1,5 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { getSlugFromId, isProd } from "@/utils";
+
+const collection = await getCollection("guides", ({ data }) => {
+  return isProd ? data.draft !== true : true;
+});
+
+const guides = collection.sort((a, b) => {
+  const aDate = a.data.published;
+  const bDate = b.data.published;
+  return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
+});
 ---
 
 <Layout
@@ -20,43 +32,28 @@ import Layout from "@/layouts/Layout.astro";
       </div>
     </header>
     <ul class="max-w-lg mx-auto mt-5">
-      <li>
-        <article
-          class="relative p-4 -mx-4 hover:bg-white rounded-lg transition-colors"
-        >
-          <h2 class="inline text-sm font-medium">
-            <a
-              href="/guides/espresso-machines"
-              class="before:absolute before:inset-0"
-              >Home Espresso Machines Buying Guide.</a
-            >
-          </h2>
-          <p class="inline text-sm text-muted-foreground">
-            Looking for the right espresso machine for your setup? This guide
-            breaks down three tiers of espresso machines, from easy entry-level
-            options to high-end home machines, so you can find something that
-            fits your space, budget, and how deep you want to go with espresso
-            at home.
-          </p>
-        </article>
-      </li>
-      <li>
-        <article
-          class="relative p-4 -mx-4 hover:bg-white rounded-lg transition-colors"
-        >
-          <h2 class="inline text-sm font-medium">
-            <a
-              href="/guides/2025-holiday-gift-guide"
-              class="before:absolute before:inset-0">2025 Holiday Gift Guide.</a
-            >
-          </h2>
-          <p class="inline text-sm text-muted-foreground">
-            Discover the best coffee gifts for the holidays—espresso machines,
-            drippers, brewers, and bean subscriptions that coffee lovers will
-            actually use every day.
-          </p>
-        </article>
-      </li>
+      {
+        guides.map((guide) => {
+          const slug = getSlugFromId(guide.id);
+          return (
+            <li>
+              <article class="relative p-4 -mx-4 hover:bg-white rounded-lg transition-colors">
+                <h2 class="inline text-sm font-medium">
+                  <a
+                    href={`/guides/${slug}`}
+                    class="before:absolute before:inset-0"
+                  >
+                    {guide.data.title}.
+                  </a>
+                </h2>
+                <p class="inline text-sm text-muted-foreground">
+                  {guide.data.description}
+                </p>
+              </article>
+            </li>
+          );
+        })
+      }
     </ul>
   </article>
 </Layout>

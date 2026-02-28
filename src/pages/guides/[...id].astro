@@ -1,0 +1,148 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { getSlugFromId, isProd } from "@/utils";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Button from "@/components/button.astro";
+import { ProductGroup } from "@/components/product-group.react";
+import MarkdownIt from "markdown-it";
+
+const md = new MarkdownIt({ html: true });
+
+export async function getStaticPaths() {
+  const collection = await getCollection("guides", ({ data }) => {
+    return isProd ? data.draft !== true : true;
+  });
+
+  const guides = collection.sort((a, b) => {
+    const aDate = a.data.published;
+    const bDate = b.data.published;
+    return Date.parse(bDate.toString()) - Date.parse(aDate.toString());
+  });
+
+  return guides.map((guide) => {
+    const id = getSlugFromId(guide.id);
+    return {
+      params: { id },
+      props: {
+        guide,
+      },
+    };
+  });
+}
+
+type Props = {
+  guide: CollectionEntry<"guides">;
+};
+
+const { guide } = Astro.props;
+
+// Resolve product references for accessories
+const products = await getCollection("products");
+const getProductData = (id: string) =>
+  products.find((product) => product.id === id)?.data;
+---
+
+<Layout
+  title={guide.data.title}
+  description={guide.data.description}
+  image={guide.data.image}
+>
+  <article class="my-20">
+    <header
+      class="max-w-lg mx-auto text-pretty border-b border-black/10 border-dashed pb-20"
+    >
+      <div class="mt-5">
+        <h1 class="text-sm font-medium inline">{guide.data.title}.</h1>
+        <p class="inline mt-5 text-sm text-neutral-500">
+          {guide.data.description}
+        </p>
+      </div>
+    </header>
+    <ul>
+      {
+        guide.data.tiers.map((tier, index) => {
+          const accessories = tier.accessories
+            ?.map((id) => getProductData(id.id))
+            .filter(Boolean);
+          return (
+            <li
+              id={tier.id}
+              class:list={[
+                "scroll-mt-20 py-20",
+                index > 0 && "border-t border-black/10 border-dashed",
+              ]}
+            >
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div
+                  class:list={[
+                    "flex justify-center",
+                    index % 2 === 1 && "lg:order-1",
+                  ]}
+                >
+                  <Image
+                    src={tier.img}
+                    width="1000"
+                    height="1000"
+                    alt={tier.title}
+                    class="rounded-lg overflow-hidden max-w-lg"
+                  />
+                </div>
+                <div
+                  class:list={[
+                    "max-w-lg",
+                    index % 2 === 0 ? "max-lg:mx-auto" : "mx-auto lg:ml-auto",
+                  ]}
+                >
+                  <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
+                    {tier.label}&nbsp;&not;
+                  </p>
+                  <div
+                    class="text-pretty mt-5 [&_*]:leading-relaxed [&_*]:text-sm [&_p]:text-muted-foreground [&_p:first-of-type]:inline [&_p:not(:first-of-type)]:mt-5"
+                    set:html={`<h2 class="font-medium inline">${tier.title}</h2>${md.render(tier.description)}`}
+                  />
+                  <div class="mt-10">
+                    <Button href={tier.link}>Purchase</Button>
+                  </div>
+                  {accessories && accessories.length > 0 && (
+                    <div class="mt-10">
+                      <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
+                        Accessories:
+                      </p>
+                      <ProductGroup products={accessories} client:load />
+                    </div>
+                  )}
+                </div>
+              </div>
+            </li>
+          );
+        })
+      }
+      {
+        guide.data.subscription && (
+          <li
+            id="coffee-subscription"
+            class="scroll-mt-20 pt-20 border-t border-black/10 border-dashed"
+          >
+            <div class="max-w-lg mx-auto">
+              <p class="text-xxs font-mono uppercase text-muted-foreground tracking-widest">
+                {guide.data.subscription.label}&nbsp;&not;
+              </p>
+              <div class="mt-5 text-pretty">
+                <h2 class="inline text-sm font-medium">
+                  {guide.data.subscription.title}
+                </h2>
+                <p class="inline text-sm text-muted-foreground">
+                  {guide.data.subscription.description}
+                </p>
+              </div>
+              <div class="mt-10">
+                <Button href={guide.data.subscription.link}>Subscribe</Button>
+              </div>
+            </div>
+          </li>
+        )
+      }
+    </ul>
+  </article>
+</Layout>

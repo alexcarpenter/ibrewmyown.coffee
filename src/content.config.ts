@@ -64,9 +64,41 @@ const interviews = defineCollection({
   }),
 });
 
+const guides = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/guides" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    published: z.coerce.date(),
+    image: z.string().optional(),
+    draft: z.boolean().optional(),
+    tiers: z.array(
+      z.object({
+        id: z.string(),
+        label: z.string(),
+        product: reference("products").optional(),
+        img: z.string(),
+        title: z.string(),
+        description: z.string(),
+        link: z.string().url(),
+        accessories: z.array(reference("products")).optional(),
+      }),
+    ),
+    subscription: z
+      .object({
+        label: z.string(),
+        title: z.string(),
+        description: z.string(),
+        link: z.string().url(),
+      })
+      .optional(),
+  }),
+});
+
 export const collections = {
   brands,
   categories,
+  guides,
   interviews,
   products,
 };
