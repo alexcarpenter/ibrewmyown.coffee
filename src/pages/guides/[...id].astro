@@ -47,6 +47,24 @@ const getProductData = (id: string) =>
   title={guide.data.title}
   description={guide.data.description}
   image={guide.data.image}
+  type="article"
+  publishedTime={guide.data.published}
+  schema={{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": guide.data.title,
+    "description": guide.data.description,
+    "image": guide.data.image ? new URL(guide.data.image, Astro.site).href : undefined,
+    "datePublished": guide.data.published.toISOString(),
+    "publisher": {
+      "@type": "Organization",
+      "name": META.title,
+      "logo": {
+        "@type": "ImageObject",
+        "url": new URL(META.image, Astro.site).href,
+      },
+    },
+  }}
 >
   <article class="my-20">
     <header
