@@ -52,16 +52,18 @@ const getProductData = (id: string) =>
   schema={{
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": guide.data.title,
-    "description": guide.data.description,
-    "image": guide.data.image ? new URL(guide.data.image, Astro.site).href : undefined,
-    "datePublished": guide.data.published.toISOString(),
-    "publisher": {
+    headline: guide.data.title,
+    description: guide.data.description,
+    image: guide.data.image
+      ? new URL(guide.data.image, Astro.site).href
+      : undefined,
+    datePublished: guide.data.published.toISOString(),
+    publisher: {
       "@type": "Organization",
-      "name": META.title,
-      "logo": {
+      name: META.title,
+      logo: {
         "@type": "ImageObject",
-        "url": new URL(META.image, Astro.site).href,
+        url: new URL(META.image, Astro.site).href,
       },
     },
   }}

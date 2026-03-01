@@ -23,17 +23,18 @@ const interviews = collection.sort((a, b) => {
   schema={{
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": META.title,
-    "url": Astro.site?.href,
-    "description": "A collection of personal coffee brewing setups from coffee enthusiasts and professionals.",
-    "potentialAction": {
+    name: META.title,
+    url: Astro.site?.href,
+    description:
+      "A collection of personal coffee brewing setups from coffee enthusiasts and professionals.",
+    potentialAction: {
       "@type": "SearchAction",
-      "target": {
+      target: {
         "@type": "EntryPoint",
-        "urlTemplate": `${Astro.site?.href}interviews/{search_term_string}`
+        urlTemplate: `${Astro.site?.href}interviews/{search_term_string}`,
       },
-      "query-input": "required name=search_term_string"
-    }
+      "query-input": "required name=search_term_string",
+    },
   }}
 >
   <h1 class="sr-only">Home Coffee Brewing Setups - Interviews</h1>
