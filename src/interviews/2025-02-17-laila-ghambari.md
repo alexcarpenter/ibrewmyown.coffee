@@ -6,9 +6,9 @@ avatar: /img/laila-ghambari.webp
 image: /og/laila-ghambari.webp
 gallery:
   - src: /img/laila-ghambari-001.webp
-    alt: "Counter with espresso and pour over coffee makers along side coffee grinder"
+    alt: "Laila Ghambari's coffee counter with espresso machine, pour over brewers, and Timemore Sculptor grinder"
   - src: /img/laila-ghambari-002.webp
-    alt: "Pour over coffee maker along side kettle and coffee grinder"
+    alt: "Laila Ghambari's pour over station with Origami dripper, kettle, and coffee grinder"
     position: "bottom"
 products:
   - kalita-stainless-steel-pour-dripper

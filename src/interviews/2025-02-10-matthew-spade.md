@@ -8,11 +8,11 @@ gallery:
   - src: /img/matt-spade-001.webp
     alt: "Glass coffee mug on counter top near coffee"
   - src: /img/matt-spade-002.webp
-    alt: ""
+    alt: "Matthew Spade's pour over setup with wooden dripper and Hario kettle"
   - src: /img/matt-spade-003.webp
-    alt: ""
+    alt: "Matthew Spade's Sage Barista Express espresso machine with Commandante grinder"
   - src: /img/matt-spade-004.webp
-    alt: ""
+    alt: "Matthew Spade's ceramic pour over dripper with glass carafe and Timemore scale"
 products:
   - breville-barista-touch-espresso-machine
   - timemore-coffee-scale-basic-2-0

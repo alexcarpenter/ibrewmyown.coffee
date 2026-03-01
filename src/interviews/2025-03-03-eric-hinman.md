@@ -6,9 +6,9 @@ avatar: /img/eric-hinman.webp
 image: /og/eric-hinman.webp
 gallery:
   - src: /img/eric-hinman-001.webp
-    alt: ""
+    alt: "Eric Hinman's Rocket Appartamento espresso machine with grinder"
   - src: /img/eric-hinman-002.webp
-    alt: ""
+    alt: "Eric Hinman's Terra Kaffe super automatic espresso machine setup"
 products:
   - rocket-espresso-appartamento-nera-espresso-machine
   - rocket-espresso-super-fausto-touch-espresso-grinder
