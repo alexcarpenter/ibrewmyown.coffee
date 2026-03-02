@@ -31,7 +31,7 @@ export function ProductBlipTooltip({ x, y, title, link }: ProductBlipData) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-accent text-foreground inline-flex h-8 items-center gap-2 rounded-full px-2.5 text-sm font-medium"
+              className="bg-accent text-foreground inline-flex h-8 items-center gap-1 rounded-full px-2.5 text-sm font-medium"
             >
               Shop
               <ShoppingBagIcon
