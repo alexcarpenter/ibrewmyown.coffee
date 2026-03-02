@@ -8,6 +8,7 @@
   --color-muted-foreground: var(--color-neutral-500);
   --color-primary: oklch(0.3146 0.0734 139.03);
   --color-accent: oklch(93.82% 0.2886 117.53);
+  --animate-blip: blip 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 @layer utilities {
@@ -41,6 +42,14 @@
     margin-left: -50vw;
     margin-right: -50vw;
   }
+
+  @keyframes blip {
+  75%, 100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
 }
 
 @utility link {

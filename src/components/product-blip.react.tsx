@@ -19,7 +19,7 @@ export function ProductBlip({ x, y, title, link }: ProductBlipData) {
         className="group/blip absolute z-100 flex size-2.5 before:absolute before:top-1/2 before:left-1/2 before:size-10 before:-translate-x-1/2 before:-translate-y-1/2"
         aria-label={title}
       >
-        <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 group-hover/blip:animate-none"></span>
+        <span className="bg-accent animate-blip absolute inline-flex h-full w-full rounded-full opacity-75 group-hover/blip:[animation-play-state:paused]"></span>
         <span className="bg-accent relative inline-flex size-2.5 rounded-full"></span>
       </Tooltip.Trigger>
       <Tooltip.Portal>
