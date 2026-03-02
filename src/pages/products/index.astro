@@ -11,13 +11,7 @@ const { pathname } = Astro.url;
   title="Coffee Products"
   description="Discover the best home coffee equipment. Browse our curated selection of espresso machines, grinders, pour-over brewers, kettles, and specialty coffee accessories."
 >
-  <div class="mb-8">
-    <h1 class="text-2xl font-semibold">Coffee Products</h1>
-    <p class="text-neutral-600 mt-2">
-      Espresso machines, grinders, kettles, and brewing equipment from our
-      featured interviews.
-    </p>
-  </div>
+  <h1 class="sr-only">Coffee Products</h1>
   <ul
     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-4"
   >
@@ -28,8 +22,8 @@ const { pathname } = Astro.url;
         return (
           <li class="bg-white rounded-lg overflow-hidden flex flex-col relative group/card">
             {img ? (
-              <div class="aspect-[4/3] relative overflow-hidden bg-neutral-50">
-                <Image
+              <div class="aspect-[4/3] relative overflow-hidden">
+                <img
                   src={product.data.img}
                   alt={title}
                   width={400}
