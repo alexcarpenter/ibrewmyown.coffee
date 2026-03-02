@@ -40,6 +40,8 @@ export function ProductBlipDrawer({
               <a
                 href={link}
                 className="bg-accent flex h-10 items-center justify-center gap-2 rounded-full text-sm font-medium"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Shop <ShoppingBagIcon className="size-3" />
               </a>
