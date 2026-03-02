@@ -49,6 +49,15 @@ const interviews = defineCollection({
             .enum(["top", "center", "bottom"])
             .default("center")
             .optional(),
+          products: z
+            .array(
+              z.object({
+                id: reference("products"),
+                x: z.number().min(0).max(100),
+                y: z.number().min(0).max(100),
+              }),
+            )
+            .optional(),
         }),
       )
       .optional(),

@@ -3,7 +3,7 @@ import * as React from "react";
 import { Tooltip } from "@base-ui/react/tooltip";
 import { useMemo } from "react";
 
-export function ProductGroup({ products }: { products: any[] }) {
+export function Accessories({ products }: { products: any[] }) {
   const TooltipHandle = React.useMemo(
     () => Tooltip.createHandle<React.ComponentType>(),
     [],
