@@ -31,10 +31,13 @@ export function ProductBlipTooltip({ x, y, title, link }: ProductBlipData) {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-accent text-foreground inline-flex h-8 items-center gap-1 rounded-full px-2.5 text-xs font-medium"
+              className="bg-accent text-foreground inline-flex h-8 items-center gap-2 rounded-full px-2.5 text-sm font-medium"
             >
               Shop
-              <ShoppingBagIcon className="size-3" aria-hidden="true" />
+              <ShoppingBagIcon
+                className="size-3 translate-y-px"
+                aria-hidden="true"
+              />
             </a>
           </Tooltip.Popup>
         </Tooltip.Positioner>

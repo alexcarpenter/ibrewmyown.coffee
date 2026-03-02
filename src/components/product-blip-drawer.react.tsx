@@ -43,7 +43,11 @@ export function ProductBlipDrawer({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Shop <ShoppingBagIcon className="size-3" />
+                Shop{" "}
+                <ShoppingBagIcon
+                  className="size-3 translate-y-px"
+                  aria-hidden="true"
+                />
               </a>
             </Drawer.Content>
           </Drawer.Popup>
