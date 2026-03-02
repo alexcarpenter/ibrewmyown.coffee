@@ -1,9 +1,17 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getSlugFromId, getIndexById, isProd } from "@/utils";
-import { type CollectionEntry, getCollection, render } from "astro:content";
+import {
+  type CollectionEntry,
+  getCollection,
+  getEntry,
+  render,
+} from "astro:content";
 import { Image } from "astro:assets";
 import { META } from "@/consts";
+import GallerySlide from "@/components/gallery-slide.react";
+import type { ProductBlipData } from "@/components/product-blip.react";
+
 
 export async function getStaticPaths() {
   const collection = await getCollection("interviews", ({ data }) => {
@@ -45,6 +53,28 @@ const {
   next: _next,
 } = Astro.props;
 const { Content } = await render(interview);
+
+const galleryWithProducts = interview.data.gallery
+  ? await Promise.all(
+      interview.data.gallery.map(async (image) => {
+        const resolvedProducts: ProductBlipData[] = [];
+        if (image.products) {
+          for (const p of image.products) {
+            const product = await getEntry(p.id);
+            if (product) {
+              resolvedProducts.push({
+                x: p.x,
+                y: p.y,
+                title: product.data.title,
+                link: product.data.link,
+              });
+            }
+          }
+        }
+        return { ...image, resolvedProducts };
+      }),
+    )
+  : undefined;
 ---
 
 <Layout
@@ -94,18 +124,18 @@ const { Content } = await render(interview);
       </div>
     </header>
     {
-      interview.data.gallery ? (
+      galleryWithProducts ? (
         <div class="embla relative max-w-3xl mx-auto mt-10">
           <div class="embla__viewport">
             <div class="embla__container">
-              {interview.data.gallery.map((image, i) => (
+              {galleryWithProducts.map((image, i) => (
                 <div class="embla__slide">
-                  <Image
+                  <GallerySlide
+                    client:visible
                     src={image.src}
-                    width="1600"
-                    height="900"
                     alt={image.alt}
                     loading={i === 0 ? "eager" : "lazy"}
+                    products={image.resolvedProducts}
                   />
                 </div>
               ))}
