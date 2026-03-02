@@ -28,16 +28,16 @@ export default function GallerySlide({
         loading={loading}
         className="size-full rounded-lg object-cover"
       />
-      {products && products.length > 0 && (
-        <Tooltip.Provider delay={0} closeDelay={200}>
-          {products.map((product, i) => (
-            <>
+      {products &&
+        products.length > 0 &&
+        products.map((product) => (
+          <>
+            <Tooltip.Provider>
               <ProductBlipTooltip {...product} />
-              <ProductBlipDrawer {...product} />
-            </>
-          ))}
-        </Tooltip.Provider>
-      )}
+            </Tooltip.Provider>
+            <ProductBlipDrawer {...product} />
+          </>
+        ))}
     </div>
   );
 }
