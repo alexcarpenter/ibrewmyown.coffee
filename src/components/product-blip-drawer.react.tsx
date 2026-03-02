@@ -34,7 +34,7 @@ export function ProductBlipDrawer({
               <Drawer.Description className="text-muted-foreground text-xxs mb-2 text-center font-mono tracking-widest uppercase">
                 {description}
               </Drawer.Description>
-              <Drawer.Title className="mb-5 text-center text-sm font-medium">
+              <Drawer.Title className="mb-5 text-center text-sm font-medium text-pretty">
                 {title}
               </Drawer.Title>
               <a
