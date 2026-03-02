@@ -10,8 +10,7 @@ import {
 import { Image } from "astro:assets";
 import { META } from "@/consts";
 import GallerySlide from "@/components/gallery-slide.react";
-import type { ProductBlipData } from "@/components/product-blip.react";
-
+import type { ProductBlipData } from "@/components/product-blip-tooltip.react";
 
 export async function getStaticPaths() {
   const collection = await getCollection("interviews", ({ data }) => {
@@ -66,6 +65,7 @@ const galleryWithProducts = interview.data.gallery
                 x: p.x,
                 y: p.y,
                 title: product.data.title,
+                description: product.data.description,
                 link: product.data.link,
               });
             }

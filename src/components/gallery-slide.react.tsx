@@ -1,5 +1,9 @@
 import { Tooltip } from "@base-ui/react/tooltip";
-import { ProductBlip, type ProductBlipData } from "./product-blip.react";
+import {
+  ProductBlipTooltip,
+  type ProductBlipData,
+} from "./product-blip-tooltip.react";
+import { ProductBlipDrawer } from "./product-blip-drawer.react";
 
 type GallerySlideProps = {
   src: string;
@@ -25,9 +29,12 @@ export default function GallerySlide({
         className="size-full rounded-lg object-cover"
       />
       {products && products.length > 0 && (
-        <Tooltip.Provider>
+        <Tooltip.Provider delay={0} closeDelay={200}>
           {products.map((product, i) => (
-            <ProductBlip key={i} {...product} />
+            <>
+              <ProductBlipTooltip {...product} />
+              <ProductBlipDrawer {...product} />
+            </>
           ))}
         </Tooltip.Provider>
       )}

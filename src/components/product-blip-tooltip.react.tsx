@@ -5,10 +5,11 @@ export type ProductBlipData = {
   x: number;
   y: number;
   title: string;
+  description: string;
   link: string;
 };
 
-export function ProductBlip({ x, y, title, link }: ProductBlipData) {
+export function ProductBlipTooltip({ x, y, title, link }: ProductBlipData) {
   return (
     <Tooltip.Root>
       <Tooltip.Trigger
@@ -16,11 +17,11 @@ export function ProductBlip({ x, y, title, link }: ProductBlipData) {
           left: `${x}%`,
           top: `${y}%`,
         }}
-        className="group/blip absolute z-100 flex size-2.5 before:absolute before:top-1/2 before:left-1/2 before:size-10 before:-translate-x-1/2 before:-translate-y-1/2"
+        className="group/blip absolute z-100 hidden size-2.5 before:absolute before:top-1/2 before:left-1/2 before:size-10 before:-translate-x-1/2 before:-translate-y-1/2 [@media(pointer:fine)]:flex"
         aria-label={title}
       >
         <span className="bg-accent animate-blip absolute inline-flex h-full w-full rounded-full opacity-75 group-hover/blip:[animation-play-state:paused]"></span>
-        <span className="bg-accent relative inline-flex size-2.5 rounded-full"></span>
+        <span className="bg-accent relative flex size-2.5 rounded-full"></span>
       </Tooltip.Trigger>
       <Tooltip.Portal>
         <Tooltip.Positioner side="top" sideOffset={8}>
