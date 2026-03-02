@@ -36,7 +36,7 @@ export function ProductBlipDrawer({
               </Drawer.Title>
               <a
                 href={link}
-                className="bg-accent flex h-10 items-center justify-center gap-2 text-sm font-medium"
+                className="bg-accent flex h-10 items-center justify-center gap-2 rounded-full text-sm font-medium"
               >
                 Shop <ShoppingBagIcon className="size-3" />
               </a>
