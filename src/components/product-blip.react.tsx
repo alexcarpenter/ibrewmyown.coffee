@@ -24,7 +24,7 @@ export function ProductBlip({ x, y, title, link }: ProductBlipData) {
       </Tooltip.Trigger>
       <Tooltip.Portal>
         <Tooltip.Positioner side="top" sideOffset={8}>
-          <Tooltip.Popup className="z-50 flex h-10 origin-[var(--transform-origin)] items-center gap-2 rounded-full bg-black/20 ps-4.5 pe-1 text-sm text-white backdrop-blur-sm transition-[scale,opacity] duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0">
+          <Tooltip.Popup className="z-50 flex h-10 origin-[var(--transform-origin)] items-center gap-x-3 rounded-full bg-black/20 ps-6 pe-1 text-sm text-white backdrop-blur-sm transition-[scale,opacity] duration-150 data-[ending-style]:scale-90 data-[ending-style]:opacity-0 data-[starting-style]:scale-90 data-[starting-style]:opacity-0">
             <span className="font-medium">{title}</span>
             <a
               href={link}
