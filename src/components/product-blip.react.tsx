@@ -16,7 +16,7 @@ export function ProductBlip({ x, y, title, link }: ProductBlipData) {
           left: `${x}%`,
           top: `${y}%`,
         }}
-        className="group/blip absolute z-100 hidden size-2.5 before:absolute before:top-1/2 before:left-1/2 before:size-10 before:-translate-x-1/2 before:-translate-y-1/2 pointer-fine:flex"
+        className="group/blip absolute z-100 flex size-2.5 before:absolute before:top-1/2 before:left-1/2 before:size-10 before:-translate-x-1/2 before:-translate-y-1/2"
         aria-label={title}
       >
         <span className="bg-accent absolute inline-flex h-full w-full animate-ping rounded-full opacity-75 group-hover/blip:animate-none"></span>
