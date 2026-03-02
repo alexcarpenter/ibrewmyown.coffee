@@ -7,9 +7,17 @@ image: /og/laila-ghambari.webp
 gallery:
   - src: /img/laila-ghambari-001.webp
     alt: "Laila Ghambari's coffee counter with espresso machine, pour over brewers, and Timemore Sculptor grinder"
+    products:
+      - id: la-marzocco-linea-mini
+        x: 23
+        y: 63
   - src: /img/laila-ghambari-002.webp
     alt: "Laila Ghambari's pour over station with Origami dripper, kettle, and coffee grinder"
     position: "bottom"
+    products:
+      - id: timemore-sculptor-078s-coffee-grinder
+        x: 70
+        y: 85
 products:
   - kalita-stainless-steel-pour-dripper
   - simplygoodcoffee-coffee-maker
