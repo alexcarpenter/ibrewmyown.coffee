@@ -25,7 +25,7 @@ export default function GallerySlide({
         className="size-full rounded-lg object-cover"
       />
       {products && products.length > 0 && (
-        <Tooltip.Provider delay={0} closeDelay={200}>
+        <Tooltip.Provider>
           {products.map((product, i) => (
             <ProductBlip key={i} {...product} />
           ))}
