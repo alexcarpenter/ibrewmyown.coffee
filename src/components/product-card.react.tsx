@@ -55,17 +55,21 @@ export default function Productcard({
                   <p className="text-muted-foreground text-xxs font-mono tracking-widest uppercase">
                     {product.data.description}
                   </p>
-                  <h2 className="mt-1 text-sm font-medium">
+                  <h2 className="text-sm font-medium text-pretty">
                     {product.data.title}
                   </h2>
                   <div className="mt-2">
                     <a
                       href={product.data.link}
+                      className="bg-accent flex h-10 items-center justify-center gap-1 rounded-full text-sm font-medium"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/link bg-accent text-foreground flex h-8 items-center justify-center gap-x-2 rounded-sm text-sm font-medium"
                     >
-                      Purchase
+                      Shop{" "}
+                      <ShoppingBagIcon
+                        className="size-3 translate-y-px"
+                        aria-hidden="true"
+                      />
                     </a>
                   </div>
                 </div>
