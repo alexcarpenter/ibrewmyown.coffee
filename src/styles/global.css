@@ -44,12 +44,11 @@
   }
 
   @keyframes blip {
-  75%, 100% {
-    transform: scale(3);
-    opacity: 0;
+    75%, 100% {
+      transform: scale(3);
+      opacity: 0;
+    }
   }
-}
-
 }
 
 @utility link {
