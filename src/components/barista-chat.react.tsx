@@ -4,6 +4,7 @@ import { useChat } from "@ai-sdk/react";
 import { TextStreamChatTransport } from "ai";
 import { useState } from "react";
 import { ScrollArea } from "@base-ui/react/scroll-area";
+import { ArrowUp } from "lucide-react";
 
 export default function BaristaChat() {
   const { messages, sendMessage, status, stop } = useChat({
@@ -145,7 +146,7 @@ export default function BaristaChat() {
       </ScrollArea.Root>
 
       <form
-        className="relative mt-auto flex flex-col px-4 pt-px pb-10"
+        className="px-4 pb-10"
         onSubmit={(e) => {
           e.preventDefault();
           if (input.trim()) {
@@ -169,19 +170,7 @@ export default function BaristaChat() {
               className="bg-foreground grid size-8 place-content-center rounded-md text-white"
               aria-label="Send"
             >
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="size-4"
-                aria-hidden
-              >
-                <path d="m5 12 7-7 7 7" />
-                <path d="M12 19V5" />
-              </svg>
+              <ArrowUp className="size-4" aria-hidden />
             </button>
           </div>
         </div>
