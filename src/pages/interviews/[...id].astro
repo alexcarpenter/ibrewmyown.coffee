@@ -237,19 +237,17 @@ const galleryWithProducts = interview.data.gallery
     gap: calc(var(--spacing) * 2);
 
     button {
-      width: calc(var(--spacing) * 2);
+      width: calc(var(--spacing) * 2 + var(--spacing) * 3 * var(--dot-expand, 0));
       height: calc(var(--spacing) * 2);
-      border-radius: 50%;
+      border-radius: 999px;
       background-color: var(--color-neutral-300);
-      transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out;
       border: none;
       cursor: pointer;
       flex-shrink: 0;
 
       &.active {
-        width: calc(var(--spacing) * 5);
         background-color: var(--color-neutral-600);
-        border-radius: calc(var(--spacing) * 1);
       }
     }
   }

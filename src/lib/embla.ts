@@ -29,12 +29,53 @@ export const addDotBtnsAndClickHandlers = (
     dotNodes[selected].classList.add("active");
   };
 
+  const setDotExpand = (index: number, value: number): void => {
+    dotNodes[index]?.style.setProperty("--dot-expand", String(value));
+  };
+
+  const onScroll = (): void => {
+    const snapList = emblaApi.scrollSnapList();
+    const progress = emblaApi.scrollProgress();
+
+    // Find the two snaps that bracket the current progress
+    let lower = 0;
+    for (let i = 0; i < snapList.length - 1; i++) {
+      if (progress >= snapList[i] && progress <= snapList[i + 1]) {
+        lower = i;
+        break;
+      }
+      // Handle over-scroll at the ends
+      if (progress < snapList[0]) { lower = 0; break; }
+      if (progress > snapList[snapList.length - 1]) { lower = snapList.length - 2; break; }
+      lower = i;
+    }
+    const upper = lower + 1;
+
+    const range = snapList[upper] - snapList[lower];
+    const t = range === 0 ? 0 : Math.min(1, Math.max(0, (progress - snapList[lower]) / range));
+
+    dotNodes.forEach((_, i) => {
+      if (i === lower) setDotExpand(i, 1 - t);
+      else if (i === upper) setDotExpand(i, t);
+      else setDotExpand(i, 0);
+    });
+  };
+
+  const onSettle = (): void => {
+    const selected = emblaApi.selectedScrollSnap();
+    dotNodes.forEach((_, i) => setDotExpand(i, i === selected ? 1 : 0));
+  };
+
   emblaApi
     .on("init", addDotBtnsWithClickHandlers)
     .on("reInit", addDotBtnsWithClickHandlers)
     .on("init", toggleDotBtnsActive)
     .on("reInit", toggleDotBtnsActive)
-    .on("select", toggleDotBtnsActive);
+    .on("init", onSettle)
+    .on("reInit", onSettle)
+    .on("select", toggleDotBtnsActive)
+    .on("scroll", onScroll)
+    .on("settle", onSettle);
 
   return (): void => {
     dotsNode.innerHTML = "";
