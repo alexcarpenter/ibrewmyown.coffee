@@ -11,6 +11,58 @@
   --animate-blip: blip 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
+@layer base {
+  @supports (animation-timeline: scroll()) {
+    @property --fade-top {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 0px;
+    }
+    @property --fade-bottom {
+      syntax: "<length>";
+      inherits: false;
+      initial-value: 0px;
+    }
+
+    .messages {
+      --fade-distance: 40px;
+      mask-image: linear-gradient(
+        to bottom,
+        transparent 0,
+        #000 var(--fade-top),
+        #000 calc(100% - var(--fade-bottom)),
+        transparent 100%
+      );
+      mask-size: 100% 100%;
+      mask-repeat: no-repeat;
+      animation:
+        fade-in-top 1 linear both,
+        fade-out-bottom 1 linear both;
+      animation-timeline: scroll(y self), scroll(y self);
+      animation-range:
+        0% 12%,
+        88% 100%;
+    }
+
+    @keyframes fade-in-top {
+      from {
+        --fade-top: 0px;
+      }
+      to {
+        --fade-top: var(--fade-distance);
+      }
+    }
+    @keyframes fade-out-bottom {
+      from {
+        --fade-bottom: var(--fade-distance);
+      }
+      to {
+        --fade-bottom: 0px;
+      }
+    }
+  }
+}
+
 @layer utilities {
   @font-face {
     font-family: "Inter";
@@ -32,15 +84,6 @@
   }
   .font-bold {
     font-variation-settings: "wght" 700;
-  }
-
-  .full-width {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    right: 50%;
-    margin-left: -50vw;
-    margin-right: -50vw;
   }
 
   @keyframes blip {

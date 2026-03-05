@@ -1,0 +1,18 @@
+---
+import Footer from "@/components/footer.astro";
+import Navigation from "@/components/navigation.astro";
+import RootLayout from "@/layouts/root-layout.astro";
+---
+
+<RootLayout class="px-4 pt-4">
+  <a
+    href="#main"
+    class="absolute not-focus-visible:-translate-y-full top-0 focus-visible:top-12 left-0 focus-visible:left-12 bg-accent text-primary text-sm font-medium px-4 h-9 flex items-center justify-center rounded-sm"
+    >Skip to main content</a
+  >
+  <Navigation />
+  <main id="main" class="flex flex-col flex-1">
+    <slot />
+  </main>
+  <Footer />
+</RootLayout>

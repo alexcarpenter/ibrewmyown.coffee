@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Layout from "@/layouts/default-layout.astro";
 import { getSlugFromId, getIndexById, isProd } from "@/utils";
 import {
   type CollectionEntry,
@@ -241,7 +241,10 @@ const galleryWithProducts = interview.data.gallery
       height: calc(var(--spacing) * 2);
       border-radius: 50%;
       background-color: var(--color-neutral-300);
-      transition: width 0.3s ease-in-out, background-color 0.3s ease-in-out, border-radius 0.3s ease-in-out;
+      transition:
+        width 0.3s ease-in-out,
+        background-color 0.3s ease-in-out,
+        border-radius 0.3s ease-in-out;
       border: none;
       cursor: pointer;
       flex-shrink: 0;
