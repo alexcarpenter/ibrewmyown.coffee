@@ -1,8 +1,6 @@
 ---
-import Footer from "@/components/footer.astro";
 import "../styles/global.css";
 import { META } from "@/consts";
-import Navigation from "@/components/navigation.astro";
 
 interface Props {
   title?: string;
@@ -14,6 +12,7 @@ interface Props {
   modifiedTime?: Date;
   author?: string;
   schema?: object;
+  class?: string;
 }
 
 const {
@@ -26,6 +25,7 @@ const {
   modifiedTime,
   author,
   schema,
+  class: className = "",
 } = Astro.props;
 
 const metaTitle = title ? `${title} - ${META.title}` : META.title;
@@ -111,17 +111,11 @@ const canonical = canonicalURL || new URL(Astro.url.pathname, Astro.site).href;
     }
   </head>
   <body
-    class="antialiased flex flex-col min-h-full text-foreground bg-background overflow-x-hidden px-4 pt-4"
+    class:list={[
+      "antialiased flex flex-col min-h-full text-foreground bg-background overflow-x-hidden",
+      className,
+    ]}
   >
-    <a
-      href="#main"
-      class="absolute not-focus-visible:-translate-y-full top-0 focus-visible:top-12 left-0 focus-visible:left-12 bg-accent text-primary text-sm font-medium px-4 h-9 flex items-center justify-center rounded-sm"
-      >Skip to main content</a
-    >
-    <Navigation />
-    <main id="main" class="flex flex-col flex-1">
-      <slot />
-    </main>
-    <Footer />
+    <slot />
   </body>
 </html>
