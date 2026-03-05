@@ -29,8 +29,8 @@ export const addDotBtnsAndClickHandlers = (
     dotNodes[selected].classList.add("active");
   };
 
-  const setDotExpand = (index: number, value: number): void => {
-    dotNodes[index]?.style.setProperty("--dot-expand", String(value));
+  const setDotProgress = (index: number, value: number): void => {
+    dotNodes[index]?.style.setProperty("--dot-progress", String(value));
   };
 
   const onScroll = (): void => {
@@ -55,15 +55,15 @@ export const addDotBtnsAndClickHandlers = (
     const t = range === 0 ? 0 : Math.min(1, Math.max(0, (progress - snapList[lower]) / range));
 
     dotNodes.forEach((_, i) => {
-      if (i === lower) setDotExpand(i, 1 - t);
-      else if (i === upper) setDotExpand(i, t);
-      else setDotExpand(i, 0);
+      if (i === lower) setDotProgress(i, 1 - t);
+      else if (i === upper) setDotProgress(i, t);
+      else setDotProgress(i, 0);
     });
   };
 
   const onSettle = (): void => {
     const selected = emblaApi.selectedScrollSnap();
-    dotNodes.forEach((_, i) => setDotExpand(i, i === selected ? 1 : 0));
+    dotNodes.forEach((_, i) => setDotProgress(i, i === selected ? 1 : 0));
   };
 
   emblaApi
