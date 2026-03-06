@@ -237,13 +237,27 @@ const galleryWithProducts = interview.data.gallery
     gap: calc(var(--spacing) * 2);
 
     button {
-      width: calc(var(--spacing) * 2 + var(--spacing) * 3 * var(--dot-progress, 0));
+      position: relative;
+      width: calc(
+        var(--spacing) * 2 + var(--spacing) * 3 * var(--dot-progress, 0)
+      );
       height: calc(var(--spacing) * 2);
       border-radius: 999px;
-      background-color: color-mix(in srgb, var(--color-neutral-600) calc(var(--dot-progress, 0) * 100%), var(--color-neutral-300));
+      background-color: color-mix(
+        in srgb,
+        var(--color-neutral-600) calc(var(--dot-progress, 0) * 100%),
+        var(--color-neutral-300)
+      );
       border: none;
       cursor: pointer;
       flex-shrink: 0;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset-block: calc((var(--spacing) * 2) * -1);
+        inset-inline: calc((var(--spacing) * 2) * -1);
+      }
     }
   }
 </style>
