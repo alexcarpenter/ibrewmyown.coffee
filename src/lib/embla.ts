@@ -6,64 +6,96 @@ export const addDotBtnsAndClickHandlers = (
 ): (() => void) => {
   let dotNodes: HTMLElement[] = [];
 
+  let snapList: number[] = [];
+  let snapCount = 0;
+
+  let lower = 0;
+  let prevLower = -1;
+  let prevUpper = -1;
+
+  const progressCache: number[] = [];
+
+  const setDotProgress = (index: number, value: number): void => {
+    if (progressCache[index] === value) return;
+    progressCache[index] = value;
+    dotNodes[index]?.style.setProperty("--dot-progress", String(value));
+  };
+
   const addDotBtnsWithClickHandlers = (): void => {
-    dotsNode.innerHTML = emblaApi
-      .scrollSnapList()
+    snapList = emblaApi.scrollSnapList();
+    snapCount = snapList.length;
+
+    dotsNode.innerHTML = snapList
       .map(() => '<button class="embla__dot" type="button"></button>')
       .join("");
 
-    const scrollTo = (index: number): void => {
-      emblaApi.scrollTo(index);
-    };
+    dotNodes = Array.from(
+      dotsNode.querySelectorAll<HTMLButtonElement>(".embla__dot"),
+    );
 
-    dotNodes = Array.from(dotsNode.querySelectorAll(".embla__dot"));
-    dotNodes.forEach((dotNode, index) => {
-      dotNode.addEventListener("click", () => scrollTo(index), false);
-    });
+    progressCache.length = snapCount;
+    progressCache.fill(-1);
+  };
+
+  const onClick = (e: Event): void => {
+    const target = e.target as HTMLElement;
+    if (!target.classList.contains("embla__dot")) return;
+
+    const index = Array.prototype.indexOf.call(dotNodes, target);
+    if (index !== -1) emblaApi.scrollTo(index);
   };
 
   const toggleDotBtnsActive = (): void => {
     const previous = emblaApi.previousScrollSnap();
     const selected = emblaApi.selectedScrollSnap();
-    dotNodes[previous].classList.remove("active");
-    dotNodes[selected].classList.add("active");
-  };
 
-  const setDotProgress = (index: number, value: number): void => {
-    dotNodes[index]?.style.setProperty("--dot-progress", String(value));
+    dotNodes[previous]?.classList.remove("active");
+    dotNodes[selected]?.classList.add("active");
   };
 
   const onScroll = (): void => {
-    const snapList = emblaApi.scrollSnapList();
+    if (snapCount < 2) return;
+
     const progress = emblaApi.scrollProgress();
 
-    // Find the two snaps that bracket the current progress
-    let lower = 0;
-    for (let i = 0; i < snapList.length - 1; i++) {
-      if (progress >= snapList[i] && progress <= snapList[i + 1]) {
-        lower = i;
-        break;
-      }
-      // Handle over-scroll at the ends
-      if (progress < snapList[0]) { lower = 0; break; }
-      if (progress > snapList[snapList.length - 1]) { lower = snapList.length - 2; break; }
-      lower = i;
+    while (lower < snapCount - 2 && progress > snapList[lower + 1]) {
+      lower++;
     }
+    while (lower > 0 && progress < snapList[lower]) {
+      lower--;
+    }
+
     const upper = lower + 1;
 
-    const range = snapList[upper] - snapList[lower];
-    const t = range === 0 ? 0 : Math.min(1, Math.max(0, (progress - snapList[lower]) / range));
+    const lowerSnap = snapList[lower];
+    const upperSnap = snapList[upper];
 
-    dotNodes.forEach((_, i) => {
-      if (i === lower) setDotProgress(i, 1 - t);
-      else if (i === upper) setDotProgress(i, t);
-      else setDotProgress(i, 0);
-    });
+    const t = (progress - lowerSnap) / (upperSnap - lowerSnap || 1);
+
+    if (prevLower !== lower && prevLower !== -1) {
+      setDotProgress(prevLower, 0);
+    }
+    if (prevUpper !== upper && prevUpper !== -1) {
+      setDotProgress(prevUpper, 0);
+    }
+
+    setDotProgress(lower, 1 - t);
+    setDotProgress(upper, t);
+
+    prevLower = lower;
+    prevUpper = upper;
   };
 
   const onSettle = (): void => {
     const selected = emblaApi.selectedScrollSnap();
-    dotNodes.forEach((_, i) => setDotProgress(i, i === selected ? 1 : 0));
+
+    for (let i = 0; i < snapCount; i++) {
+      setDotProgress(i, i === selected ? 1 : 0);
+    }
+
+    lower = selected;
+    prevLower = selected;
+    prevUpper = selected + 1;
   };
 
   emblaApi
@@ -77,7 +109,10 @@ export const addDotBtnsAndClickHandlers = (
     .on("scroll", onScroll)
     .on("settle", onSettle);
 
+  dotsNode.addEventListener("click", onClick);
+
   return (): void => {
     dotsNode.innerHTML = "";
+    dotsNode.removeEventListener("click", onClick);
   };
 };
