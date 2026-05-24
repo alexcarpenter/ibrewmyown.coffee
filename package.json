@@ -14,7 +14,7 @@
     "@astrojs/mdx": "4.3.13",
     "@astrojs/react": "4.4.2",
     "@astrojs/rss": "4.0.15",
-    "@astrojs/sitemap": "3.7.0",
+    "@astrojs/sitemap": "3.7.2",
     "@astrojs/vercel": "9.0.4",
     "@base-ui/react": "1.2.0",
     "@nanostores/query": "0.3.4",
