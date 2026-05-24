@@ -1,4 +1,4 @@
-import { DrawerPreview as Drawer } from "@base-ui/react/drawer";
+import { Drawer } from "@base-ui/react/drawer";
 import { ShoppingBagIcon } from "lucide-react";
 import type { ProductBlipData } from "./product-blip-tooltip.react";
 
