@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@alexcarpenter/us-coffee-roasters": "1.0.0",
-    "@ariakit/react": "0.4.28",
+    "@ariakit/react": "0.4.42",
     "@astrojs/mdx": "5.0.6",
     "@astrojs/react": "5.0.5",
     "@astrojs/rss": "4.0.18",
